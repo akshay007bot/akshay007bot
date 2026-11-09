@@ -1,0 +1,12 @@
+{
+ "01_intro": ["16.jpg", "27.jpg"],
+ "02_industry": ["02.jpg", "22.jpg"],
+ "03_karting": ["13.jpg", "12.jpg"],
+ "04_fitness": ["09.jpg"],
+ "05_simulator": ["04.jpg", "20.jpg"],
+ "06_practice": ["10.jpg", "24.jpg"],
+ "07_garage": ["00.jpg"],
+ "08_pitstop": ["01.jpg", "26.jpg"],
+ "09_travel": ["23.jpg", "21.jpg"],
+ "10_podium": ["27.jpg", "03.jpg"]
+}
