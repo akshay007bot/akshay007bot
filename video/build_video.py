@@ -11,6 +11,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 import wave
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
@@ -26,7 +27,14 @@ os.makedirs(OUT, exist_ok=True)
 script = json.load(open(os.path.join(HERE, "script_kn.json"), encoding="utf-8"))
 scenes = json.load(open(os.path.join(HERE, "scenes.json"), encoding="utf-8"))
 
-LEAD, TAIL = 0.4, 0.5  # silence before/after narration in each scene
+# narration language: "kn" (Kannada voice) or "en" (English voice); on-screen text stays Kannada
+VOICE = sys.argv[1] if len(sys.argv) > 1 else "kn"
+AUDIO_DIR = "audio" if VOICE == "kn" else "audio_en"
+NAME = "indian_racing_behind_the_scenes_kannada" + ("" if VOICE == "kn" else "_english_audio")
+BUILD = os.path.join(HERE, "build", VOICE)
+os.makedirs(BUILD, exist_ok=True)
+# silence before/after narration in each scene (English narration is shorter, so it gets more air)
+LEAD, TAIL = (0.4, 0.5) if VOICE == "kn" else (0.8, 1.3)
 
 
 def run(cmd):
@@ -154,7 +162,7 @@ def split_sentences(text):
 
 
 scene_clips = []
-srt_entries = []
+srt_kn, srt_en = [], []
 clock = 0.0
 
 # ---- opening title card ----
@@ -171,7 +179,7 @@ clock += open_dur
 
 for n, sc in enumerate(script, start=1):
     sid = sc["id"]
-    narr = os.path.join(HERE, "audio", f"{sid}.wav")
+    narr = os.path.join(HERE, AUDIO_DIR, f"{sid}.wav")
     nd = wav_dur(narr)
     total = LEAD + nd + TAIL
     photos = scenes[sid]
@@ -206,9 +214,15 @@ for n, sc in enumerate(script, start=1):
         subtitle_png(s, spng)
         inputs += ["-i", spng]
         filt += f";[{last}][{j+2}:v]overlay=0:0:enable='between(t,{t0:.2f},{t0+d:.2f})'[v{j+2}]"
-        srt_entries.append((clock + t0, clock + t0 + d, s))
+        srt_kn.append((clock + t0, clock + t0 + d, s))
         last = f"v{j+2}"
         t0 += d
+    # English subtitle file, timed by sentence length over the narration
+    en_s = split_sentences(sc.get("text_en", ""))
+    e0, en_w = LEAD, sum(len(x) for x in en_s) or 1
+    for x in en_s:
+        srt_en.append((clock + e0, clock + e0 + nd * len(x) / en_w, x))
+        e0 += nd * len(x) / en_w
     filt += f";[{last}]fade=in:st=0:d=0.5,fade=out:st={total-0.5:.2f}:d=0.5,format=yuv420p[vout]"
     filt += f";[{len(sents)+2}:a]adelay={int(LEAD*1000)}|{int(LEAD*1000)},apad,atrim=0:{total:.3f},aformat=sample_rates=44100:channel_layouts=stereo[aout]"
     inputs += ["-i", narr]
@@ -240,7 +254,7 @@ joined = f"{BUILD}/joined.mp4"
 run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c:v", "copy", "-c:a", "aac", joined])
 music = f"{BUILD}/music.wav"
 run(["python3", os.path.join(HERE, "make_music.py"), f"{clock + 1:.2f}", music])
-final = os.path.join(OUT, "indian_racing_behind_the_scenes_kannada.mp4")
+final = os.path.join(OUT, NAME + ".mp4")
 run(["ffmpeg", "-y", "-i", joined, "-i", music, "-filter_complex",
      "[1:a]volume=0.22[m];[0:a][m]amix=inputs=2:duration=first:dropout_transition=0:normalize=0,"
      "loudnorm=I=-16:TP=-1.5:LRA=11[a]",
@@ -254,9 +268,10 @@ def ts(x):
     return f"{int(h):02d}:{int(m):02d}:{int(s):02d},{int((s % 1) * 1000):03d}"
 
 
-with open(os.path.join(OUT, "indian_racing_behind_the_scenes_kannada.srt"), "w", encoding="utf-8") as fh:
-    for i, (a, b, s) in enumerate(srt_entries, 1):
-        fh.write(f"{i}\n{ts(a)} --> {ts(b)}\n{s}\n\n")
+for suffix, entries in (("kn", srt_kn), ("en", srt_en)):
+    with open(os.path.join(OUT, f"{NAME}.{suffix}.srt"), "w", encoding="utf-8") as fh:
+        for i, (a, b, s) in enumerate(entries, 1):
+            fh.write(f"{i}\n{ts(a)} --> {ts(b)}\n{s}\n\n")
 print("DONE", final, f"{clock:.1f}s")
 
 MAX_LEN = 120.0
