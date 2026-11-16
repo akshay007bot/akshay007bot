@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VedRxTours carousel</title>
+<style>
+@font-face { font-family: Playfair; src: url(../vedrx/assets/fonts/playfair-display-400-normal-all-5.ttf); font-weight: 400; }
+@font-face { font-family: Playfair; src: url(../vedrx/assets/fonts/playfair-display-500-normal-all-6.ttf); font-weight: 500; }
+@font-face { font-family: Playfair; src: url(../vedrx/assets/fonts/playfair-display-600-normal-all-7.ttf); font-weight: 600; }
+@font-face { font-family: Inter; src: url(../vedrx/assets/fonts/inter-400-normal-all-1.ttf); font-weight: 400; }
+@font-face { font-family: Inter; src: url(../vedrx/assets/fonts/inter-500-normal-all-2.ttf); font-weight: 500; }
+@font-face { font-family: Inter; src: url(../vedrx/assets/fonts/inter-600-normal-all-3.ttf); font-weight: 600; }
+:root {
+  --navy: #0f1729; --navy2: #172238; --teal: #128271; --teal-hi: #2fc4a5; --teal-soft: #e8f6f2;
+  --ink: #0f1729; --muted: #65758b; --line: #e2e8f0; --paper: #f7f9fb; --white: #fff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #555; font-family: Inter, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+.slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; background: var(--white); margin: 0 auto 40px; display: flex; flex-direction: column; padding: 84px 88px 0; }
+.slide.paper { background: var(--paper); }
+.slide.navy { background: var(--navy); color: #fff; }
+
+/* chrome: wordmark top-left, counter top-right, footer */
+.top { display: flex; justify-content: space-between; align-items: center; height: 44px; flex: none; }
+.wm { font-family: Playfair; font-weight: 500; font-size: 34px; letter-spacing: -0.2px; }
+.wm i { font-style: normal; color: var(--teal); }
+.navy .wm i, .photo .wm i { color: var(--teal-hi); }
+.photo .top, .photo .kicker { text-shadow: 0 2px 12px rgba(5,10,25,.6); }
+.count { font-size: 22px; font-weight: 500; letter-spacing: 3px; color: var(--muted); }
+.navy .count, .photo .count { color: rgba(255,255,255,.7); }
+.foot { position: absolute; left: 88px; right: 88px; bottom: 0; height: 104px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); font-size: 22px; font-weight: 500; color: var(--muted); letter-spacing: .5px; }
+.navy .foot, .photo .foot { border-color: rgba(255,255,255,.18); color: rgba(255,255,255,.75); }
+.swipe { color: var(--teal); font-weight: 600; }
+.navy .swipe, .photo .swipe { color: var(--teal-hi); }
+
+.kicker { font-size: 22px; font-weight: 600; letter-spacing: 3.2px; text-transform: uppercase; color: var(--teal); }
+.navy .kicker, .photo .kicker { color: var(--teal-hi); }
+h1, h2 { font-family: Playfair; font-weight: 500; letter-spacing: -0.8px; line-height: 1.06; }
+h1 { font-size: 104px; }
+h2 { font-size: 78px; }
+h2 em, h1 em { font-style: normal; color: var(--teal); }
+.navy h2 em, .photo h1 em, .photo h2 em { color: var(--teal-hi); }
+.lead { font-size: 31px; line-height: 1.45; color: var(--muted); }
+.navy .lead, .photo .lead { color: rgba(255,255,255,.82); }
+.body { flex: 1; display: flex; flex-direction: column; padding-bottom: 104px; }
+.note { font-size: 21px; line-height: 1.45; color: var(--muted); }
+.navy .note { color: rgba(255,255,255,.6); }
+
+/* photo slides */
+.photo { color: #fff; background: var(--navy); }
+.photo .bg { position: absolute; inset: 0; background-size: cover; }
+.photo .bg::after { content: ""; position: absolute; inset: 0; }
+.photo > *:not(.bg) { position: relative; }
+.photo .foot { position: absolute; }
+
+/* checks */
+.check { width: 40px; height: 40px; border-radius: 50%; background: var(--teal); flex: none; display: grid; place-items: center; }
+.check svg { width: 22px; height: 22px; }
+.navy .check { background: rgba(47,196,165,.16); border: 1.5px solid var(--teal-hi); }
+
+/* S1 cover */
+.s1 .bg { background-image: url(../vedrx/assets/photos/consultation.jpg); background-position: 74% 40%; }
+.s1 .bg::after { background: linear-gradient(180deg, rgba(15,23,41,.82) 0%, rgba(15,23,41,.2) 18%, rgba(15,23,41,.25) 30%, rgba(15,23,41,.88) 46%, #0f1729 62%, #0f1729 100%); }
+.s1 .body { justify-content: flex-end; padding-bottom: 150px; }
+.s1 h1 { margin: 22px 0 26px; }
+.pills { display: flex; flex-direction: column; gap: 14px; margin-top: 40px; }
+.pill { display: flex; gap: 18px; align-items: center; font-size: 28px; font-weight: 500; }
+
+/* S2 treatments */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+.tcard { background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 28px 30px 30px; min-height: 152px; display: flex; flex-direction: column; justify-content: space-between; }
+.tcard .k { font-size: 19px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--teal); }
+.tcard .n { font-family: Playfair; font-size: 35px; font-weight: 500; line-height: 1.15; margin-top: 18px; }
+.tcard.hl { background: var(--teal); border-color: var(--teal); color: #fff; }
+.tcard.hl .k { color: rgba(255,255,255,.8); }
+
+/* S3 IVF */
+.cities { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+.city { border-radius: 20px; overflow: hidden; background: var(--white); border: 1px solid var(--line); }
+.city .img { height: 180px; background-size: cover; background-position: center; }
+.city .t { padding: 18px 26px 20px; }
+.city .k { font-size: 18px; font-weight: 600; letter-spacing: 2.4px; color: var(--teal); }
+.city h3 { font-family: Playfair; font-weight: 500; font-size: 36px; margin: 6px 0 6px; }
+.city p { font-size: 22px; color: var(--muted); line-height: 1.35; }
+
+/* S4 hospitals */
+.hosp { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 44px; }
+.hcard { background: var(--white); border: 1px solid var(--line); border-top: 6px solid var(--teal); border-radius: 18px; padding: 34px 32px; height: 262px; display: flex; flex-direction: column; }
+.hcard .logo { height: 92px; display: flex; align-items: center; }
+.hcard .logo img { max-height: 84px; max-width: 230px; }
+.hcard .logo .txt { font-family: Playfair; font-size: 38px; font-weight: 600; color: var(--ink); }
+.hcard .loc { font-size: 19px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; color: var(--teal); }
+.hcard h3 { font-family: Playfair; font-weight: 500; font-size: 44px; margin: 14px 0 auto; }
+.hcard p { font-size: 24px; color: var(--muted); line-height: 1.4; }
+
+/* S5 estimate */
+.factors { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+.chip { font-size: 27px; font-weight: 500; padding: 16px 26px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); border: 1px solid #cdebe3; }
+.qbox { margin-top: 48px; padding: 40px 44px; border-radius: 22px; background: var(--white); border: 1px solid var(--line); }
+.qbox .k { margin-bottom: 4px; }
+.btn { display: inline-flex; align-items: center; gap: 14px; background: var(--teal); color: #fff; font-size: 28px; font-weight: 600; padding: 24px 38px; border-radius: 14px; }
+.btn svg { width: 24px; height: 24px; }
+
+/* S6 steps */
+.steps { margin-top: 40px; }
+.step { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 42px 0; border-top: 1px solid var(--line); }
+.step .n { font-family: Playfair; font-size: 64px; color: var(--teal); line-height: 1; }
+.step h3 { font-size: 36px; font-weight: 600; margin-bottom: 10px; letter-spacing: -.3px; }
+.step p { font-size: 27px; color: var(--muted); line-height: 1.4; }
+
+/* S7 support */
+.rows { margin-top: 34px; }
+.row { display: flex; gap: 24px; align-items: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.14); font-size: 31px; font-weight: 500; }
+.rows .row:last-child { border-bottom: 1px solid rgba(255,255,255,.14); }
+.panel { margin-top: 32px; padding: 28px 36px; border-radius: 22px; background: var(--navy2); border: 1px solid rgba(255,255,255,.1); }
+.panel p { font-size: 27px; line-height: 1.5; color: rgba(255,255,255,.85); }
+
+/* S8 India */
+.s8 .bg { background-image: url(../vedrx/assets/photos/taj.jpg); background-position: 50% 18%; top: 400px; }
+.s8 .bg::after { background: linear-gradient(180deg, #0f1729 0%, rgba(15,23,41,.55) 14%, rgba(15,23,41,0) 30%, rgba(15,23,41,.55) 70%, rgba(15,23,41,.97) 88%); }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: auto; margin-bottom: 40px; }
+.duo div { padding: 28px 30px; border-radius: 18px; background: rgba(15,23,41,.72); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(6px); }
+.duo h3 { font-family: Playfair; font-weight: 500; font-size: 36px; margin-bottom: 8px; }
+.duo p { font-size: 24px; line-height: 1.4; color: rgba(255,255,255,.82); }
+
+/* S9 FAQ */
+.faq { margin-top: 34px; }
+.qa { padding: 26px 0; border-top: 1px solid var(--line); }
+.qa h3 { font-size: 29px; font-weight: 600; letter-spacing: -.2px; margin-bottom: 10px; display: flex; gap: 14px; }
+.qa h3 span { color: var(--teal); }
+.qa p { font-size: 23px; line-height: 1.45; color: var(--muted); }
+
+/* S10 CTA */
+.s10 .logo { width: 560px; margin-top: 36px; }
+.contact { margin-top: 44px; border-top: 1px solid var(--line); }
+.ci { display: grid; grid-template-columns: 64px 220px 1fr; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.ci .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--teal-soft); display: grid; place-items: center; }
+.ci .ic svg { width: 24px; height: 24px; }
+.ci .l { font-size: 20px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--muted); }
+.ci .v { font-size: 31px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER -->
+<section class="slide photo s1" id="s1">
+  <div class="bg"></div>
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">01 / 10</div></div>
+  <div class="body">
+    <div class="kicker">Your health. A world of possibilities.</div>
+    <h1>Better care.<br><em>Closer</em> than you think.</h1>
+    <p class="lead">Discover treatments. Explore Indian hospitals.<br>Plan your journey with people who care.</p>
+    <div class="pills">
+      <div class="pill"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Hospital-led treatment planning</div>
+      <div class="pill"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>International patient support</div>
+      <div class="pill"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>A dedicated care coordinator</div>
+    </div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe to plan your journey &rarr;</span></div>
+</section>
+
+<!-- 2 · TREATMENTS -->
+<section class="slide paper" id="s2">
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">02 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:64px">Find your path to better health</div>
+    <h2 style="margin-top:20px">Care for what<br><em>matters</em> to you.</h2>
+    <div class="grid2">
+      <div class="tcard"><div class="k">Heart care</div><div class="n">Cardiology &amp; Heart Surgery</div></div>
+      <div class="tcard"><div class="k">Bone &amp; joint</div><div class="n">Orthopedics &amp; Joint Replacement</div></div>
+      <div class="tcard"><div class="k">Cancer care</div><div class="n">Oncology &amp; Cancer Care</div></div>
+      <div class="tcard"><div class="k">Brain &amp; spine</div><div class="n">Neurology &amp; Neurosurgery</div></div>
+      <div class="tcard"><div class="k">Specialist care</div><div class="n">Organ Transplants</div></div>
+      <div class="tcard hl"><div class="k">Fertility</div><div class="n">Fertility &amp; IVF</div></div>
+      <div class="tcard"><div class="k">Aesthetic care</div><div class="n">Cosmetic &amp; Plastic Surgery</div></div>
+      <div class="tcard"><div class="k">Dental care</div><div class="n">Dental Treatment</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 3 · IVF -->
+<section class="slide" id="s3">
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">03 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:40px">Fertility care, personally planned</div>
+    <h2 style="margin-top:18px">IVF care.<br><em>Find your city.</em></h2>
+    <p class="lead" style="margin-top:22px">Explore fertility centres, see the places behind the names, and plan your next conversation.</p>
+    <div class="cities">
+      <div class="city"><div class="img" style="background-image:url(../vedrx/assets/photos/bengaluru.jpg)"></div><div class="t"><div class="k">INDIA</div><h3>IVF in Bengaluru</h3><p>4 researched fertility centres</p></div></div>
+      <div class="city"><div class="img" style="background-image:url(../vedrx/assets/photos/chennai.jpg);background-position:50% 35%"></div><div class="t"><div class="k">INDIA</div><h3>IVF in Chennai</h3><p>2 researched fertility centres</p></div></div>
+      <div class="city"><div class="img" style="background-image:url(../vedrx/assets/photos/delhi.jpg)"></div><div class="t"><div class="k">INDIA</div><h3>IVF in Delhi NCR</h3><p>4 researched fertility centres</p></div></div>
+      <div class="city"><div class="img" style="background-image:url(../vedrx/assets/photos/mumbai.jpg)"></div><div class="t"><div class="k">INDIA</div><h3>IVF in Mumbai</h3><p>1 researched fertility centre</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 4 · HOSPITALS -->
+<section class="slide paper" id="s4">
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">04 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:56px">Explore Indian healthcare</div>
+    <h2 style="margin-top:20px">Exceptional care.<br><em>More possibilities.</em></h2>
+    <p class="lead" style="margin-top:22px">Discover established hospitals and start a conversation about the right option for your treatment.</p>
+    <div class="hosp">
+      <div class="hcard"><div class="loc">Chennai, India</div><h3>Apollo Hospitals</h3><p>Heart care · Cancer care · Specialist care</p></div>
+      <div class="hcard"><div class="loc">Delhi NCR, India</div><h3>Fortis Healthcare</h3><p>Heart care · Bone &amp; joint · Cancer care</p></div>
+      <div class="hcard"><div class="loc">Delhi NCR, India</div><h3>Artemis Hospital</h3><p>Cancer care · Bone &amp; joint · Brain &amp; spine</p></div>
+      <div class="hcard"><div class="loc">Delhi NCR, India</div><h3>Max Healthcare</h3><p>Cancer care · Heart care · Bone &amp; joint</p></div>
+    </div>
+    <p class="note" style="margin-top:26px">Hospital availability, branch details, and treatment suitability are confirmed during care planning.</p>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 5 · ESTIMATE -->
+<section class="slide" id="s5">
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">05 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:72px">Let’s make it personal</div>
+    <h2 style="margin-top:20px">Your treatment.<br><em>Your personalized estimate.</em></h2>
+    <p class="lead" style="margin-top:26px">A clearer picture of your care, starting with your needs. No one-size-fits-all prices.</p>
+    <div class="qbox">
+      <h3 style="font-size:32px;font-weight:600;letter-spacing:-.2px;margin-bottom:8px">How is my treatment price determined?</h3><p class="note" style="font-size:24px;margin-bottom:6px">A hospital quote depends on:</p>
+      <div class="factors">
+        <span class="chip">Your medical reports</span><span class="chip">Diagnosis</span><span class="chip">Procedure</span><span class="chip">Chosen hospital</span><span class="chip">Length of stay</span>
+      </div>
+      <p class="note" style="margin-top:26px;font-size:24px">Request a personalized estimate rather than relying on a generic price. Travel, accommodation, and companion costs should be confirmed separately.</p>
+    </div>
+    <div style="margin-top:36px"><span class="btn">Get my treatment estimate <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 6 · STEPS -->
+<section class="slide paper" id="s6">
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">06 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:64px">Thoughtfully planned, personally guided</div>
+    <h2 style="margin-top:20px">A simpler journey,<br><em>step by step.</em></h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>Tell us what you need</h3><p>Share your medical needs and what matters to you.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>Explore your options</h3><p>Discuss suitable hospitals and an individual care plan.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>Plan with confidence</h3><p>Coordinate your documents, travel, and accommodation.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>Care beyond arrival</h3><p>Stay connected during treatment and follow-up.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 7 · SUPPORT -->
+<section class="slide navy" id="s7">
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">07 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:40px">Your next chapter starts here</div>
+    <h2 style="margin-top:20px">You focus on getting better.<br><em>We’ll help with the journey.</em></h2>
+    <p class="lead" style="margin-top:18px">From the first conversation to your return home, get thoughtful support for your treatment, travel, and stay.</p>
+    <div class="rows">
+      <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#2fc4a5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Medical reports &amp; hospital coordination</div>
+      <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#2fc4a5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Visa, travel &amp; accommodation guidance</div>
+      <div class="row"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#2fc4a5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Personal care &amp; follow-up support</div>
+    </div>
+    <div class="panel">
+      <div class="kicker" style="margin-bottom:12px">Medical visa &amp; accommodation</div>
+      <p>Our care team can help coordinate hospital documentation, medical visa guidance, airport transfers, and accommodation options.</p>
+      <p class="note" style="margin-top:14px">Visa approval remains with the relevant authorities.</p>
+    </div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 8 · INDIA -->
+<section class="slide photo s8" id="s8">
+  <div class="bg"></div>
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">08 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:56px">India · A destination for your wellbeing</div>
+    <h2 style="margin-top:20px">World-class possibilities.<br><em>A warm Indian welcome.</em></h2>
+    <p class="lead" style="margin-top:24px;font-size:29px">From major medical centres to restorative wellness traditions, discover India with a care team helping you navigate every step.</p>
+    <div class="duo">
+      <div><h3>Connected care</h3><p>Treatment options across leading medical cities.</p></div>
+      <div><h3>Beyond treatment</h3><p>Guidance for your travel, stay, and recovery.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 9 · FAQ -->
+<section class="slide" id="s9">
+  <div class="top"><div class="wm">Ved<i>Rx</i>Tours</div><div class="count">09 / 10</div></div>
+  <div class="body">
+    <div class="kicker" style="margin-top:44px">A little clarity goes a long way</div>
+    <h2 style="margin-top:18px">Your questions. <em>Thoughtful answers.</em></h2>
+    <div class="faq">
+      <div class="qa"><h3><span>Q.</span>How do I start planning my treatment in India?</h3><p>Send a medical tourism enquiry with your treatment needs, country, and contact details. Our care team will discuss your requirements and guide the next steps, including the medical reports needed for hospital review.</p></div>
+      <div class="qa"><h3><span>Q.</span>Can I compare hospitals before deciding?</h3><p>Yes. Explore hospitals by city and treatment, shortlist your options, and compare their listed specialties. Ask our care team to confirm the specific branch, availability, credentials, and treatment suitability before booking.</p></div>
+      <div class="qa"><h3><span>Q.</span>What happens after I return home?</h3><p>Discuss follow-up appointments, prescriptions, recovery instructions, and contact arrangements with your treating hospital before travelling home. Our care team can help coordinate further communication.</p></div>
+      <div class="qa"><h3><span>Q.</span>Do you guarantee treatment outcomes?</h3><p>No. Medical suitability and outcomes depend on individual circumstances and must be discussed with the treating clinical team. VedRxTours supports coordination and does not replace medical advice.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>vedrxtours.in</span><span class="swipe">Swipe &rarr;</span></div>
+</section>
+
+<!-- 10 · CTA -->
+<section class="slide s10" id="s10">
+  <div class="top"><div class="wm" style="visibility:hidden">Ved<i>Rx</i>Tours</div><div class="count">10 / 10</div></div>
+  <div class="body">
+    <img class="logo" src="../vedrx/assets/photos/vedrx-logo.png" alt="VedRxTours">
+    <h2 style="margin-top:44px">Start your <em>treatment</em> journey.</h2>
+    <p class="lead" style="margin-top:22px">Tell us about your medical needs and we’ll connect you with the best hospitals and doctors in India.</p>
+    <div class="contact">
+      <div class="ci"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#128271" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="l">Phone</span><span class="v">+91 9535699931</span></div>
+      <div class="ci"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#128271" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span><span class="l">Email</span><span class="v">info@vedrxtours.com</span></div>
+      <div class="ci"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#128271" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span><span class="l">Website</span><span class="v">vedrxtours.in</span></div>
+      <div class="ci"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#128271" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="l">Location</span><span class="v">Bengaluru, India</span></div>
+      <div class="ci"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#128271" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="l">Hours</span><span class="v">Mon-Fri: 9am-10pm</span></div>
+    </div>
+    <p class="note" style="margin-top:26px">Our medical coordinator will get back to you within 24 hours.</p>
+  </div>
+  <div class="foot"><span>Medical decisions belong to you and your treating team.</span><span class="swipe">Start your enquiry</span></div>
+</section>
+
+</body>
+</html>
