@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>ANNOVA 360 carousel</title>
+<style>
+@font-face { font-family: Cormorant; src: url(assets/fonts/cormorant-garamond-300-normal-all-2.ttf); font-weight: 300; }
+@font-face { font-family: Cormorant; src: url(assets/fonts/cormorant-garamond-400-normal-all-3.ttf); font-weight: 400; }
+@font-face { font-family: Cormorant; src: url(assets/fonts/cormorant-garamond-500-normal-all-4.ttf); font-weight: 500; }
+@font-face { font-family: Cormorant; src: url(assets/fonts/cormorant-garamond-300-italic-all-0.ttf); font-weight: 300; font-style: italic; }
+@font-face { font-family: Cormorant; src: url(assets/fonts/cormorant-garamond-400-italic-all-1.ttf); font-weight: 400; font-style: italic; }
+@font-face { font-family: Mont; src: url(assets/fonts/montserrat-500-normal-all-11.ttf); font-weight: 500; }
+@font-face { font-family: Mont; src: url(assets/fonts/montserrat-600-normal-all-12.ttf); font-weight: 600; }
+@font-face { font-family: Inter; src: url(assets/fonts/inter-300-normal-all-5.ttf); font-weight: 300; }
+@font-face { font-family: Inter; src: url(assets/fonts/inter-400-normal-all-6.ttf); font-weight: 400; }
+:root { --bg: #121212; --bg2: #191917; --cream: #f3f1ee; --gold: #cea359; --muted: #a9adb3; --line: rgba(243,241,238,.14); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #2a2a2a; font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; }
+.slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; margin: 0 auto 40px; color: var(--cream); padding: 78px 84px; background: var(--bg); }
+.slide > * { position: relative; }
+.bg { position: absolute !important; inset: 0; background-size: cover; background-position: center; }
+.top { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+.logo { height: 150px; margin: -45px 0 -45px -30px; }
+.lab { font: 600 18px Mont; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 22px; }
+.lab::before { content: ""; width: 56px; height: 1px; background: var(--gold); }
+.count { font: 500 18px Mont; letter-spacing: 4px; color: var(--muted); }
+.foot { position: absolute; left: 84px; right: 84px; bottom: 60px; display: flex; justify-content: space-between; font: 500 17px Mont; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); padding-top: 24px; border-top: 1px solid var(--line); }
+.foot .g { color: var(--gold); }
+h1, h2 { font-family: Cormorant; font-weight: 300; line-height: 1.02; letter-spacing: -1px; }
+h1 { font-size: 132px; } h2 { font-size: 96px; }
+em { font-style: italic; color: var(--gold); font-weight: 300; }
+.lead { font: 300 29px/1.6 Inter; color: rgba(243,241,238,.78); }
+.big-n { font: 300 260px/0.8 Cormorant; color: transparent; -webkit-text-stroke: 1.2px rgba(206,163,89,.55); position: absolute; }
+
+/* 1 */
+.s1 .bg { background-image: url(assets/img/hero-villa.jpg); background-position: 62% 50%; }
+.s1 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,.75) 0%, rgba(10,10,10,.1) 28%, rgba(10,10,10,.35) 50%, rgba(10,10,10,.92) 74%, #0d0d0d 100%); }
+.s1 .body { position: absolute; left: 84px; right: 84px; bottom: 170px; }
+.btnrow { display: flex; gap: 16px; margin-top: 40px; }
+.btn { padding: 24px 34px; font: 600 19px Mont; letter-spacing: 4px; text-transform: uppercase; }
+.btn.g { background: var(--gold); color: #141006; } .btn.o { border: 1px solid rgba(206,163,89,.6); color: var(--gold); }
+/* 2 */
+.s2 blockquote { font: 300 italic 64px/1.12 Cormorant; color: var(--gold); margin-top: 60px; padding-left: 40px; border-left: 2px solid var(--gold); }
+/* 3 */
+.cm { margin-top: 36px; border-top: 1px solid var(--line); }
+.cm > div { display: grid; grid-template-columns: 100px 1fr; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.cm i { font: 300 italic 46px/1 Cormorant; color: var(--gold); }
+.cm h3 { font: 400 40px/1.1 Cormorant; margin-bottom: 8px; }
+.cm p { font: 300 22px/1.5 Inter; color: var(--muted); }
+/* 4 */
+.s4 .bg { background-image: url(assets/img/proj-residence-living.jpg); }
+.s4 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,.94) 0%, rgba(12,12,12,.86) 45%, rgba(12,12,12,.97) 100%); }
+.caps { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 54px; background: var(--line); border: 1px solid var(--line); }
+.caps div { background: rgba(18,18,18,.82); padding: 40px 36px; height: 340px; display: flex; flex-direction: column; }
+.caps i { font: 300 italic 40px Cormorant; color: var(--gold); }
+.caps h3 { font: 400 46px Cormorant; margin: auto 0 12px; }
+.caps p { font: 300 21px/1.5 Inter; color: var(--muted); }
+/* 5 */
+.proj { display: grid; grid-template-columns: 1.25fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; margin-top: 46px; height: 760px; }
+.proj .p { position: relative; overflow: hidden; background-size: cover; background-position: center; }
+.proj .p:first-child { grid-row: span 2; }
+.proj .p::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(8,8,8,.92)); }
+.proj .cap { position: absolute; left: 26px; right: 22px; bottom: 24px; z-index: 1; }
+.proj .cap small { font: 600 15px Mont; letter-spacing: 3.5px; color: var(--gold); }
+.proj .cap h3 { font: 400 32px/1.08 Cormorant; margin: 8px 0 6px; }
+.proj .cap span { font: 300 18px Inter; color: var(--muted); }
+/* 6 */
+.s6 { display: flex; flex-direction: column; justify-content: center; }
+.marq { font: 300 84px/1.14 Cormorant; letter-spacing: -1px; white-space: nowrap; }
+.marq > span { display: block; }
+.marq .o { color: transparent; -webkit-text-stroke: 1px rgba(243,241,238,.45); }
+.marq .star { color: var(--gold); font-size: 40px; vertical-align: 20px; margin: 0 26px; }
+/* 7 */
+.s7 .bg { background-image: url(assets/img/proj-ankuraa-lotus-exterior.jpg); background-position: 50% 50%; }
+.s7 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,12,.97) 0%, rgba(12,12,12,.9) 48%, rgba(12,12,12,.6) 70%, rgba(12,12,12,.95) 100%); }
+.ct { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.ct div { background: rgba(14,14,14,.9); padding: 28px 30px; }
+.ct small { display: block; font: 600 15px Mont; letter-spacing: 4px; color: var(--gold); margin-bottom: 10px; }
+.ct b { font: 400 34px Cormorant; }
+</style></head><body>
+
+<section class="slide s1" id="s1">
+  <div class="bg"></div>
+  <div class="top"><img class="logo" src="assets/img/annova-logo.png"><span class="count">01 / 07</span></div>
+  <div class="body">
+    <div class="lab">Est. 2014 · Design • Build • Deliver</div>
+    <h1 style="margin-top:30px">What You<br>Approve Is<br><em>What You Get.</em></h1>
+    <p class="lead" style="margin-top:30px;max-width:830px">Luxury architecture, premium construction and bespoke interiors · locked at design sign-off and delivered without dilution.</p>
+    <div class="btnrow"><span class="btn g">Start your project</span><span class="btn o">View portfolio</span></div>
+  </div>
+  <div class="foot"><span>annova360.com</span><span class="g">Swipe →</span></div>
+</section>
+
+<section class="slide s2" id="s2">
+  <div class="big-n" style="right:40px;top:120px">01</div>
+  <div class="top"><img class="logo" src="assets/img/annova-logo.png"><span class="count">02 / 07</span></div>
+  <div class="lab" style="margin-top:130px">01 · The Studio</div>
+  <h2 style="margin-top:30px">Precision Isn't<br>a Promise.<br><em>It's a Process.</em></h2>
+  <p class="lead" style="margin-top:40px">Our integrated design-build model puts architecture, engineering, construction management and interior execution under one accountable team, so the space you approved on paper is the space you walk into at handover.</p>
+  <blockquote>“What you approve<br>is what you get.”</blockquote>
+  <div class="foot"><span>annova360.com</span><span class="g">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s3">
+  <div class="top"><img class="logo" src="assets/img/annova-logo.png"><span class="count">03 / 07</span></div>
+  <div class="lab" style="margin-top:50px">02 · Why ANNOVA 360</div>
+  <h2 style="margin-top:22px;font-size:84px">Five Commitments.<br><em>Zero Surprises.</em></h2>
+  <div class="cm">
+    <div><i>01</i><div><h3>What You Approve Is What You Get</h3><p>Every material, finish, dimension and detail is locked at design sign-off and delivered exactly as specced.</p></div></div>
+    <div><i>02</i><div><h3>One Design Partner, Zero Handoffs</h3><p>The same team that designs your space executes it.</p></div></div>
+    <div><i>03</i><div><h3>Client-Embedded Process</h3><p>Structured weekly walkthroughs and real-time decisions made with you, not around you.</p></div></div>
+    <div><i>04</i><div><h3>Spec-Level Documentation</h3><p>Every drawing, BOQ and material call-out is detailed to the tolerance of a build document.</p></div></div>
+    <div><i>05</i><div><h3>Fixed Scope, Fixed Timeline, Fixed Budget</h3><p>We commit to the scope, cost and schedule agreed at the start, and we deliver against it.</p></div></div>
+  </div>
+  <div class="foot"><span>annova360.com</span><span class="g">Swipe →</span></div>
+</section>
+
+<section class="slide s4" id="s4">
+  <div class="bg"></div>
+  <div class="top"><img class="logo" src="assets/img/annova-logo.png"><span class="count">04 / 07</span></div>
+  <div class="lab" style="margin-top:70px">03 · Capabilities</div>
+  <h2 style="margin-top:24px;font-size:88px">Every Discipline.<br><em>One Standard of Precision.</em></h2>
+  <div class="caps">
+    <div><i>01</i><h3>Architecture</h3><p>Concept to construction drawings, detailed to build document tolerance and built around how you live.</p></div>
+    <div><i>02</i><h3>Construction</h3><p>Engineered execution by vetted teams, audited weekly against the approved spec.</p></div>
+    <div><i>03</i><h3>Interior Design</h3><p>Turnkey interiors curated and documented to the last finish and fixture.</p></div>
+    <div><i>04</i><h3>Turnkey Delivery</h3><p>Approvals through to handover, on the fixed scope, timeline and budget agreed at signing.</p></div>
+  </div>
+  <div class="foot"><span>annova360.com</span><span class="g">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s5">
+  <div class="top"><img class="logo" src="assets/img/annova-logo.png"><span class="count">05 / 07</span></div>
+  <div class="lab" style="margin-top:50px">04 · Signature Projects</div>
+  <h2 style="margin-top:22px;font-size:84px">Where Precision<br><em>becomes Legacy.</em></h2>
+  <div class="proj">
+    <div class="p" style="background-image:url(assets/img/proj-venus-exterior.jpg)"><div class="cap"><small>COMMERCIAL</small><h3>Venus Communiti</h3><span>Co-Work, Co-Live &amp; Café · Bengaluru</span></div></div>
+    <div class="p" style="background-image:url(assets/img/proj-ankuraa-lotus-exterior.jpg)"><div class="cap"><small>LUXURY APARTMENTS</small><h3>Ankuraa Lotus · Whitefield</h3><span>Pattandur Agrahara · 2022</span></div></div>
+    <div class="p" style="background-image:url(assets/img/proj-residence-living.jpg)"><div class="cap"><small>RESIDENTIAL</small><h3>Contemporary Family Residence</h3><span>Bengaluru · Completed</span></div></div>
+  </div>
+  <div class="foot"><span>annova360.com</span><span class="g">Swipe →</span></div>
+</section>
+
+<section class="slide s6" id="s6">
+  <div class="top" style="position:absolute;top:78px;left:84px;right:84px"><img class="logo" src="assets/img/annova-logo.png"><span class="count">06 / 07</span></div>
+  <div class="lab">What we build</div>
+  <div class="marq" style="margin-top:40px">
+    <span>Luxury Villas<span class="star">✦</span></span>
+    <span class="o">Architecture</span>
+    <span><em>Turnkey Construction</em></span>
+    <span>Interiors<span class="star">✦</span><span class="o">Commercial</span></span>
+    <span class="o">Renovation</span>
+    <span>Project <em>Management</em></span>
+  </div>
+  <p class="lead" style="margin-top:46px">One design partner, zero handoffs, from first sketch to final key.</p>
+  <div class="foot"><span>annova360.com</span><span class="g">Swipe →</span></div>
+</section>
+
+<section class="slide s7" id="s7">
+  <div class="bg"></div>
+  <div class="top"><img class="logo" src="assets/img/annova-logo.png"><span class="count">07 / 07</span></div>
+  <div class="lab" style="margin-top:70px">Let's Build</div>
+  <h2 style="margin-top:24px;font-size:82px">Begin a Project Where Precision Is <em>the Standard,</em> Not the Exception.</h2>
+  <p class="lead" style="margin-top:30px;font-size:26px">Schedule a private consultation with our principals.</p>
+  <div class="btnrow"><span class="btn g">Book consultation</span><span class="btn o">Explore the portfolio</span></div>
+  <div class="ct">
+    <div><small>PHONE</small><b>+91 88610 35808</b></div>
+    <div><small>WHATSAPP</small><b>Concierge</b></div>
+    <div><small>EMAIL</small><b>hello@annova360.com</b></div>
+    <div><small>INSTAGRAM</small><b>@annova360</b></div>
+  </div>
+  <div class="foot"><span>annova360.com</span><span class="g">Crafted with precision</span></div>
+</section>
+</body></html>

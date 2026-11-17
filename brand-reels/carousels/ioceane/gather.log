@@ -1,0 +1,16 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.goto: Timeout 60000ms exceeded.
+Call log:
+[2m  - navigating to "https://ioceane.com/", waiting until "networkidle"[22m
+
+    at /root/.claude/plugins/synced/653d95f0-7021-42f0-aaae-cce95a2fa577_823b45a9-888e-4d43-8e79-2e2bbb9ceab3/d92346f7-5140-4ddb-b284-a3b42995e5b0/skills/motion-reel/scripts/gather.mjs:46:14 {
+  log: [
+    '  - navigating to "https://ioceane.com/", waiting until "networkidle"'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4

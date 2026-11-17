@@ -1,0 +1,88 @@
+{
+ "imgs": [
+  "https://annova360.com/assets/annova-logo-DtsHOsS1.png | 1536x1024 | ANNOVA 360",
+  "https://annova360.com/assets/hero-villa-C3Mb2NB0.jpg | 1920x1080 | Luxury Villa",
+  "https://annova360.com/assets/proj-ankuraa-lotus-exterior-Ctx5ISMu.jpg | 1600x1000 | Ankuraa Lotus · Whitefield",
+  "https://annova360.com/assets/proj-venus-exterior-DjUEe7gD.jpg | 683x1024 | Venus Communiti · Co-Work, Co-Live & Café",
+  "https://annova360.com/assets/proj-residence-living-Cg8D97fB.jpg | 1024x768 | Contemporary Family Residence"
+ ],
+ "colors": [
+  [
+   "c oklch(0.96 0.005 80)",
+   144
+  ],
+  [
+   "c oklch(0.74 0.105 80)",
+   57
+  ],
+  [
+   "c oklab(0.78 -0.00410424 -0.0112763 / 0.7)",
+   56
+  ],
+  [
+   "c oklab(0.78 -0.00410424 -0.0112763 / 0.8)",
+   26
+  ],
+  [
+   "b oklch(0.16 0 0)",
+   11
+  ],
+  [
+   "c oklab(0.78 -0.00410424 -0.0112763 / 0.75)",
+   11
+  ],
+  [
+   "c oklab(0.74 0.018233 0.103405 / 0.5)",
+   9
+  ],
+  [
+   "c oklab(0.96 0.00086824 0.00492404 / 0.8)",
+   6
+  ],
+  [
+   "c oklch(0.16 0 0)",
+   6
+  ],
+  [
+   "c oklch(0.78 0.012 250)",
+   4
+  ],
+  [
+   "b oklab(0.16 0 0 / 0.4)",
+   3
+  ],
+  [
+   "c oklab(0.78 -0.00410424 -0.0112763 / 0.9)",
+   2
+  ],
+  [
+   "c oklab(0.74 0.0182331 0.103405 / 0.9)",
+   2
+  ],
+  [
+   "b oklab(0.16 0 0 / 0.7)",
+   1
+  ]
+ ],
+ "fonts": [
+  [
+   "Inter",
+   203
+  ],
+  [
+   "Cormorant Garamond",
+   121
+  ],
+  [
+   "Montserrat",
+   11
+  ]
+ ],
+ "links": [
+  "https://www.instagram.com/annova360/",
+  "tel:+918861035808",
+  "https://wa.me/918861035808",
+  "mailto:hello@annova360.com"
+ ],
+ "title": "ANNOVA 360 · Precision Design-Build Studio, India"
+}

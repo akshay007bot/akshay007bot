@@ -1,0 +1,84 @@
+{
+ "imgs": [
+  "https://mrcommunications.org/assets/logo-DCbxs-Mr.png | 816x816 | MR Communications",
+  "https://mrcommunications.org/assets/hero-radio-DmEI7I5t.jpg | 1600x1408 | Professional two-way radio",
+  "https://mrcommunications.org/assets/product-dmr-DMjYafrj.jpg | 1200x1200 | Business, professional & intrinsically safe DMR.",
+  "https://mrcommunications.org/assets/product-poc-B5ArVoFw.jpg | 1200x1200 | 4G/5G Push-to-Talk. Nationwide by design.",
+  "https://mrcommunications.org/assets/product-bodycam-BLSruiyO.jpg | 1200x1200 | Evidence-grade capture. Encrypted, always.",
+  "https://mrcommunications.org/assets/product-license-V7mHVnkB.jpg | 1024x1024 | No paperwork. Just press to talk."
+ ],
+ "colors": [
+  [
+   "c oklch(0.98 0 0)",
+   139
+  ],
+  [
+   "c oklch(0.68 0.01 260)",
+   41
+  ],
+  [
+   "c oklch(0.78 0.16 65)",
+   28
+  ],
+  [
+   "b oklch(0.12 0.006 260)",
+   26
+  ],
+  [
+   "c oklab(0.98 0 0 / 0.9)",
+   12
+  ],
+  [
+   "b oklab(0.78 0.0676189 0.145009 / 0.1)",
+   8
+  ],
+  [
+   "c oklch(0.09 0.005 260)",
+   5
+  ],
+  [
+   "c oklab(0.68 -0.00173648 -0.00984808 / 0.8)",
+   4
+  ],
+  [
+   "b oklab(0.09 -0.000868241 -0.00492404 / 0.5)",
+   4
+  ],
+  [
+   "c oklab(0.98 0 0 / 0.8)",
+   4
+  ],
+  [
+   "b oklab(0.09 -0.000868241 -0.00492404 / 0.4)",
+   4
+  ],
+  [
+   "b oklch(0.98 0 0)",
+   3
+  ],
+  [
+   "b oklab(0.12 -0.00104189 -0.00590885 / 0.4)",
+   2
+  ],
+  [
+   "b oklch(1 0 0 / 0.08)",
+   2
+  ]
+ ],
+ "fonts": [
+  [
+   "Geist",
+   234
+  ],
+  [
+   "Geist Mono",
+   19
+  ]
+ ],
+ "links": [
+  "https://wa.me/919845047487",
+  "tel:+919845047487",
+  "mailto:info@mrcommunications.org"
+ ],
+ "title": "MR Communications, Two-Way Radios, PoC & Body Cameras"
+}

@@ -1,0 +1,128 @@
+[
+ {
+  "family": "Cormorant Garamond",
+  "weight": "300",
+  "style": "italic",
+  "subset": "all",
+  "range": "",
+  "file": "cormorant-garamond-300-italic-all-0.ttf",
+  "src": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5rDDOjw.ttf"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "400",
+  "style": "italic",
+  "subset": "all",
+  "range": "",
+  "file": "cormorant-garamond-400-italic-all-1.ttf",
+  "src": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd58jDOjw.ttf"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "300",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "cormorant-garamond-300-normal-all-2.ttf",
+  "src": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_qE6GnM.ttf"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "400",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "cormorant-garamond-400-normal-all-3.ttf",
+  "src": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_v86GnM.ttf"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "500",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "cormorant-garamond-500-normal-all-4.ttf",
+  "src": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_s06GnM.ttf"
+ },
+ {
+  "family": "Inter",
+  "weight": "300",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "inter-300-normal-all-5.ttf",
+  "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuOKfMZg.ttf"
+ },
+ {
+  "family": "Inter",
+  "weight": "400",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "inter-400-normal-all-6.ttf",
+  "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf"
+ },
+ {
+  "family": "Inter",
+  "weight": "500",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "inter-500-normal-all-7.ttf",
+  "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf"
+ },
+ {
+  "family": "Inter",
+  "weight": "600",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "inter-600-normal-all-8.ttf",
+  "src": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "300",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "montserrat-300-normal-all-9.ttf",
+  "src": "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "400",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "montserrat-400-normal-all-10.ttf",
+  "src": "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "500",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "montserrat-500-normal-all-11.ttf",
+  "src": "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "600",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "montserrat-600-normal-all-12.ttf",
+  "src": "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "700",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "montserrat-700-normal-all-13.ttf",
+  "src": "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf"
+ }
+]

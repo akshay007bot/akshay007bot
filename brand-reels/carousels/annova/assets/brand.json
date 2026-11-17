@@ -1,0 +1,111 @@
+{
+ "url": "https://annova360.com/",
+ "title": "ANNOVA 360 · Precision Design-Build Studio, India",
+ "description": "What you approve is what you get. ANNOVA 360 delivers luxury architecture, construction and interiors on a fixed scope, timeline and budget · one design partner, zero handoffs.",
+ "themeColor": [],
+ "text_colors": [
+  [
+   "#cea359",
+   45
+  ],
+  [
+   "#f3f1ee",
+   23
+  ],
+  [
+   "#0d0d0d",
+   2
+  ],
+  [
+   "#b2b8bf",
+   1
+  ]
+ ],
+ "background_colors": [
+  [
+   "#0d0d0d",
+   135
+  ],
+  [
+   "#cea359",
+   0
+  ]
+ ],
+ "font_families": [
+  [
+   "Cormorant Garamond",
+   86
+  ],
+  [
+   "Inter",
+   54
+  ],
+  [
+   "Montserrat",
+   11
+  ]
+ ],
+ "font_weights": [
+  [
+   "Cormorant Garamond 400",
+   56
+  ],
+  [
+   "Inter 400",
+   52
+  ],
+  [
+   "Cormorant Garamond 300",
+   30
+  ],
+  [
+   "Montserrat 500",
+   11
+  ],
+  [
+   "Inter 600",
+   2
+  ]
+ ],
+ "css_vars": {
+  "--background": "oklch(16% 0 0)",
+  "--foreground": "oklch(96% .005 80)",
+  "--card": "oklch(19% 0 0)",
+  "--card-foreground": "oklch(96% .005 80)",
+  "--popover": "oklch(16% 0 0)",
+  "--popover-foreground": "oklch(96% .005 80)",
+  "--primary": "oklch(74% .105 80)",
+  "--primary-foreground": "oklch(12% 0 0)",
+  "--secondary": "oklch(22% 0 0)",
+  "--secondary-foreground": "oklch(96% .005 80)",
+  "--muted": "oklch(22% 0 0)",
+  "--muted-foreground": "oklch(68% .01 80)",
+  "--accent": "oklch(74% .105 80)",
+  "--accent-foreground": "oklch(12% 0 0)",
+  "--destructive": "oklch(55% .22 25)",
+  "--destructive-foreground": "oklch(98% 0 0)",
+  "--border": "oklch(28% .005 80/.6)",
+  "--input": "oklch(24% 0 0)",
+  "--ring": "oklch(74% .105 80)",
+  "--gold": "oklch(74% .105 80)",
+  "--gold-soft": "oklch(82% .08 82)",
+  "--silver": "oklch(78% .012 250)",
+  "--graphite": "oklch(16% 0 0)",
+  "--ivory": "oklch(97% .008 80)",
+  "--gradient-gold": "linear-gradient(135deg, #d9b974 0%, #c9a35a 35%, #8c6a2e 70%, #c9a35a 100%)",
+  "--gradient-gold-soft": "linear-gradient(180deg, #c9a35a2e, #c9a35a00)",
+  "--gradient-radial-gold": "radial-gradient(ellipse at center, #c9a35a40, transparent 60%)",
+  "--gradient-dark": "linear-gradient(180deg, #1110 0%, #111111d9 70%, #111 100%)",
+  "--gradient-shine": "linear-gradient(110deg, transparent 30%, #ffe1aa8c 50%, transparent 70%)",
+  "--shadow-luxury": "0 30px 80px -20px #000000b3, 0 0 0 1px #c9a35a14",
+  "--shadow-gold": "0 10px 40px -10px #c9a35a59",
+  "--noise-opacity": ".04"
+ },
+ "wordmark": {
+  "text": "",
+  "font": "Inter, system-ui, sans-serif",
+  "weight": "400",
+  "tracking": "normal",
+  "html": "<img src=\"/assets/annova-logo-DtsHOsS1.png\" alt=\"ANNOVA 360\" class=\"h-16 w-auto md:h-20 lg:h-24\">"
+ }
+}

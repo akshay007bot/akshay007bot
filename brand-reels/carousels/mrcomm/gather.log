@@ -1,0 +1,27 @@
+carousels/mrcomm/assets/shots/desktop_viewport.png                                     desktop 1440x900 @2x, first screen
+carousels/mrcomm/assets/shots/desktop_full.png                                         desktop full page
+carousels/mrcomm/assets/shots/section_00_two-wayradios.png                             section <section> "Two-wayradios&" 1440x932
+carousels/mrcomm/assets/shots/section_01_the-reliable-link-behind-seamless-operat.png  section <section> "The reliable link behind seamless operations , from factory floors and construction sites to security details, hospitality teams and large public events." 1440x858
+carousels/mrcomm/assets/shots/section_02_one-partner-four-categories-zero-comprom.png  section <section> "One partner. Four categories. Zero compromise." 1440x1791
+carousels/mrcomm/assets/shots/section_03_section.png                                   section <section> "" 1440x460
+carousels/mrcomm/assets/shots/section_04_it-s-about-who-stands-behind-the-hardwar.png  section <section> "It's about who stands behind the hardware." 1440x1014
+carousels/mrcomm/assets/shots/section_05_long-after-the-sale-we-re-still-on-the-l.png  section <section> "Long after the sale, we're still on the line." 1440x712
+carousels/mrcomm/assets/shots/section_06_wherever-the-mission-goes-the-signal-fol.png  section <section> "Wherever the mission goes, the signal follows." 1440x634
+carousels/mrcomm/assets/shots/section_07_upgrade-the-way-your-team-communicates.png    section <section> "Upgrade the way your team communicates." 1440x1000
+carousels/mrcomm/assets/shots/section_08_footer.png                                    section <footer> "" 1440x189
+carousels/mrcomm/assets/fonts/geist-300-normal-all-0.ttf                               font Geist 300 normal (all)
+carousels/mrcomm/assets/fonts/geist-400-normal-all-1.ttf                               font Geist 400 normal (all)
+carousels/mrcomm/assets/fonts/geist-500-normal-all-2.ttf                               font Geist 500 normal (all)
+carousels/mrcomm/assets/fonts/geist-600-normal-all-3.ttf                               font Geist 600 normal (all)
+carousels/mrcomm/assets/fonts/geist-700-normal-all-4.ttf                               font Geist 700 normal (all)
+carousels/mrcomm/assets/fonts/geist-800-normal-all-5.ttf                               font Geist 800 normal (all)
+carousels/mrcomm/assets/fonts/geist-mono-400-normal-all-6.ttf                          font Geist Mono 400 normal (all)
+carousels/mrcomm/assets/fonts/geist-mono-500-normal-all-7.ttf                          font Geist Mono 500 normal (all)
+carousels/mrcomm/assets/logo/logo_img.png                                              header logo image
+carousels/mrcomm/assets/logo/icon_0.png                                                site icon
+carousels/mrcomm/assets/brand.json                                                     colours (hex, ranked), fonts, css vars, wordmark
+carousels/mrcomm/assets/copy.md                                                        the brand's own words
+carousels/mrcomm/assets/shots/mobile_viewport.png                                      mobile 390x844 @3x, first screen
+carousels/mrcomm/assets/shots/mobile_full.png                                          mobile full page
+
+25 assets in carousels/mrcomm/assets/

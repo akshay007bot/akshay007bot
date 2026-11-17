@@ -1,0 +1,101 @@
+{
+ "url": "https://mrcommunications.org/",
+ "title": "MR Communications, Two-Way Radios, PoC & Body Cameras",
+ "description": "20 years of trusted communication solutions in Bengaluru. DMR two-way radios, 4G/5G PoC devices, body-worn cameras and license-free walkie-talkies.",
+ "themeColor": [],
+ "text_colors": [
+  [
+   "#95989f",
+   39
+  ],
+  [
+   "#f8f8f8",
+   17
+  ],
+  [
+   "#fc9f30",
+   4
+  ],
+  [
+   "#020203",
+   3
+  ]
+ ],
+ "background_colors": [
+  [
+   "#050608",
+   196
+  ],
+  [
+   "#020203",
+   20
+  ],
+  [
+   "#f8f8f8",
+   2
+  ]
+ ],
+ "font_families": [
+  [
+   "Geist",
+   84
+  ],
+  [
+   "Geist Mono",
+   19
+  ]
+ ],
+ "font_weights": [
+  [
+   "Geist 400",
+   41
+  ],
+  [
+   "Geist 600",
+   25
+  ],
+  [
+   "Geist Mono 400",
+   19
+  ],
+  [
+   "Geist 500",
+   17
+  ],
+  [
+   "Geist 300",
+   1
+  ]
+ ],
+ "css_vars": {
+  "--radius": "1rem",
+  "--background": "oklch(9% .005 260)",
+  "--foreground": "oklch(98% 0 0)",
+  "--surface": "oklch(12% .006 260)",
+  "--surface-elevated": "oklch(16% .008 260)",
+  "--card": "oklch(13% .006 260)",
+  "--card-foreground": "oklch(98% 0 0)",
+  "--popover": "oklch(13% .006 260)",
+  "--popover-foreground": "oklch(98% 0 0)",
+  "--primary": "oklch(98% 0 0)",
+  "--primary-foreground": "oklch(9% .005 260)",
+  "--secondary": "oklch(20% .008 260)",
+  "--secondary-foreground": "oklch(98% 0 0)",
+  "--muted": "oklch(18% .006 260)",
+  "--muted-foreground": "oklch(68% .01 260)",
+  "--accent": "oklch(78% .16 65)",
+  "--accent-foreground": "oklch(10% .01 60)",
+  "--amber": "oklch(78% .16 65)",
+  "--amber-glow": "oklch(85% .18 70)",
+  "--destructive": "oklch(65% .24 27)",
+  "--destructive-foreground": "oklch(98% 0 0)",
+  "--border": "oklch(100% 0 0/.08)",
+  "--input": "oklch(100% 0 0/.12)",
+  "--ring": "oklch(78% .16 65)",
+  "--gradient-hero": "radial-gradient(1200px 600px at 50% 0%, oklch(22% .05 65/.35), transparent 70%), radial-gradient(800px 400px at 10% 100%, oklch(25% .08 250/.25), transparent 70%)",
+  "--gradient-amber": "linear-gradient(135deg, oklch(78% .16 65), oklch(88% .14 80))",
+  "--shadow-glow": "0 0 80px -10px oklch(78% .16 65/.35)",
+  "--shadow-card": "0 30px 80px -20px oklch(0% 0 0/.6)"
+ },
+ "wordmark": null
+}

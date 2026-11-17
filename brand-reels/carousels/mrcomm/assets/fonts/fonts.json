@@ -1,0 +1,74 @@
+[
+ {
+  "family": "Geist",
+  "weight": "300",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-300-normal-all-0.ttf",
+  "src": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RwuM4nQ.ttf"
+ },
+ {
+  "family": "Geist",
+  "weight": "400",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-400-normal-all-1.ttf",
+  "src": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RnOM4nQ.ttf"
+ },
+ {
+  "family": "Geist",
+  "weight": "500",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-500-normal-all-2.ttf",
+  "src": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RruM4nQ.ttf"
+ },
+ {
+  "family": "Geist",
+  "weight": "600",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-600-normal-all-3.ttf",
+  "src": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RQuQ4nQ.ttf"
+ },
+ {
+  "family": "Geist",
+  "weight": "700",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-700-normal-all-4.ttf",
+  "src": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_Re-Q4nQ.ttf"
+ },
+ {
+  "family": "Geist",
+  "weight": "800",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-800-normal-all-5.ttf",
+  "src": "https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RHOQ4nQ.ttf"
+ },
+ {
+  "family": "Geist Mono",
+  "weight": "400",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-mono-400-normal-all-6.ttf",
+  "src": "https://fonts.gstatic.com/s/geistmono/v6/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KJ5T.ttf"
+ },
+ {
+  "family": "Geist Mono",
+  "weight": "500",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "geist-mono-500-normal-all-7.ttf",
+  "src": "https://fonts.gstatic.com/s/geistmono/v6/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeEPKJ5T.ttf"
+ }
+]

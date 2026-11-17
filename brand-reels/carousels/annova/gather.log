@@ -1,0 +1,31 @@
+carousels/annova/assets/shots/desktop_viewport.png                                     desktop 1440x900 @2x, first screen
+carousels/annova/assets/shots/desktop_full.png                                         desktop full page
+carousels/annova/assets/shots/section_00_whatyouapproveiswhatyouget.png                section <div> "WhatYouApproveIsWhatYouGet." 1440x7726
+carousels/annova/assets/shots/section_01_precision-isn-t-a-promise-it-s-a-process.png  section <section> "Precision Isn't a Promise. It's a Process." 1440x668
+carousels/annova/assets/shots/section_02_five-commitments.png                          section <section> "Five Commitments." 1440x1193
+carousels/annova/assets/shots/section_03_every-discipline.png                          section <section> "Every Discipline." 1440x888
+carousels/annova/assets/shots/section_04_where-precision-becomes-legacy.png            section <section> "Where Precision becomes Legacy." 1440x2421
+carousels/annova/assets/shots/section_05_section.png                                   section <section> "" 1440x760
+carousels/annova/assets/shots/section_06_begin-a-project-where-precision-is-the-s.png  section <section> "Begin a Project Where Precision Is the Standard, Not the Exception." 1440x798
+carousels/annova/assets/shots/section_07_footer.png                                    section <footer> "" 1440x454
+carousels/annova/assets/fonts/cormorant-garamond-300-italic-all-0.ttf                  font Cormorant Garamond 300 italic (all)
+carousels/annova/assets/fonts/cormorant-garamond-400-italic-all-1.ttf                  font Cormorant Garamond 400 italic (all)
+carousels/annova/assets/fonts/cormorant-garamond-300-normal-all-2.ttf                  font Cormorant Garamond 300 normal (all)
+carousels/annova/assets/fonts/cormorant-garamond-400-normal-all-3.ttf                  font Cormorant Garamond 400 normal (all)
+carousels/annova/assets/fonts/cormorant-garamond-500-normal-all-4.ttf                  font Cormorant Garamond 500 normal (all)
+carousels/annova/assets/fonts/inter-300-normal-all-5.ttf                               font Inter 300 normal (all)
+carousels/annova/assets/fonts/inter-400-normal-all-6.ttf                               font Inter 400 normal (all)
+carousels/annova/assets/fonts/inter-500-normal-all-7.ttf                               font Inter 500 normal (all)
+carousels/annova/assets/fonts/inter-600-normal-all-8.ttf                               font Inter 600 normal (all)
+carousels/annova/assets/fonts/montserrat-300-normal-all-9.ttf                          font Montserrat 300 normal (all)
+carousels/annova/assets/fonts/montserrat-400-normal-all-10.ttf                         font Montserrat 400 normal (all)
+carousels/annova/assets/fonts/montserrat-500-normal-all-11.ttf                         font Montserrat 500 normal (all)
+carousels/annova/assets/fonts/montserrat-600-normal-all-12.ttf                         font Montserrat 600 normal (all)
+carousels/annova/assets/fonts/montserrat-700-normal-all-13.ttf                         font Montserrat 700 normal (all)
+carousels/annova/assets/logo/logo_img.png                                              header logo image
+carousels/annova/assets/brand.json                                                     colours (hex, ranked), fonts, css vars, wordmark
+carousels/annova/assets/copy.md                                                        the brand's own words
+carousels/annova/assets/shots/mobile_viewport.png                                      mobile 390x844 @3x, first screen
+carousels/annova/assets/shots/mobile_full.png                                          mobile full page
+
+29 assets in carousels/annova/assets/

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>MR Communications carousel</title>
+<style>
+@font-face { font-family: Geist; src: url(assets/fonts/geist-300-normal-all-0.ttf); font-weight: 300; }
+@font-face { font-family: Geist; src: url(assets/fonts/geist-400-normal-all-1.ttf); font-weight: 400; }
+@font-face { font-family: Geist; src: url(assets/fonts/geist-500-normal-all-2.ttf); font-weight: 500; }
+@font-face { font-family: Geist; src: url(assets/fonts/geist-600-normal-all-3.ttf); font-weight: 600; }
+@font-face { font-family: Geist; src: url(assets/fonts/geist-700-normal-all-4.ttf); font-weight: 700; }
+@font-face { font-family: Geist; src: url(assets/fonts/geist-800-normal-all-5.ttf); font-weight: 800; }
+@font-face { font-family: GeistMono; src: url(assets/fonts/geist-mono-400-normal-all-6.ttf); font-weight: 400; }
+@font-face { font-family: GeistMono; src: url(assets/fonts/geist-mono-500-normal-all-7.ttf); font-weight: 500; }
+:root { --bg: #08090c; --card: #111318; --amber: #fc9f30; --text: #f8f8f8; --muted: #95989f; --line: rgba(255,255,255,.09); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #333; font-family: Geist, sans-serif; -webkit-font-smoothing: antialiased; }
+.slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; margin: 0 auto 40px; color: var(--text); padding: 76px 80px; background: radial-gradient(900px 600px at 50% -5%, rgba(252,159,48,.13), transparent 65%), var(--bg); }
+.slide > * { position: relative; }
+.top { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+.brand { display: flex; align-items: center; gap: 16px; font: 600 26px Geist; letter-spacing: -.3px; }
+.brand img { height: 74px; margin: -6px -10px -6px -12px; }
+.mono { font-family: GeistMono; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; }
+.count { font-size: 20px; color: var(--muted); }
+.foot { position: absolute; left: 80px; right: 80px; bottom: 58px; display: flex; justify-content: space-between; align-items: center; font-size: 19px; color: var(--muted); padding-top: 24px; border-top: 1px solid var(--line); }
+.foot .go { color: var(--amber); }
+h1, h2 { font-weight: 700; letter-spacing: -3px; line-height: 1.02; }
+.silver { background: linear-gradient(180deg, #ffffff 10%, #9da1a8 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.amb { color: var(--amber); font-style: italic; font-weight: 400; letter-spacing: -2px; }
+h1 { font-size: 112px; } h2 { font-size: 80px; }
+.lab { font-size: 19px; color: var(--amber); }
+.lead { font-size: 29px; line-height: 1.5; color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; }
+
+/* 1 */
+.s1 .hero { position: absolute; right: -250px; bottom: 60px; width: 760px; height: 668px; background: url(assets/img/hero-radio.jpg) center/cover; mask-image: radial-gradient(closest-side, #000 60%, transparent 100%); }
+.badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; max-width: 560px; }
+.badges span { padding: 12px 18px; border: 1px solid rgba(252,159,48,.35); border-radius: 10px; font-size: 17px; color: #ffd7a6; background: rgba(252,159,48,.06); }
+/* 2 */
+.prod { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 46px; }
+.prod .card { overflow: hidden; height: 392px; display: flex; flex-direction: column; }
+.prod .img { height: 226px; background-size: cover; background-position: center; }
+.prod .t { padding: 22px 26px; }
+.prod h3 { font-size: 27px; font-weight: 600; line-height: 1.25; margin-top: 10px; letter-spacing: -.4px; }
+/* 3 spec sheet */
+.spec { display: grid; grid-template-columns: 1fr; margin-top: 40px; border-top: 1px solid var(--line); }
+.spec div { display: grid; grid-template-columns: 300px 1fr; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.spec span { font-size: 18px; color: var(--muted); }
+.spec b { text-transform: none; letter-spacing: -.5px; font-size: 34px; font-weight: 600; letter-spacing: -.5px; }
+.spec b em { color: var(--amber); font-style: normal; }
+/* 4 stats */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 70px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.stats div { padding: 50px 40px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); height: 330px; display: flex; flex-direction: column; justify-content: space-between; }
+.stats b { font-size: 150px; font-weight: 700; letter-spacing: -7px; line-height: 1; }
+.stats b sup { color: var(--amber); font-size: 90px; vertical-align: 40px; letter-spacing: 0; }
+/* 5 why */
+.why { margin-top: 34px; }
+.why > div { display: grid; grid-template-columns: 80px 1fr; padding: 24px 0; border-top: 1px solid var(--line); }
+.why i { font-style: normal; font-family: GeistMono; font-size: 22px; color: var(--amber); padding-top: 6px; }
+.why h3 { font-size: 31px; font-weight: 600; letter-spacing: -.5px; margin-bottom: 6px; }
+.why p { font-size: 22px; line-height: 1.45; color: var(--muted); }
+/* 6 services */
+.svc { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 46px; }
+.svc .card { padding: 34px 32px; height: 300px; display: flex; flex-direction: column; }
+.svc .n { font-family: GeistMono; font-size: 20px; color: var(--amber); margin-bottom: auto; }
+.svc h3 { font-size: 33px; font-weight: 600; letter-spacing: -.6px; margin-bottom: 10px; }
+.svc p { font-size: 22px; line-height: 1.45; color: var(--muted); }
+/* 7 industries */
+.ind { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ind div { padding: 30px 30px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); font-size: 29px; font-weight: 600; letter-spacing: -.4px; display: flex; align-items: center; gap: 18px; height: 118px; }
+.ind div::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 16px var(--amber); flex: none; }
+/* 8 cta */
+.btns { display: flex; gap: 16px; margin-top: 48px; }
+.btn { padding: 26px 38px; border-radius: 999px; font-size: 28px; font-weight: 600; }
+.btn.a { background: var(--amber); color: #120c03; } .btn.b { border: 1px solid rgba(255,255,255,.25); }
+.ct { margin-top: 56px; border-top: 1px solid var(--line); }
+.ct div { display: grid; grid-template-columns: 180px 1fr; padding: 26px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.ct span { font-size: 18px; color: var(--amber); }
+.ct b { font-size: 31px; font-weight: 500; line-height: 1.4; }
+</style></head><body>
+
+<section class="slide s1" id="s1">
+  <div class="hero"></div>
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">01 / 08</span></div>
+  <div class="mono lab" style="margin-top:70px">20 years · Trusted communication</div>
+  <h1 style="margin-top:24px;font-size:104px"><span class="silver">Two-way<br>radios &amp;</span><br><span class="amb">communication<br>solutions.</span></h1>
+  <p class="lead" style="margin-top:28px;max-width:560px;font-size:27px">Engineered for businesses, security teams and field operations that cannot afford to lose the connection.</p>
+  <div class="badges mono"><span>20+ years experience</span><span>Authorized global dealer</span><span>Sales · Rental · Programming</span><span>Since 2006</span></div>
+  <div class="foot mono"><span>mrcommunications.org</span><span class="go">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s2">
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">02 / 08</span></div>
+  <div class="mono lab" style="margin-top:44px">Product universe</div>
+  <h2 style="margin-top:20px;font-size:68px"><span class="silver">One partner. Four categories.</span> <span class="amb">Zero compromise.</span></h2>
+  <div class="prod">
+    <div class="card"><div class="img" style="background-image:url(assets/img/product-dmr.jpg)"></div><div class="t"><div class="mono lab" style="font-size:16px">Two-way radios</div><h3>Business, professional &amp; intrinsically safe DMR.</h3></div></div>
+    <div class="card"><div class="img" style="background-image:url(assets/img/product-poc.jpg)"></div><div class="t"><div class="mono lab" style="font-size:16px">PoC &amp; mission-critical</div><h3>4G/5G Push-to-Talk. Nationwide by design.</h3></div></div>
+    <div class="card"><div class="img" style="background-image:url(assets/img/product-bodycam.jpg)"></div><div class="t"><div class="mono lab" style="font-size:16px">Bodyworn cameras</div><h3>Evidence-grade capture. Encrypted, always.</h3></div></div>
+    <div class="card"><div class="img" style="background-image:url(assets/img/product-license.jpg)"></div><div class="t"><div class="mono lab" style="font-size:16px">License-free</div><h3>No paperwork. Just press to talk.</h3></div></div>
+  </div>
+  <div class="foot mono"><span>mrcommunications.org</span><span class="go">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s3">
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">03 / 08</span></div>
+  <div style="position:absolute;right:-120px;top:150px;width:560px;height:560px;background:url(assets/img/product-bodycam.jpg) center/cover;border-radius:50%;mask-image:radial-gradient(closest-side,#000 65%,transparent 100%);opacity:.9"></div>
+  <div class="mono lab" style="margin-top:60px">Spec sheet · Built for the field</div>
+  <h2 style="margin-top:20px;font-size:76px;max-width:620px"><span class="silver">Rated for</span><br><span class="amb">the real world.</span></h2>
+  <div class="spec mono" style="margin-top:220px">
+    <div><span>Body cameras</span><b style="font-family:Geist">AES-256 · <em>IP68</em></b></div>
+    <div><span>Field of view</span><b style="font-family:Geist"><em>130–216°</em></b></div>
+    <div><span>Docking storage</span><b style="font-family:Geist">Up to <em>32TB</em></b></div>
+    <div><span>DMR radios</span><b style="font-family:Geist">IP-rated · <em>MIL-STD</em> tested</b></div>
+    <div><span>Hazardous zones</span><b style="font-family:Geist"><em>UL913</em> certified where needed</b></div>
+    <div><span>PoC devices</span><b style="font-family:Geist">AI noise cancellation · <em>PMR/LTE</em></b></div>
+  </div>
+  <div class="foot mono"><span>mrcommunications.org</span><span class="go">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s4">
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">04 / 08</span></div>
+  <div class="mono lab" style="margin-top:60px">Since 2006</div>
+  <h2 style="margin-top:20px"><span class="silver">Twenty years</span><br><span class="amb">on the line.</span></h2>
+  <div class="stats">
+    <div><b class="silver">20<sup>+</sup></b><span class="mono lab" style="color:var(--muted)">Years in business</span></div>
+    <div><b class="silver">40<sup>+</sup></b><span class="mono lab" style="color:var(--muted)">Product models</span></div>
+    <div><b class="silver">1000<sup>+</sup></b><span class="mono lab" style="color:var(--muted)">Devices deployed</span></div>
+    <div><b class="silver">100<sup>%</sup></b><span class="mono lab" style="color:var(--muted)">Genuine products</span></div>
+  </div>
+  <div class="foot mono"><span>mrcommunications.org</span><span class="go">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s5">
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">05 / 08</span></div>
+  <div class="mono lab" style="margin-top:40px">Why MR Communications</div>
+  <h2 style="margin-top:18px;font-size:68px"><span class="silver">It's about who stands</span> <span class="amb">behind the hardware.</span></h2>
+  <div class="why">
+    <div><i>01</i><div><h3>Genuine equipment, every time</h3><p>Sourced from established global manufacturers. No compromise on performance or safety.</p></div></div>
+    <div><i>02</i><div><h3>Solutions for every environment</h3><p>From IP68 intrinsically safe radios for hazardous zones to compact license-free handhelds for retail counters.</p></div></div>
+    <div><i>03</i><div><h3>Full lifecycle support</h3><p>Programming, installation, fleet management, training, AMC contracts and genuine spare parts.</p></div></div>
+    <div><i>04</i><div><h3>Flexible engagement</h3><p>Purchase, rent, or set up managed fleets, we tailor the commercial model to your project.</p></div></div>
+    <div><i>05</i><div><h3>Unmatched integration</h3><p>Works with existing systems and RF networks: DMR, analog, LTE and legacy infrastructure.</p></div></div>
+  </div>
+  <div class="foot mono"><span>mrcommunications.org</span><span class="go">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s6">
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">06 / 08</span></div>
+  <div class="mono lab" style="margin-top:60px">Services</div>
+  <h2 style="margin-top:20px;font-size:76px"><span class="silver">Long after the sale,</span><br><span class="amb">we're still on the line.</span></h2>
+  <div class="svc">
+    <div class="card"><span class="n">/01</span><h3>Programming &amp; fleet configuration</h3><p>Channel programming, app-based setup, air-clone and channel-copy for fast fleet deployment.</p></div>
+    <div class="card"><span class="n">/02</span><h3>Rental solutions</h3><p>Short-term and event-based radio and body camera rentals for temporary projects.</p></div>
+    <div class="card"><span class="n">/03</span><h3>Installation &amp; training</h3><p>On-site installation of mobile radios, repeaters and docking stations, with hands-on user training.</p></div>
+    <div class="card"><span class="n">/04</span><h3>After-sales &amp; AMC</h3><p>Repairs, spare parts, and annual maintenance contracts to keep your fleet running.</p></div>
+  </div>
+  <div class="foot mono"><span>mrcommunications.org</span><span class="go">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s7">
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">07 / 08</span></div>
+  <div class="mono lab" style="margin-top:60px">Industries we serve</div>
+  <h2 style="margin-top:20px;font-size:68px"><span class="silver">Wherever the mission goes,</span><br><span class="amb">the signal follows.</span></h2>
+  <div class="ind">
+    <div>Security &amp; Law Enforcement</div><div>Manufacturing &amp; Industrial</div><div>Oil, Gas &amp; Hazardous</div><div>Hospitality &amp; Retail</div>
+    <div>Construction</div><div>Event Management</div><div>Logistics &amp; Warehousing</div><div>Corporate Campuses</div>
+  </div>
+  <div class="foot mono"><span>mrcommunications.org</span><span class="go">Swipe →</span></div>
+</section>
+
+<section class="slide" id="s8">
+  <div class="top"><div class="brand"><img src="assets/img/logo-DCbxs-Mr.png">MR Communications</div><span class="mono count">08 / 08</span></div>
+  <div class="mono lab" style="margin-top:80px">Ready when you are</div>
+  <h2 style="margin-top:20px;font-size:90px"><span class="silver">Upgrade the way</span><br><span class="amb">your team<br>communicates.</span></h2>
+  <p class="lead" style="margin-top:28px">Tell us about your operation and we'll match the right device, network and service plan to your project.</p>
+  <div class="btns"><span class="btn a">WhatsApp us</span><span class="btn b">Talk to experts</span></div>
+  <div class="ct">
+    <div><span class="mono">Phone</span><b>+91 98450 47487</b></div>
+    <div><span class="mono">Email</span><b>info@mrcommunications.org</b></div>
+    <div><span class="mono">Address</span><b style="font-size:24px">No.245, Ground Floor, 3rd C Cross, 3rd Main Road, 2nd Block, Basveshwar Nagar, Bengaluru-560079</b></div>
+  </div>
+  <div class="foot mono"><span>mrcommunications.org</span><span>Sales · Rental · Programming</span></div>
+</section>
+</body></html>
