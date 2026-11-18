@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>iOceane Proposal - Anand Innovations</title>
+<style>
+@font-face { font-family: Comfortaa; src: url(../../carousels/ioceane/assets/fonts/comfortaa_6.woff2) format('woff2'); font-weight: 300 700; }
+@font-face { font-family: Inter; src: url(../../vedrx/assets/fonts/inter-400-normal-all-1.ttf); font-weight: 400; }
+@font-face { font-family: Inter; src: url(../../vedrx/assets/fonts/inter-500-normal-all-2.ttf); font-weight: 500; }
+@font-face { font-family: Inter; src: url(../../vedrx/assets/fonts/inter-600-normal-all-3.ttf); font-weight: 600; }
+@font-face { font-family: Inter; src: url(../../vedrx/assets/fonts/inter-700-normal-all-4.ttf); font-weight: 700; }
+@page { size: A4; margin: 0; }
+:root { --ink: #14181f; --navy: #121c30; --blue: #3c83f6; --teal: #22c3b0; --grey: #6b7280; --soft: #f3f6fb; --line: #e5e9f0;
+  --grad: linear-gradient(120deg, #3c83f6 0%, #22c3b0 100%); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Inter, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; background: #666; }
+.page { width: 210mm; height: 297mm; position: relative; overflow: hidden; background: #fff; margin: 0 auto 20px; padding: 18mm 17mm 22mm; page-break-after: always; }
+.dark { background: radial-gradient(140mm 110mm at 90% -5%, rgba(60,131,246,.32), transparent 60%), radial-gradient(120mm 100mm at -10% 105%, rgba(34,195,176,.2), transparent 60%), linear-gradient(180deg, #14181f, #121c30); color: #fff; }
+.grid-bg::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 12mm 12mm; mask-image: radial-gradient(150mm 160mm at 70% 30%, #000, transparent 75%); }
+.page > * { position: relative; }
+.hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12mm; }
+.hdr img { height: 15mm; margin: -3mm 0 -3mm -4mm; }
+.hdr span { font: 600 8.5pt Inter; letter-spacing: 2.4px; text-transform: uppercase; color: var(--grey); }
+.foot { position: absolute; left: 17mm; right: 17mm; bottom: 10mm; display: flex; justify-content: space-between; font: 500 7.5pt Inter; color: #9aa3b2; border-top: 1px solid var(--line); padding-top: 3.5mm; }
+.dark .foot { border-color: rgba(255,255,255,.12); color: rgba(255,255,255,.55); }
+.kick { font: 700 8.5pt Inter; letter-spacing: 2.8px; text-transform: uppercase; color: var(--blue); }
+h1, h2, h3.c { font-family: Comfortaa; font-weight: 700; letter-spacing: -.6px; line-height: 1.12; }
+h1 { font-size: 40pt; } h2 { font-size: 25pt; margin: 3mm 0 5mm; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+p.lead { font: 400 11pt/1.6 Inter; color: #4b5563; } .dark p.lead { color: rgba(255,255,255,.75); }
+.card { border: 1px solid var(--line); border-radius: 5mm; padding: 6mm; background: #fff; }
+.num { font: 700 26pt Comfortaa; letter-spacing: -1px; }
+
+/* cover */
+.cover .logo { height: 24mm; margin-left: -6mm; }
+.cover .tag { display: inline-flex; gap: 2.5mm; align-items: center; padding: 2mm 4.5mm; border-radius: 99px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); font: 500 9pt Inter; margin-top: 46mm; }
+.cover .tag i { width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+.cover .orb { position: absolute; right: -88mm; top: 92mm; width: 150mm; height: 150mm; border-radius: 50%; background: conic-gradient(from 210deg, #3c83f6, #22c3b0, #3c83f6); mask-image: radial-gradient(circle, transparent 54%, #000 55%, #000 70%, transparent 71%); opacity: .9; }
+.cover .for { position: absolute; left: 17mm; right: 17mm; bottom: 26mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.cover .for div { border-top: 1px solid rgba(255,255,255,.2); padding-top: 3.5mm; }
+.cover .for small { display: block; font: 600 7.5pt Inter; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 1.5mm; }
+.cover .for b { font: 600 11.5pt Inter; }
+
+/* about */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 8mm 0; }
+.stats .card { padding: 5mm; text-align: left; }
+.stats .card.hl { background: var(--grad); color: #fff; border: none; }
+.stats span { display: block; font: 500 8.5pt Inter; color: var(--grey); margin-top: 1.5mm; } .stats .hl span { color: rgba(255,255,255,.9); }
+.svc { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+.svc div { display: flex; gap: 3.5mm; align-items: flex-start; padding: 4.5mm; border-radius: 4mm; background: var(--soft); }
+.svc i { flex: none; width: 9mm; height: 9mm; border-radius: 2.5mm; background: var(--grad); display: grid; place-items: center; color: #fff; font: 700 9pt Comfortaa; font-style: normal; }
+.svc b { display: block; font: 700 10.5pt Comfortaa; margin-bottom: 1mm; } .svc small { font: 400 8.5pt/1.45 Inter; color: var(--grey); }
+
+/* results */
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin: 6mm 0 3mm; }
+.metrics .card { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.12); }
+.metrics span { display: block; font: 500 9pt Inter; color: rgba(255,255,255,.7); margin-top: 1mm; }
+.logos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.6mm; margin-top: 5mm; }
+.logos div { height: 17mm; border-radius: 2.5mm; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.logos img { width: 100%; height: 100%; object-fit: contain; padding: 1.2mm 2mm; }
+
+/* scope */
+.scope { display: grid; gap: 3.2mm; margin-top: 6mm; }
+.scope > div { display: grid; grid-template-columns: 12mm 1fr; gap: 4mm; padding: 4.2mm 5mm; border: 1px solid var(--line); border-radius: 4mm; align-items: start; }
+.scope i { font: 700 15pt Comfortaa; font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.scope b { font: 700 11pt Comfortaa; } .scope p { font: 400 9pt/1.5 Inter; color: var(--grey); margin-top: 1mm; }
+
+/* package */
+.price { margin-top: 6mm; border-radius: 6mm; padding: 8mm; background: radial-gradient(90mm 70mm at 100% 0%, rgba(60,131,246,.35), transparent 60%), linear-gradient(150deg, #14181f, #121c30); color: #fff; display: grid; grid-template-columns: 1fr auto; align-items: end; }
+.price small { font: 600 8pt Inter; letter-spacing: 2.4px; text-transform: uppercase; color: rgba(255,255,255,.6); }
+.price .amt { font: 700 44pt Comfortaa; letter-spacing: -2px; line-height: 1; margin-top: 2mm; }
+.price .amt sub { font: 600 12pt Inter; letter-spacing: 0; vertical-align: baseline; color: rgba(255,255,255,.7); }
+.big4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; margin: 5mm 0; }
+.big4 div { border-radius: 4mm; padding: 4.5mm; background: var(--soft); }
+.big4 b { display: block; font: 700 24pt Comfortaa; line-height: 1; } .big4 b.grad { display: block; width: fit-content; }
+.big4 span { font: 600 8.5pt Inter; color: var(--grey); }
+.incl { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm 6mm; margin-top: 2mm; }
+.incl div { display: flex; gap: 2.8mm; align-items: center; font: 500 9.6pt Inter; padding: 1.6mm 0; border-bottom: 1px dashed var(--line); }
+.tick { flex: none; width: 5.5mm; height: 5.5mm; border-radius: 50%; background: var(--grad); display: grid; place-items: center; }
+.tick svg { width: 3.2mm; height: 3.2mm; }
+.note { margin-top: 5mm; padding: 4mm 5mm; border-radius: 4mm; background: #eef5ff; border: 1px solid #d6e6ff; font: 400 9pt/1.5 Inter; color: #1f3b66; }
+
+/* process */
+.tl { margin-top: 6mm; position: relative; padding-left: 16mm; }
+.tl::before { content: ""; position: absolute; left: 5.5mm; top: 3mm; bottom: 8mm; width: 1mm; border-radius: 1mm; background: var(--grad); }
+.tl > div { position: relative; padding-bottom: 6mm; }
+.tl .d { position: absolute; left: -16mm; top: -1mm; width: 12mm; height: 12mm; border-radius: 50%; background: #fff; border: .8mm solid var(--blue); display: grid; place-items: center; font: 700 9pt Comfortaa; color: var(--blue); }
+.tl b { font: 700 11.5pt Comfortaa; } .tl p { font: 400 9.2pt/1.5 Inter; color: var(--grey); margin-top: 1mm; }
+.kpis { display: flex; flex-wrap: wrap; gap: 2.4mm; margin-top: 3mm; }
+.kpis span { padding: 2mm 4mm; border-radius: 99px; background: var(--soft); font: 600 8.6pt Inter; color: #334155; }
+
+/* terms */
+.terms { display: grid; gap: 2.6mm; margin-top: 5mm; }
+.terms div { display: grid; grid-template-columns: 7mm 1fr; font: 400 9.4pt/1.5 Inter; color: #374151; }
+.terms i { font: 700 9pt Comfortaa; color: var(--blue); font-style: normal; }
+.sign { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 8mm; }
+.sign div { border: 1px solid var(--line); border-radius: 4mm; padding: 5mm; height: 34mm; display: flex; flex-direction: column; justify-content: space-between; }
+.sign small { font: 600 7.8pt Inter; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+.sign p { font: 400 8.5pt Inter; color: var(--grey); border-top: 1px solid var(--line); padding-top: 2mm; }
+.contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 8mm; }
+.contact div { border-radius: 4mm; padding: 4.5mm; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
+.contact small { display: block; font: 600 7.5pt Inter; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 1.5mm; }
+.contact b { font: 600 10.5pt Inter; }
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="page dark grid-bg cover">
+  <div class="orb"></div>
+  <img class="logo" src="../../carousels/ioceane/assets/img/logo-white.png">
+  <div><span class="tag"><i></i>Social Media &amp; Meta Ads Proposal</span></div>
+  <h1 style="margin-top:9mm">Let's build a brand<br>that <span class="grad">dominates</span><br>the feed.</h1>
+  <p class="lead" style="margin-top:7mm;max-width:120mm">A complete social media and Meta Ads plan for Anand Innovations, built on creativity, AI and 15+ years of strategy.</p>
+  <div class="for">
+    <div><small>Prepared for</small><b>Anand Innovations</b></div>
+    <div><small>Prepared by</small><b>iOceane, Bengaluru</b></div>
+    <div><small>Date</small><b>18 November 2026</b></div>
+  </div>
+  <div class="foot"><span>ioceane.com</span><span>info@ioceane.com · +91 90199 31101</span></div>
+</section>
+
+<!-- 2 ABOUT -->
+<section class="page">
+  <div class="hdr"><img src="../../carousels/ioceane/assets/img/logo-black.png"><span>01 · About iOceane</span></div>
+  <div class="kick">AI-driven creative agency</div>
+  <h2>We build brands<br><span class="grad">that dominate.</span></h2>
+  <p class="lead">iOceane is a 360° branding and digital powerhouse built on creativity, intelligence and trust. For over 15 years, we've helped brands across industries create impact, from identity to influence, from concept to conversion.</p>
+  <div class="stats">
+    <div class="card hl"><div class="num">150+</div><span>Projects delivered</span></div>
+    <div class="card"><div class="num">120+</div><span>Happy clients</span></div>
+    <div class="card"><div class="num">15+</div><span>Years experience</span></div>
+    <div class="card"><div class="num grad">98%</div><span>Client satisfaction</span></div>
+  </div>
+  <div class="kick" style="margin-bottom:4mm">What we do</div>
+  <div class="svc">
+    <div><i>01</i><span><b>Branding &amp; Strategy</b><small>Memorable brand identities that resonate and inspire.</small></span></div>
+    <div><i>02</i><span><b>Digital Marketing</b><small>Data-driven campaigns that deliver measurable growth.</small></span></div>
+    <div><i>03</i><span><b>Web &amp; App Development</b><small>Beautiful, high-performance websites that convert.</small></span></div>
+    <div><i>04</i><span><b>AI &amp; Automation</b><small>Smart solutions that streamline and scale your business.</small></span></div>
+    <div><i>05</i><span><b>Video Production</b><small>Compelling visual stories that captivate audiences.</small></span></div>
+    <div><i>06</i><span><b>Events &amp; Activations</b><small>Memorable experiences that create lasting impact.</small></span></div>
+  </div>
+  <div class="foot"><span>iOceane · Proposal for Anand Innovations</span><span>02</span></div>
+</section>
+
+<!-- 3 RESULTS -->
+<section class="page dark grid-bg">
+  <div class="hdr"><img src="../../carousels/ioceane/assets/img/logo-white.png"><span style="color:rgba(255,255,255,.6)">02 · Proof of work</span></div>
+  <div class="kick" style="color:#7fb0ff">SEO &amp; AI search optimization</div>
+  <h2>Rank higher. Get found.<br><span class="grad">Grow faster.</span></h2>
+  <p class="lead">Real metrics from real clients. We help brands get found on Google, ChatGPT and Gemini, and turn that attention into enquiries.</p>
+  <div class="metrics">
+    <div class="card"><div class="num grad">954K+</div><span>Impressions</span></div>
+    <div class="card"><div class="num">10.6K</div><span>Clicks delivered</span></div>
+    <div class="card"><div class="num grad">78%</div><span>Organic growth</span></div>
+  </div>
+  <div class="kick" style="color:#7fb0ff;margin-top:9mm">Trusted by</div>
+  <h3 class="c" style="font-size:16pt;margin-top:2mm">Brands we've helped grow</h3>
+  <div class="logos">
+    <div><img src="../../carousels/ioceane/assets/img/ramaiah.jpg"></div><div><img src="../../carousels/ioceane/assets/img/cadabams-group.jpg"></div><div><img src="../../carousels/ioceane/assets/img/apollo-homecare.jpg"></div><div><img src="../../carousels/ioceane/assets/img/eureka-forbes.jpg"></div><div><img src="../../carousels/ioceane/assets/img/rambus-new.jpg"></div>
+    <div><img src="../../carousels/ioceane/assets/img/physio-tattva-new.jpg"></div><div><img src="../../carousels/ioceane/assets/img/dr-lohits.jpg"></div><div><img src="../../carousels/ioceane/assets/img/esmee-clinics.jpg"></div><div><img src="../../carousels/ioceane/assets/img/india-post-new.jpg"></div><div><img src="../../carousels/ioceane/assets/img/alliance-university.jpg"></div>
+    <div><img src="../../carousels/ioceane/assets/img/jolle-group.jpg"></div><div><img src="../../carousels/ioceane/assets/img/organic-express.jpg"></div><div><img src="../../carousels/ioceane/assets/img/greystone-new-BIR5-f_U.jpg"></div><div><img src="../../carousels/ioceane/assets/img/mystik-new.jpg"></div><div><img src="../../carousels/ioceane/assets/img/venus-communiti-new.jpg"></div>
+    <div><img src="../../carousels/ioceane/assets/img/2050-healthcare-new.jpg"></div><div><img src="../../carousels/ioceane/assets/img/arogyayatra-new-DUEmD-Vq.jpg"></div><div><img src="../../carousels/ioceane/assets/img/zen-shastra-new.jpg"></div><div><img src="../../carousels/ioceane/assets/img/destination-dubai.jpg"></div><div><img src="../../carousels/ioceane/assets/img/fit-zone.jpg"></div>
+  </div>
+  <div class="foot"><span>iOceane · Proposal for Anand Innovations</span><span>03</span></div>
+</section>
+
+<!-- 4 SCOPE -->
+<section class="page">
+  <div class="hdr"><img src="../../carousels/ioceane/assets/img/logo-black.png"><span>03 · Scope of work</span></div>
+  <div class="kick">Social media management + Meta Ads</div>
+  <h2>Everything your brand<br>needs, <span class="grad">under one roof.</span></h2>
+  <div class="scope">
+    <div><i>01</i><div><b>Social Media Strategy &amp; Content Planning</b><p>Brand audit, audience and competitor research, content pillars and a monthly content calendar shared in advance for your approval.</p></div></div>
+    <div><i>02</i><div><b>Creative Post Designs &amp; Reels</b><p>On-brand static posts, carousels and scroll-stopping reels with hooks, captions, music and motion graphics, designed by our in-house creative and video team.</p></div></div>
+    <div><i>03</i><div><b>Content Publishing &amp; Scheduling</b><p>Every post published at the best-performing times on Instagram and Facebook, with optimised captions and hashtags.</p></div></div>
+    <div><i>04</i><div><b>Audience Engagement Support</b><p>Monitoring comments and messages, guidance on replies, and community-building to turn followers into customers.</p></div></div>
+    <div><i>05</i><div><b>Meta Ads Setup &amp; Management</b><p>Business Manager and pixel setup, audience targeting, ad creatives and day-to-day management on Facebook and Instagram.</p></div></div>
+    <div><i>06</i><div><b>Lead Generation &amp; Brand Awareness Campaigns</b><p>Lead forms, WhatsApp and call campaigns plus awareness ads that keep Anand Innovations top of mind.</p></div></div>
+    <div><i>07</i><div><b>Campaign Optimisation &amp; Monthly Reporting</b><p>Weekly ad optimisation, A/B testing of creatives, and a clear monthly report with insights and next steps.</p></div></div>
+  </div>
+  <div class="foot"><span>iOceane · Proposal for Anand Innovations</span><span>04</span></div>
+</section>
+
+<!-- 5 PACKAGE -->
+<section class="page">
+  <div class="hdr"><img src="../../carousels/ioceane/assets/img/logo-black.png"><span>04 · Your package</span></div>
+  <div class="kick">Digital marketing package</div>
+  <h2 style="margin-bottom:0">More content. <span class="grad">Better value.</span></h2>
+  <div class="price">
+    <div><small>Monthly investment</small><div class="amt">₹26,000<sub> / month</sub></div></div>
+    <div style="text-align:right;font:500 9pt/1.5 Inter;color:rgba(255,255,255,.75)">All creative, management<br>&amp; reporting included</div>
+  </div>
+  <div class="big4">
+    <div><b class="grad">8</b><span>Reels / month</span></div>
+    <div><b class="grad">10</b><span>Posts / month</span></div>
+    <div><b>2+</b><span>Ad campaigns</span></div>
+    <div><b>1</b><span>Monthly report &amp; review</span></div>
+  </div>
+  <div class="kick" style="margin:2mm 0 1mm">What's included</div>
+  <div class="incl">
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>8 professionally edited reels</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>10 creative posts &amp; carousels</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Meta Ads setup &amp; management</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Branding &amp; awareness ads</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Lead generation campaigns</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Basic SEO &amp; Google profile care</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Instagram organic growth strategy</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Festive &amp; health-day posts</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Captions, hashtags &amp; scheduling</div>
+    <div><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Monthly report &amp; strategy meeting</div>
+  </div>
+  <div class="note"><b>Posting rhythm:</b> about 2 reels and 2–3 posts every week, so your page stays active 4–5 days a week.<br><b>Ad budget</b> (not included): paid directly to Meta from your card. We recommend starting at <b>₹5,000/month</b>.</div>
+  <div class="foot"><span>iOceane · Proposal for Anand Innovations</span><span>05</span></div>
+</section>
+
+<!-- 6 PROCESS -->
+<section class="page">
+  <div class="hdr"><img src="../../carousels/ioceane/assets/img/logo-black.png"><span>05 · How we work</span></div>
+  <div class="kick">Your first 30 days</div>
+  <h2>A clear plan from<br><span class="grad">day one.</span></h2>
+  <div class="tl">
+    <div><span class="d">W1</span><b>Discover &amp; strategise</b><p>Kick-off meeting, brand and competitor audit, goals and audience definition, page optimisation and Meta Business setup.</p></div>
+    <div><span class="d">W2</span><b>Create &amp; approve</b><p>Monthly content calendar, first reels and posts designed and shared with you for approval before anything goes live.</p></div>
+    <div><span class="d">W3</span><b>Launch</b><p>Content goes live on schedule, and lead generation and awareness ads launch with your approved budget.</p></div>
+    <div><span class="d">W4</span><b>Optimise &amp; report</b><p>We test creatives and audiences, scale what works, and present a clear monthly report with next month's plan.</p></div>
+  </div>
+  <div class="card" style="margin-top:2mm">
+    <div class="kick" style="margin-bottom:1mm">What you'll see in every monthly report</div>
+    <div class="kpis"><span>Reach &amp; impressions</span><span>Follower growth</span><span>Engagement rate</span><span>Top-performing reels</span><span>Leads &amp; cost per lead</span><span>Ad spend breakdown</span><span>Website &amp; profile visits</span><span>Next month's plan</span></div>
+  </div>
+  <div class="foot"><span>iOceane · Proposal for Anand Innovations</span><span>06</span></div>
+</section>
+
+<!-- 7 TERMS + CTA -->
+<section class="page">
+  <div class="hdr"><img src="../../carousels/ioceane/assets/img/logo-black.png"><span>06 · Terms &amp; next steps</span></div>
+  <div class="kick">Simple, transparent terms</div>
+  <h2 style="font-size:22pt">Terms &amp; conditions</h2>
+  <div class="terms">
+    <div><i>01</i><span>The monthly fee of ₹26,000 is billed in advance at the start of each month. GST applicable as per law.</span></div>
+    <div><i>02</i><span>Minimum engagement of 3 months, giving us time to understand your market and show real growth.</span></div>
+    <div><i>03</i><span>The Meta ad budget is separate and paid directly to Meta from the client's card. Recommended: ₹5,000/month.</span></div>
+    <div><i>04</i><span>Content is shared for approval in advance; feedback within 48 hours keeps the schedule on track. Up to 2 rounds of revisions per creative.</span></div>
+    <div><i>05</i><span>One monthly review meeting (online or in person) to discuss results and plan ahead.</span></div>
+    <div><i>06</i><span>Work outside this scope (shoots, websites, extra reels) is quoted separately in advance. No hidden charges.</span></div>
+  </div>
+  <div class="sign">
+    <div><small>Accepted by · Anand Innovations</small><p>Name, signature &amp; date</p></div>
+    <div><small>For iOceane</small><p>Authorised signatory &amp; date</p></div>
+  </div>
+  <div style="margin-top:9mm;border-radius:6mm;padding:8mm;color:#fff;background:radial-gradient(90mm 70mm at 100% 0%, rgba(34,195,176,.35), transparent 60%), linear-gradient(150deg,#14181f,#121c30)">
+    <div class="kick" style="color:#7fb0ff">Let's collaborate</div>
+    <h3 class="c" style="font-size:20pt;margin-top:2mm">Ready to transform <span class="grad">your brand?</span></h3>
+    <p style="font:400 10pt Inter;color:rgba(255,255,255,.75);margin-top:2mm">Let's create something extraordinary together.</p>
+    <div class="contact" style="margin-top:5mm">
+      <div><small>Call / WhatsApp</small><b>+91 90199 31101</b></div>
+      <div><small>Email</small><b>info@ioceane.com</b></div>
+      <div><small>Visit</small><b>ioceane.com</b></div>
+    </div>
+  </div>
+  <div class="foot"><span>iOceane · Domlur, Bengaluru 560071 · @ioceanebranding</span><span>07</span></div>
+</section>
+</body></html>
