@@ -1,0 +1,330 @@
+[
+ {
+  "bar": 0,
+  "text": "Meet Amara. She needed treatment, and answers.",
+  "start": 0.151,
+  "end": 2.652,
+  "words": [
+   {
+    "w": "Meet",
+    "t": 0.151
+   },
+   {
+    "w": "Amara.",
+    "t": 0.422
+   },
+   {
+    "w": "She",
+    "t": 0.803
+   },
+   {
+    "w": "needed",
+    "t": 1.021
+   },
+   {
+    "w": "treatment,",
+    "t": 1.401
+   },
+   {
+    "w": "and",
+    "t": 2.0
+   },
+   {
+    "w": "answers.",
+    "t": 2.217
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "Then she found Ved R X Tours.",
+  "start": 3.151,
+  "end": 4.8,
+  "words": [
+   {
+    "w": "Then",
+    "t": 3.151
+   },
+   {
+    "w": "she",
+    "t": 3.435
+   },
+   {
+    "w": "found",
+    "t": 3.663
+   },
+   {
+    "w": "Ved",
+    "t": 4.004
+   },
+   {
+    "w": "R",
+    "t": 4.232
+   },
+   {
+    "w": "X",
+    "t": 4.345
+   },
+   {
+    "w": "Tours.",
+    "t": 4.459
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "She shared her medical reports.",
+  "start": 6.151,
+  "end": 7.665,
+  "words": [
+   {
+    "w": "She",
+    "t": 6.151
+   },
+   {
+    "w": "shared",
+    "t": 6.346
+   },
+   {
+    "w": "her",
+    "t": 6.688
+   },
+   {
+    "w": "medical",
+    "t": 6.884
+   },
+   {
+    "w": "reports.",
+    "t": 7.274
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "She compared hospitals in Bengaluru.",
+  "start": 9.151,
+  "end": 11.109,
+  "words": [
+   {
+    "w": "She",
+    "t": 9.151
+   },
+   {
+    "w": "compared",
+    "t": 9.369
+   },
+   {
+    "w": "hospitals",
+    "t": 9.858
+   },
+   {
+    "w": "in",
+    "t": 10.402
+   },
+   {
+    "w": "Bengaluru.",
+    "t": 10.565
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "And got a personalized estimate.",
+  "start": 12.151,
+  "end": 13.797,
+  "words": [
+   {
+    "w": "And",
+    "t": 12.151
+   },
+   {
+    "w": "got",
+    "t": 12.357
+   },
+   {
+    "w": "a",
+    "t": 12.563
+   },
+   {
+    "w": "personalized",
+    "t": 12.665
+   },
+   {
+    "w": "estimate.",
+    "t": 13.334
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "Visa, travel and stay were coordinated.",
+  "start": 15.151,
+  "end": 17.43,
+  "words": [
+   {
+    "w": "Visa,",
+    "t": 15.151
+   },
+   {
+    "w": "travel",
+    "t": 15.502
+   },
+   {
+    "w": "and",
+    "t": 15.911
+   },
+   {
+    "w": "stay",
+    "t": 16.145
+   },
+   {
+    "w": "were",
+    "t": 16.437
+   },
+   {
+    "w": "coordinated.",
+    "t": 16.729
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "In India, her care coordinator met her.",
+  "start": 18.151,
+  "end": 20.294,
+  "words": [
+   {
+    "w": "In",
+    "t": 18.151
+   },
+   {
+    "w": "India,",
+    "t": 18.316
+   },
+   {
+    "w": "her",
+    "t": 18.701
+   },
+   {
+    "w": "care",
+    "t": 18.921
+   },
+   {
+    "w": "coordinator",
+    "t": 19.195
+   },
+   {
+    "w": "met",
+    "t": 19.855
+   },
+   {
+    "w": "her.",
+    "t": 20.075
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "Her care was planned with the hospital's team.",
+  "start": 21.152,
+  "end": 23.26,
+  "words": [
+   {
+    "w": "Her",
+    "t": 21.152
+   },
+   {
+    "w": "care",
+    "t": 21.335
+   },
+   {
+    "w": "was",
+    "t": 21.564
+   },
+   {
+    "w": "planned",
+    "t": 21.747
+   },
+   {
+    "w": "with",
+    "t": 22.114
+   },
+   {
+    "w": "the",
+    "t": 22.343
+   },
+   {
+    "w": "hospital's",
+    "t": 22.527
+   },
+   {
+    "w": "team.",
+    "t": 23.031
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "Back home, she stays connected for follow-up.",
+  "start": 24.152,
+  "end": 26.505,
+  "words": [
+   {
+    "w": "Back",
+    "t": 24.152
+   },
+   {
+    "w": "home,",
+    "t": 24.413
+   },
+   {
+    "w": "she",
+    "t": 24.727
+   },
+   {
+    "w": "stays",
+    "t": 24.936
+   },
+   {
+    "w": "connected",
+    "t": 25.25
+   },
+   {
+    "w": "for",
+    "t": 25.773
+   },
+   {
+    "w": "follow-up.",
+    "t": 25.982
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Your journey can start today.",
+  "start": 27.152,
+  "end": 28.561,
+  "words": [
+   {
+    "w": "Your",
+    "t": 27.152
+   },
+   {
+    "w": "journey",
+    "t": 27.395
+   },
+   {
+    "w": "can",
+    "t": 27.783
+   },
+   {
+    "w": "start",
+    "t": 27.978
+   },
+   {
+    "w": "today.",
+    "t": 28.269
+   }
+  ]
+ }
+]

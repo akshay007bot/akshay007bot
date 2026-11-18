@@ -1,0 +1,318 @@
+[
+ {
+  "bar": 0,
+  "text": "Same business. Two very different brands.",
+  "start": 0.151,
+  "end": 2.448,
+  "words": [
+   {
+    "w": "Same",
+    "t": 0.151
+   },
+   {
+    "w": "business.",
+    "t": 0.431
+   },
+   {
+    "w": "Two",
+    "t": 0.992
+   },
+   {
+    "w": "very",
+    "t": 1.216
+   },
+   {
+    "w": "different",
+    "t": 1.496
+   },
+   {
+    "w": "brands.",
+    "t": 2.056
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "One has a logo. One has an identity.",
+  "start": 3.151,
+  "end": 5.35,
+  "words": [
+   {
+    "w": "One",
+    "t": 3.151
+   },
+   {
+    "w": "has",
+    "t": 3.396
+   },
+   {
+    "w": "a",
+    "t": 3.64
+   },
+   {
+    "w": "logo.",
+    "t": 3.762
+   },
+   {
+    "w": "One",
+    "t": 4.129
+   },
+   {
+    "w": "has",
+    "t": 4.373
+   },
+   {
+    "w": "an",
+    "t": 4.617
+   },
+   {
+    "w": "identity.",
+    "t": 4.8
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "One posts. One gets noticed.",
+  "start": 6.152,
+  "end": 8.088,
+  "words": [
+   {
+    "w": "One",
+    "t": 6.152
+   },
+   {
+    "w": "posts.",
+    "t": 6.428
+   },
+   {
+    "w": "One",
+    "t": 6.912
+   },
+   {
+    "w": "gets",
+    "t": 7.189
+   },
+   {
+    "w": "noticed.",
+    "t": 7.535
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "One is hidden. One gets found.",
+  "start": 9.152,
+  "end": 10.917,
+  "words": [
+   {
+    "w": "One",
+    "t": 9.152
+   },
+   {
+    "w": "is",
+    "t": 9.387
+   },
+   {
+    "w": "hidden.",
+    "t": 9.563
+   },
+   {
+    "w": "One",
+    "t": 10.034
+   },
+   {
+    "w": "gets",
+    "t": 10.27
+   },
+   {
+    "w": "found.",
+    "t": 10.564
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "One has a website. One converts.",
+  "start": 12.152,
+  "end": 14.282,
+  "words": [
+   {
+    "w": "One",
+    "t": 12.152
+   },
+   {
+    "w": "has",
+    "t": 12.418
+   },
+   {
+    "w": "a",
+    "t": 12.684
+   },
+   {
+    "w": "website.",
+    "t": 12.817
+   },
+   {
+    "w": "One",
+    "t": 13.416
+   },
+   {
+    "w": "converts.",
+    "t": 13.682
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "One boosts posts. One runs campaigns.",
+  "start": 15.152,
+  "end": 17.377,
+  "words": [
+   {
+    "w": "One",
+    "t": 15.152
+   },
+   {
+    "w": "boosts",
+    "t": 15.392
+   },
+   {
+    "w": "posts.",
+    "t": 15.813
+   },
+   {
+    "w": "One",
+    "t": 16.235
+   },
+   {
+    "w": "runs",
+    "t": 16.475
+   },
+   {
+    "w": "campaigns.",
+    "t": 16.776
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "Real metrics, from real clients.",
+  "start": 18.152,
+  "end": 20.044,
+  "words": [
+   {
+    "w": "Real",
+    "t": 18.152
+   },
+   {
+    "w": "metrics,",
+    "t": 18.448
+   },
+   {
+    "w": "from",
+    "t": 18.98
+   },
+   {
+    "w": "real",
+    "t": 19.275
+   },
+   {
+    "w": "clients.",
+    "t": 19.571
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "Which brand do you want to be?",
+  "start": 21.152,
+  "end": 22.346,
+  "words": [
+   {
+    "w": "Which",
+    "t": 21.152
+   },
+   {
+    "w": "brand",
+    "t": 21.391
+   },
+   {
+    "w": "do",
+    "t": 21.63
+   },
+   {
+    "w": "you",
+    "t": 21.749
+   },
+   {
+    "w": "want",
+    "t": 21.908
+   },
+   {
+    "w": "to",
+    "t": 22.107
+   },
+   {
+    "w": "be?",
+    "t": 22.227
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "We build brands that dominate.",
+  "start": 24.152,
+  "end": 25.598,
+  "words": [
+   {
+    "w": "We",
+    "t": 24.152
+   },
+   {
+    "w": "build",
+    "t": 24.297
+   },
+   {
+    "w": "brands",
+    "t": 24.586
+   },
+   {
+    "w": "that",
+    "t": 24.923
+   },
+   {
+    "w": "dominate.",
+    "t": 25.164
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Book your free strategy call.",
+  "start": 27.152,
+  "end": 28.586,
+  "words": [
+   {
+    "w": "Book",
+    "t": 27.152
+   },
+   {
+    "w": "your",
+    "t": 27.399
+   },
+   {
+    "w": "free",
+    "t": 27.647
+   },
+   {
+    "w": "strategy",
+    "t": 27.894
+   },
+   {
+    "w": "call.",
+    "t": 28.339
+   }
+  ]
+ }
+]

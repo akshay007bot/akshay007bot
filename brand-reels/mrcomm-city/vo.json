@@ -1,0 +1,282 @@
+[
+ {
+  "bar": 0,
+  "text": "Every site needs a clear line.",
+  "start": 0.152,
+  "end": 1.835,
+  "words": [
+   {
+    "w": "Every",
+    "t": 0.152
+   },
+   {
+    "w": "site",
+    "t": 0.488
+   },
+   {
+    "w": "needs",
+    "t": 0.769
+   },
+   {
+    "w": "a",
+    "t": 1.105
+   },
+   {
+    "w": "clear",
+    "t": 1.217
+   },
+   {
+    "w": "line.",
+    "t": 1.554
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "Construction crews.",
+  "start": 3.152,
+  "end": 4.328,
+  "words": [
+   {
+    "w": "Construction",
+    "t": 3.152
+   },
+   {
+    "w": "crews.",
+    "t": 3.957
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "Hotels and retail teams.",
+  "start": 6.152,
+  "end": 7.818,
+  "words": [
+   {
+    "w": "Hotels",
+    "t": 6.152
+   },
+   {
+    "w": "and",
+    "t": 6.638
+   },
+   {
+    "w": "retail",
+    "t": 6.915
+   },
+   {
+    "w": "teams.",
+    "t": 7.401
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "Event crews and security.",
+  "start": 9.152,
+  "end": 10.73,
+  "words": [
+   {
+    "w": "Event",
+    "t": 9.152
+   },
+   {
+    "w": "crews",
+    "t": 9.53
+   },
+   {
+    "w": "and",
+    "t": 9.909
+   },
+   {
+    "w": "security.",
+    "t": 10.162
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "Factories and warehouses.",
+  "start": 12.152,
+  "end": 13.653,
+  "words": [
+   {
+    "w": "Factories",
+    "t": 12.152
+   },
+   {
+    "w": "and",
+    "t": 12.752
+   },
+   {
+    "w": "warehouses.",
+    "t": 12.992
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "All connected by M R Communications.",
+  "start": 15.152,
+  "end": 17.522,
+  "words": [
+   {
+    "w": "All",
+    "t": 15.152
+   },
+   {
+    "w": "connected",
+    "t": 15.415
+   },
+   {
+    "w": "by",
+    "t": 16.073
+   },
+   {
+    "w": "M",
+    "t": 16.271
+   },
+   {
+    "w": "R",
+    "t": 16.402
+   },
+   {
+    "w": "Communications.",
+    "t": 16.534
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "Radios, push to talk, and body cameras.",
+  "start": 18.152,
+  "end": 20.419,
+  "words": [
+   {
+    "w": "Radios,",
+    "t": 18.152
+   },
+   {
+    "w": "push",
+    "t": 18.617
+   },
+   {
+    "w": "to",
+    "t": 18.908
+   },
+   {
+    "w": "talk,",
+    "t": 19.082
+   },
+   {
+    "w": "and",
+    "t": 19.431
+   },
+   {
+    "w": "body",
+    "t": 19.663
+   },
+   {
+    "w": "cameras.",
+    "t": 19.954
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "Over a thousand devices deployed.",
+  "start": 21.152,
+  "end": 23.228,
+  "words": [
+   {
+    "w": "Over",
+    "t": 21.152
+   },
+   {
+    "w": "a",
+    "t": 21.466
+   },
+   {
+    "w": "thousand",
+    "t": 21.592
+   },
+   {
+    "w": "devices",
+    "t": 22.158
+   },
+   {
+    "w": "deployed.",
+    "t": 22.662
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "Twenty years of sales, rental and support.",
+  "start": 24.152,
+  "end": 26.288,
+  "words": [
+   {
+    "w": "Twenty",
+    "t": 24.152
+   },
+   {
+    "w": "years",
+    "t": 24.508
+   },
+   {
+    "w": "of",
+    "t": 24.813
+   },
+   {
+    "w": "sales,",
+    "t": 24.966
+   },
+   {
+    "w": "rental",
+    "t": 25.322
+   },
+   {
+    "w": "and",
+    "t": 25.678
+   },
+   {
+    "w": "support.",
+    "t": 25.881
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Upgrade the way your team communicates.",
+  "start": 27.152,
+  "end": 29.193,
+  "words": [
+   {
+    "w": "Upgrade",
+    "t": 27.152
+   },
+   {
+    "w": "the",
+    "t": 27.57
+   },
+   {
+    "w": "way",
+    "t": 27.78
+   },
+   {
+    "w": "your",
+    "t": 27.989
+   },
+   {
+    "w": "team",
+    "t": 28.251
+   },
+   {
+    "w": "communicates.",
+    "t": 28.512
+   }
+  ]
+ }
+]

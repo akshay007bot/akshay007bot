@@ -1,0 +1,242 @@
+[
+ {
+  "bar": 0,
+  "text": "It starts on paper.",
+  "start": 0.151,
+  "end": 1.468,
+  "words": [
+   {
+    "w": "It",
+    "t": 0.151
+   },
+   {
+    "w": "starts",
+    "t": 0.359
+   },
+   {
+    "w": "on",
+    "t": 0.844
+   },
+   {
+    "w": "paper.",
+    "t": 1.052
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "Every line, approved by you.",
+  "start": 3.151,
+  "end": 4.862,
+  "words": [
+   {
+    "w": "Every",
+    "t": 3.151
+   },
+   {
+    "w": "line,",
+    "t": 3.518
+   },
+   {
+    "w": "approved",
+    "t": 3.884
+   },
+   {
+    "w": "by",
+    "t": 4.434
+   },
+   {
+    "w": "you.",
+    "t": 4.618
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "Then we build it. Exactly.",
+  "start": 6.151,
+  "end": 7.682,
+  "words": [
+   {
+    "w": "Then",
+    "t": 6.151
+   },
+   {
+    "w": "we",
+    "t": 6.446
+   },
+   {
+    "w": "build",
+    "t": 6.622
+   },
+   {
+    "w": "it.",
+    "t": 6.976
+   },
+   {
+    "w": "Exactly.",
+    "t": 7.211
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "Architecture. Construction.",
+  "start": 9.151,
+  "end": 10.67,
+  "words": [
+   {
+    "w": "Architecture.",
+    "t": 9.151
+   },
+   {
+    "w": "Construction.",
+    "t": 9.939
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "Interiors. Turnkey delivery.",
+  "start": 12.151,
+  "end": 13.845,
+  "words": [
+   {
+    "w": "Interiors.",
+    "t": 12.151
+   },
+   {
+    "w": "Turnkey",
+    "t": 12.817
+   },
+   {
+    "w": "delivery.",
+    "t": 13.3
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "One team, from sketch to site.",
+  "start": 15.151,
+  "end": 16.877,
+  "words": [
+   {
+    "w": "One",
+    "t": 15.151
+   },
+   {
+    "w": "team,",
+    "t": 15.382
+   },
+   {
+    "w": "from",
+    "t": 15.727
+   },
+   {
+    "w": "sketch",
+    "t": 16.014
+   },
+   {
+    "w": "to",
+    "t": 16.417
+   },
+   {
+    "w": "site.",
+    "t": 16.59
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "What you approve...",
+  "start": 18.151,
+  "end": 19.239,
+  "words": [
+   {
+    "w": "What",
+    "t": 18.151
+   },
+   {
+    "w": "you",
+    "t": 18.438
+   },
+   {
+    "w": "approve...",
+    "t": 18.667
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "is what you get.",
+  "start": 21.152,
+  "end": 22.212,
+  "words": [
+   {
+    "w": "is",
+    "t": 21.152
+   },
+   {
+    "w": "what",
+    "t": 21.35
+   },
+   {
+    "w": "you",
+    "t": 21.682
+   },
+   {
+    "w": "get.",
+    "t": 21.947
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "Signature spaces across Bengaluru.",
+  "start": 24.152,
+  "end": 26.243,
+  "words": [
+   {
+    "w": "Signature",
+    "t": 24.152
+   },
+   {
+    "w": "spaces",
+    "t": 24.767
+   },
+   {
+    "w": "across",
+    "t": 25.198
+   },
+   {
+    "w": "Bengaluru.",
+    "t": 25.628
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Book a private consultation.",
+  "start": 27.152,
+  "end": 28.773,
+  "words": [
+   {
+    "w": "Book",
+    "t": 27.152
+   },
+   {
+    "w": "a",
+    "t": 27.441
+   },
+   {
+    "w": "private",
+    "t": 27.557
+   },
+   {
+    "w": "consultation.",
+    "t": 28.02
+   }
+  ]
+ }
+]
