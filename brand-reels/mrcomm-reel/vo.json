@@ -1,0 +1,294 @@
+[
+ {
+  "bar": 0,
+  "text": "Can you hear me?",
+  "start": 0.15,
+  "end": 1.008,
+  "words": [
+   {
+    "w": "Can",
+    "t": 0.15
+   },
+   {
+    "w": "you",
+    "t": 0.365
+   },
+   {
+    "w": "hear",
+    "t": 0.579
+   },
+   {
+    "w": "me?",
+    "t": 0.847
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "Loud and clear, for twenty years.",
+  "start": 3.15,
+  "end": 4.923,
+  "words": [
+   {
+    "w": "Loud",
+    "t": 3.15
+   },
+   {
+    "w": "and",
+    "t": 3.419
+   },
+   {
+    "w": "clear,",
+    "t": 3.634
+   },
+   {
+    "w": "for",
+    "t": 4.01
+   },
+   {
+    "w": "twenty",
+    "t": 4.225
+   },
+   {
+    "w": "years.",
+    "t": 4.601
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "Channel one. Two-way radios.",
+  "start": 6.151,
+  "end": 8.0,
+  "words": [
+   {
+    "w": "Channel",
+    "t": 6.151
+   },
+   {
+    "w": "one.",
+    "t": 6.679
+   },
+   {
+    "w": "Two-way",
+    "t": 7.009
+   },
+   {
+    "w": "radios.",
+    "t": 7.538
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "Channel two. Push to talk, nationwide.",
+  "start": 9.151,
+  "end": 11.451,
+  "words": [
+   {
+    "w": "Channel",
+    "t": 9.151
+   },
+   {
+    "w": "two.",
+    "t": 9.635
+   },
+   {
+    "w": "Push",
+    "t": 9.938
+   },
+   {
+    "w": "to",
+    "t": 10.241
+   },
+   {
+    "w": "talk,",
+    "t": 10.422
+   },
+   {
+    "w": "nationwide.",
+    "t": 10.785
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "Channel three. Encrypted body cameras.",
+  "start": 12.151,
+  "end": 14.56,
+  "words": [
+   {
+    "w": "Channel",
+    "t": 12.151
+   },
+   {
+    "w": "three.",
+    "t": 12.658
+   },
+   {
+    "w": "Encrypted",
+    "t": 13.102
+   },
+   {
+    "w": "body",
+    "t": 13.736
+   },
+   {
+    "w": "cameras.",
+    "t": 14.053
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "Channel four. Just press to talk.",
+  "start": 15.151,
+  "end": 16.937,
+  "words": [
+   {
+    "w": "Channel",
+    "t": 15.151
+   },
+   {
+    "w": "four.",
+    "t": 15.584
+   },
+   {
+    "w": "Just",
+    "t": 15.909
+   },
+   {
+    "w": "press",
+    "t": 16.179
+   },
+   {
+    "w": "to",
+    "t": 16.504
+   },
+   {
+    "w": "talk.",
+    "t": 16.666
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "Over a thousand devices deployed.",
+  "start": 18.151,
+  "end": 20.143,
+  "words": [
+   {
+    "w": "Over",
+    "t": 18.151
+   },
+   {
+    "w": "a",
+    "t": 18.453
+   },
+   {
+    "w": "thousand",
+    "t": 18.574
+   },
+   {
+    "w": "devices",
+    "t": 19.117
+   },
+   {
+    "w": "deployed.",
+    "t": 19.6
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "Where the mission goes, the signal follows.",
+  "start": 21.152,
+  "end": 23.324,
+  "words": [
+   {
+    "w": "Where",
+    "t": 21.152
+   },
+   {
+    "w": "the",
+    "t": 21.455
+   },
+   {
+    "w": "mission",
+    "t": 21.657
+   },
+   {
+    "w": "goes,",
+    "t": 22.061
+   },
+   {
+    "w": "the",
+    "t": 22.364
+   },
+   {
+    "w": "signal",
+    "t": 22.566
+   },
+   {
+    "w": "follows.",
+    "t": 22.92
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "Sales, rental, programming, support.",
+  "start": 24.152,
+  "end": 26.221,
+  "words": [
+   {
+    "w": "Sales,",
+    "t": 24.152
+   },
+   {
+    "w": "rental,",
+    "t": 24.554
+   },
+   {
+    "w": "programming,",
+    "t": 25.014
+   },
+   {
+    "w": "support.",
+    "t": 25.761
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Upgrade the way your team communicates.",
+  "start": 27.152,
+  "end": 29.154,
+  "words": [
+   {
+    "w": "Upgrade",
+    "t": 27.152
+   },
+   {
+    "w": "the",
+    "t": 27.563
+   },
+   {
+    "w": "way",
+    "t": 27.768
+   },
+   {
+    "w": "your",
+    "t": 27.973
+   },
+   {
+    "w": "team",
+    "t": 28.23
+   },
+   {
+    "w": "communicates.",
+    "t": 28.486
+   }
+  ]
+ }
+]

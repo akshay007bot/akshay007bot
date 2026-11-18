@@ -1,0 +1,298 @@
+[
+ {
+  "bar": 0,
+  "text": "Planning treatment in India?",
+  "start": 0.152,
+  "end": 1.622,
+  "words": [
+   {
+    "w": "Planning",
+    "t": 0.152
+   },
+   {
+    "w": "treatment",
+    "t": 0.624
+   },
+   {
+    "w": "in",
+    "t": 1.15
+   },
+   {
+    "w": "India?",
+    "t": 1.307
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "Explore 210 hospital listings.",
+  "start": 3.152,
+  "end": 5.374,
+  "words": [
+   {
+    "w": "Explore",
+    "t": 3.152
+   },
+   {
+    "w": "210",
+    "t": 3.744
+   },
+   {
+    "w": "hospital",
+    "t": 4.041
+   },
+   {
+    "w": "listings.",
+    "t": 4.707
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "In Bengaluru: Manipal, Narayana, and more.",
+  "start": 6.152,
+  "end": 8.603,
+  "words": [
+   {
+    "w": "In",
+    "t": 6.152
+   },
+   {
+    "w": "Bengaluru:",
+    "t": 6.327
+   },
+   {
+    "w": "Manipal,",
+    "t": 6.969
+   },
+   {
+    "w": "Narayana,",
+    "t": 7.494
+   },
+   {
+    "w": "and",
+    "t": 8.078
+   },
+   {
+    "w": "more.",
+    "t": 8.311
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "IVF with Cloudnine, Rainbow, and Apollo.",
+  "start": 9.152,
+  "end": 11.549,
+  "words": [
+   {
+    "w": "IVF",
+    "t": 9.152
+   },
+   {
+    "w": "with",
+    "t": 9.391
+   },
+   {
+    "w": "Cloudnine,",
+    "t": 9.691
+   },
+   {
+    "w": "Rainbow,",
+    "t": 10.35
+   },
+   {
+    "w": "and",
+    "t": 10.89
+   },
+   {
+    "w": "Apollo.",
+    "t": 11.13
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "Your personalized treatment estimate.",
+  "start": 12.152,
+  "end": 13.834,
+  "words": [
+   {
+    "w": "Your",
+    "t": 12.152
+   },
+   {
+    "w": "personalized",
+    "t": 12.379
+   },
+   {
+    "w": "treatment",
+    "t": 12.97
+   },
+   {
+    "w": "estimate.",
+    "t": 13.425
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "Visa, travel and stay, guided.",
+  "start": 15.152,
+  "end": 17.02,
+  "words": [
+   {
+    "w": "Visa,",
+    "t": 15.152
+   },
+   {
+    "w": "travel",
+    "t": 15.525
+   },
+   {
+    "w": "and",
+    "t": 15.961
+   },
+   {
+    "w": "stay,",
+    "t": 16.21
+   },
+   {
+    "w": "guided.",
+    "t": 16.584
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "With a dedicated care coordinator.",
+  "start": 18.151,
+  "end": 19.88,
+  "words": [
+   {
+    "w": "With",
+    "t": 18.151
+   },
+   {
+    "w": "a",
+    "t": 18.406
+   },
+   {
+    "w": "dedicated",
+    "t": 18.507
+   },
+   {
+    "w": "care",
+    "t": 19.016
+   },
+   {
+    "w": "coordinator.",
+    "t": 19.27
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "A simpler journey, step by step.",
+  "start": 21.151,
+  "end": 23.055,
+  "words": [
+   {
+    "w": "A",
+    "t": 21.151
+   },
+   {
+    "w": "simpler",
+    "t": 21.27
+   },
+   {
+    "w": "journey,",
+    "t": 21.746
+   },
+   {
+    "w": "step",
+    "t": 22.282
+   },
+   {
+    "w": "by",
+    "t": 22.579
+   },
+   {
+    "w": "step.",
+    "t": 22.757
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "Better care. Closer than you think.",
+  "start": 24.151,
+  "end": 25.895,
+  "words": [
+   {
+    "w": "Better",
+    "t": 24.151
+   },
+   {
+    "w": "care.",
+    "t": 24.5
+   },
+   {
+    "w": "Closer",
+    "t": 24.799
+   },
+   {
+    "w": "than",
+    "t": 25.148
+   },
+   {
+    "w": "you",
+    "t": 25.397
+   },
+   {
+    "w": "think.",
+    "t": 25.596
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Start your journey with Ved R X Tours.",
+  "start": 27.151,
+  "end": 29.087,
+  "words": [
+   {
+    "w": "Start",
+    "t": 27.151
+   },
+   {
+    "w": "your",
+    "t": 27.457
+   },
+   {
+    "w": "journey",
+    "t": 27.712
+   },
+   {
+    "w": "with",
+    "t": 28.119
+   },
+   {
+    "w": "Ved",
+    "t": 28.374
+   },
+   {
+    "w": "R",
+    "t": 28.578
+   },
+   {
+    "w": "X",
+    "t": 28.68
+   },
+   {
+    "w": "Tours.",
+    "t": 28.782
+   }
+  ]
+ }
+]

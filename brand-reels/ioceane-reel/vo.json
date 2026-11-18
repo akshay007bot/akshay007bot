@@ -1,0 +1,282 @@
+[
+ {
+  "bar": 0,
+  "text": "Every brand starts as a blank screen.",
+  "start": 0.152,
+  "end": 2.041,
+  "words": [
+   {
+    "w": "Every",
+    "t": 0.152
+   },
+   {
+    "w": "brand",
+    "t": 0.458
+   },
+   {
+    "w": "starts",
+    "t": 0.764
+   },
+   {
+    "w": "as",
+    "t": 1.122
+   },
+   {
+    "w": "a",
+    "t": 1.275
+   },
+   {
+    "w": "blank",
+    "t": 1.377
+   },
+   {
+    "w": "screen.",
+    "t": 1.684
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "We build brands that dominate.",
+  "start": 3.152,
+  "end": 4.694,
+  "words": [
+   {
+    "w": "We",
+    "t": 3.152
+   },
+   {
+    "w": "build",
+    "t": 3.306
+   },
+   {
+    "w": "brands",
+    "t": 3.614
+   },
+   {
+    "w": "that",
+    "t": 3.974
+   },
+   {
+    "w": "dominate.",
+    "t": 4.231
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "Branding. Marketing. AI. Video.",
+  "start": 6.152,
+  "end": 8.301,
+  "words": [
+   {
+    "w": "Branding.",
+    "t": 6.152
+   },
+   {
+    "w": "Marketing.",
+    "t": 6.845
+   },
+   {
+    "w": "AI.",
+    "t": 7.608
+   },
+   {
+    "w": "Video.",
+    "t": 7.885
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "Found on Google, ChatGPT and Gemini.",
+  "start": 9.152,
+  "end": 11.548,
+  "words": [
+   {
+    "w": "Found",
+    "t": 9.152
+   },
+   {
+    "w": "on",
+    "t": 9.551
+   },
+   {
+    "w": "Google,",
+    "t": 9.751
+   },
+   {
+    "w": "ChatGPT",
+    "t": 10.283
+   },
+   {
+    "w": "and",
+    "t": 10.816
+   },
+   {
+    "w": "Gemini.",
+    "t": 11.082
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "Real metrics, from real clients.",
+  "start": 12.152,
+  "end": 13.943,
+  "words": [
+   {
+    "w": "Real",
+    "t": 12.152
+   },
+   {
+    "w": "metrics,",
+    "t": 12.432
+   },
+   {
+    "w": "from",
+    "t": 12.935
+   },
+   {
+    "w": "real",
+    "t": 13.215
+   },
+   {
+    "w": "clients.",
+    "t": 13.495
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "Trusted by over 120 brands.",
+  "start": 15.152,
+  "end": 17.324,
+  "words": [
+   {
+    "w": "Trusted",
+    "t": 15.152
+   },
+   {
+    "w": "by",
+    "t": 15.795
+   },
+   {
+    "w": "over",
+    "t": 16.037
+   },
+   {
+    "w": "120",
+    "t": 16.439
+   },
+   {
+    "w": "brands.",
+    "t": 16.761
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "Fifteen years. 150 projects.",
+  "start": 18.152,
+  "end": 20.649,
+  "words": [
+   {
+    "w": "Fifteen",
+    "t": 18.152
+   },
+   {
+    "w": "years.",
+    "t": 18.865
+   },
+   {
+    "w": "150",
+    "t": 19.489
+   },
+   {
+    "w": "projects.",
+    "t": 19.846
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "A three-sixty digital powerhouse.",
+  "start": 21.152,
+  "end": 22.865,
+  "words": [
+   {
+    "w": "A",
+    "t": 21.152
+   },
+   {
+    "w": "three-sixty",
+    "t": 21.256
+   },
+   {
+    "w": "digital",
+    "t": 21.878
+   },
+   {
+    "w": "powerhouse.",
+    "t": 22.294
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "Ready to transform your brand?",
+  "start": 24.152,
+  "end": 25.636,
+  "words": [
+   {
+    "w": "Ready",
+    "t": 24.152
+   },
+   {
+    "w": "to",
+    "t": 24.449
+   },
+   {
+    "w": "transform",
+    "t": 24.597
+   },
+   {
+    "w": "your",
+    "t": 25.092
+   },
+   {
+    "w": "brand?",
+    "t": 25.339
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Let's create something extraordinary, together.",
+  "start": 27.152,
+  "end": 29.269,
+  "words": [
+   {
+    "w": "Let's",
+    "t": 27.152
+   },
+   {
+    "w": "create",
+    "t": 27.422
+   },
+   {
+    "w": "something",
+    "t": 27.737
+   },
+   {
+    "w": "extraordinary,",
+    "t": 28.188
+   },
+   {
+    "w": "together.",
+    "t": 28.864
+   }
+  ]
+ }
+]

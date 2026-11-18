@@ -1,0 +1,262 @@
+[
+ {
+  "bar": 0,
+  "text": "Every home begins as a sketch.",
+  "start": 0.151,
+  "end": 1.931,
+  "words": [
+   {
+    "w": "Every",
+    "t": 0.151
+   },
+   {
+    "w": "home",
+    "t": 0.507
+   },
+   {
+    "w": "begins",
+    "t": 0.804
+   },
+   {
+    "w": "as",
+    "t": 1.219
+   },
+   {
+    "w": "a",
+    "t": 1.397
+   },
+   {
+    "w": "sketch.",
+    "t": 1.516
+   }
+  ]
+ },
+ {
+  "bar": 1,
+  "text": "What you approve...",
+  "start": 3.151,
+  "end": 4.239,
+  "words": [
+   {
+    "w": "What",
+    "t": 3.151
+   },
+   {
+    "w": "you",
+    "t": 3.438
+   },
+   {
+    "w": "approve...",
+    "t": 3.666
+   }
+  ]
+ },
+ {
+  "bar": 2,
+  "text": "is what you get.",
+  "start": 6.151,
+  "end": 7.22,
+  "words": [
+   {
+    "w": "is",
+    "t": 6.151
+   },
+   {
+    "w": "what",
+    "t": 6.352
+   },
+   {
+    "w": "you",
+    "t": 6.685
+   },
+   {
+    "w": "get.",
+    "t": 6.953
+   }
+  ]
+ },
+ {
+  "bar": 3,
+  "text": "One partner. Zero handoffs.",
+  "start": 9.151,
+  "end": 10.921,
+  "words": [
+   {
+    "w": "One",
+    "t": 9.151
+   },
+   {
+    "w": "partner.",
+    "t": 9.414
+   },
+   {
+    "w": "Zero",
+    "t": 10.003
+   },
+   {
+    "w": "handoffs.",
+    "t": 10.331
+   }
+  ]
+ },
+ {
+  "bar": 4,
+  "text": "Fixed scope. Fixed time. Fixed budget.",
+  "start": 12.151,
+  "end": 14.119,
+  "words": [
+   {
+    "w": "Fixed",
+    "t": 12.151
+   },
+   {
+    "w": "scope.",
+    "t": 12.462
+   },
+   {
+    "w": "Fixed",
+    "t": 12.825
+   },
+   {
+    "w": "time.",
+    "t": 13.135
+   },
+   {
+    "w": "Fixed",
+    "t": 13.446
+   },
+   {
+    "w": "budget.",
+    "t": 13.757
+   }
+  ]
+ },
+ {
+  "bar": 5,
+  "text": "Luxury apartments in Whitefield.",
+  "start": 15.151,
+  "end": 17.126,
+  "words": [
+   {
+    "w": "Luxury",
+    "t": 15.151
+   },
+   {
+    "w": "apartments",
+    "t": 15.583
+   },
+   {
+    "w": "in",
+    "t": 16.262
+   },
+   {
+    "w": "Whitefield.",
+    "t": 16.447
+   }
+  ]
+ },
+ {
+  "bar": 6,
+  "text": "Landmark commercial spaces.",
+  "start": 18.151,
+  "end": 19.899,
+  "words": [
+   {
+    "w": "Landmark",
+    "t": 18.151
+   },
+   {
+    "w": "commercial",
+    "t": 18.734
+   },
+   {
+    "w": "spaces.",
+    "t": 19.446
+   }
+  ]
+ },
+ {
+  "bar": 7,
+  "text": "Interiors, to the last finish.",
+  "start": 21.151,
+  "end": 22.88,
+  "words": [
+   {
+    "w": "Interiors,",
+    "t": 21.151
+   },
+   {
+    "w": "to",
+    "t": 21.785
+   },
+   {
+    "w": "the",
+    "t": 21.958
+   },
+   {
+    "w": "last",
+    "t": 22.189
+   },
+   {
+    "w": "finish.",
+    "t": 22.477
+   }
+  ]
+ },
+ {
+  "bar": 8,
+  "text": "From first sketch, to final key.",
+  "start": 24.151,
+  "end": 25.947,
+  "words": [
+   {
+    "w": "From",
+    "t": 24.151
+   },
+   {
+    "w": "first",
+    "t": 24.432
+   },
+   {
+    "w": "sketch,",
+    "t": 24.769
+   },
+   {
+    "w": "to",
+    "t": 25.218
+   },
+   {
+    "w": "final",
+    "t": 25.386
+   },
+   {
+    "w": "key.",
+    "t": 25.723
+   }
+  ]
+ },
+ {
+  "bar": 9,
+  "text": "Book a private consultation.",
+  "start": 27.152,
+  "end": 28.774,
+  "words": [
+   {
+    "w": "Book",
+    "t": 27.152
+   },
+   {
+    "w": "a",
+    "t": 27.441
+   },
+   {
+    "w": "private",
+    "t": 27.557
+   },
+   {
+    "w": "consultation.",
+    "t": 28.02
+   }
+  ]
+ }
+]
