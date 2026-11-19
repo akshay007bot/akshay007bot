@@ -35,3 +35,9 @@ No GitHub is needed; everything runs locally from this folder.
   Children, Columbia Asia / Manipal (all listed in the site's hospital directory).
 - Do NOT use the Taj Mahal to represent India. Use hospitals / medical cities (210 listings, 48 cities).
 - TODO: the reel (brand-reels/vedrx) still has a Taj scene and an Apollo-only IVF scene; update it.
+
+## Next job: AI cinematic reels (in progress)
+The user found the code-drawn reels too flat ("looks like ppt") and wants very high-end, cinematic
+footage. Plan: generate real-looking shots with the Kling AI connector, then cut them with the existing
+voice-overs. Full shot list and assembly steps: `brand-reels/ai-cinematic/SHOT_PLAN.md`.
+Tell the user the total cost before generating; generate one test shot first and show it.
