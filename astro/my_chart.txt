@@ -1,0 +1,103 @@
+Birth: 1999-12-20 17:30:00 local (UTC 1999-12-20 12:00:00), lat 12.5462, lon 77.4198
+
+============================================================
+WESTERN (tropical zodiac, Placidus houses)
+============================================================
+Ascendant  Gemini      22°13'
+Midheaven  Pisces      14°51'
+Sun        Sagittarius 28°09'  house  7
+Moon       Taurus      26°27'  house 12
+Mercury    Sagittarius 13°35'  house  6
+Venus      Scorpio     17°09'  house  5
+Mars       Aquarius    18°40'  house  9
+Jupiter    Aries       25°01'  house 11  (R)
+Saturn     Taurus      10°46'  house 11  (R)
+Rahu       Leo          5°41'  house  2
+Uranus     Aquarius    14°14'  house  8
+Neptune    Aquarius     2°47'  house  8
+Pluto      Sagittarius 11°01'  house  6
+Ketu       Aquarius     5°41'  house  8
+
+Major aspects:
+  Sun trine Jupiter (orb 3.1°)
+  Moon trine Neptune (orb 6.3°)
+  Mercury sextile Uranus (orb 0.7°)
+  Mercury conjunct Pluto (orb 2.6°)
+  Venus square Mars (orb 1.5°)
+  Venus opposite Saturn (orb 6.4°)
+  Venus square Uranus (orb 2.9°)
+  Mars conjunct Uranus (orb 4.4°)
+  Saturn square Uranus (orb 3.5°)
+  Uranus sextile Pluto (orb 3.2°)
+
+============================================================
+VEDIC (sidereal, Lahiri ayanamsa 23°51', whole-sign houses)
+============================================================
+Lagna      Vrishabha   28°21'  (lord Venus)
+Sun        Dhanu        4°18'  house  8  Mula              pada 2
+Moon       Vrishabha    2°36'  house  1  Krittika          pada 2  exalted
+Mercury    Vrischika   19°44'  house  7  Jyeshtha          pada 1
+Venus      Tula        23°18'  house  6  Vishakha          pada 1  own sign
+Mars       Makara      24°48'  house  9  Dhanishta         pada 1  exalted
+Jupiter    Mesha        1°09'  house 12  Ashwini           pada 1  (R)
+Saturn     Mesha       16°55'  house 12  Bharani           pada 2  (R)  debilitated
+Rahu       Karka       11°49'  house  3  Pushya            pada 3
+Ketu       Makara      11°49'  house  9  Shravana          pada 1
+
+Moon sign (Rashi): Vrishabha   Janma nakshatra: Krittika
+
+Navamsa (D9):
+  Lagna    Kanya
+  Sun      Vrishabha
+  Moon     Makara
+  Mercury  Dhanu
+  Venus    Mesha
+  Mars     Simha
+  Jupiter  Mesha
+  Saturn   Kanya
+  Rahu     Tula
+  Ketu     Mesha
+
+Vimshottari Mahadashas:
+  Sun      1999-12-20 -> 2003-04-19
+  Moon     2003-04-19 -> 2013-04-18
+  Mars     2013-04-18 -> 2020-04-18
+  Rahu     2020-04-18 -> 2038-04-18  <-- NOW
+  Jupiter  2038-04-18 -> 2054-04-18
+
+  Antardashas in Rahu Mahadasha:
+    Rahu-Rahu     2020-04-18 -> 2022-12-30
+    Rahu-Jupiter  2022-12-30 -> 2025-05-24
+    Rahu-Saturn   2025-05-24 -> 2028-03-30  <-- NOW
+    Rahu-Mercury  2028-03-30 -> 2030-10-18
+    Rahu-Ketu     2030-10-18 -> 2031-11-05
+    Rahu-Venus    2031-11-05 -> 2034-11-05
+    Rahu-Sun      2034-11-05 -> 2035-09-30
+    Rahu-Moon     2035-09-30 -> 2037-03-31
+    Rahu-Mars     2037-03-31 -> 2038-04-18
+
+  Antardashas in Jupiter Mahadasha:
+    Jupiter-Jupiter  2038-04-18 -> 2040-06-05
+    Jupiter-Saturn   2040-06-05 -> 2042-12-18
+    Jupiter-Mercury  2042-12-18 -> 2045-03-24
+    Jupiter-Ketu     2045-03-24 -> 2046-02-28
+    Jupiter-Venus    2046-02-28 -> 2048-10-29
+    Jupiter-Sun      2048-10-29 -> 2049-08-17
+    Jupiter-Moon     2049-08-17 -> 2050-12-17
+    Jupiter-Mars     2050-12-17 -> 2051-11-23
+    Jupiter-Rahu     2051-11-23 -> 2054-04-18
+
+============================================================
+TRANSITS on 2026-11-20
+============================================================
+Sun        Vrischika    3°26'  house-from-Lagna  7  house-from-Moon  7
+Moon       Meena        2°33'  house-from-Lagna 11  house-from-Moon 11
+Mercury    Tula        14°00'  house-from-Lagna  6  house-from-Moon  6
+Venus      Kanya       29°19'  house-from-Lagna  5  house-from-Moon  5
+Mars       Simha        3°17'  house-from-Lagna  4  house-from-Moon  4
+Jupiter    Simha        1°57'  house-from-Lagna  4  house-from-Moon  4
+Saturn     Meena       14°05'  house-from-Lagna 11  house-from-Moon 11  (R)
+Rahu       Kumbha       0°50'  house-from-Lagna 10  house-from-Moon 10
+Ketu       Simha        0°50'  house-from-Lagna  4  house-from-Moon  4
+
+No Sade Sati (Saturn in house 11 from Moon)
