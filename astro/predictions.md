@@ -17,7 +17,10 @@ Fill in real events with month/year to check the chart against your life:
 
 | Date | What happened | Running period (dasha) | Fits? |
 |------|---------------|------------------------|-------|
-| | | | |
+| 2020 (COVID onward) | Felt hopeless | Rahu–Rahu (Apr 2020 – Dec 2022) | Consistent, but weak evidence: COVID affected nearly everyone |
+| 2022 | Felt hopeless again | Rahu–Rahu → Rahu–Jupiter (Dec 2022); Jupiter is 8th lord for Taurus Lagna, placed in 12th | Consistent |
+| 2025 (month?) | Learned skills, started earning | Rahu–Saturn from May 2025 (Saturn = career lord) + Saturn entered 11th house of gains (Mar 2025) | Strong fit if after Mar–May 2025 |
+| Nov 2026 | In a job; in a good relationship | Rahu–Saturn; Saturn transiting 11th | Job fits; relationship not specifically indicated (commitment window is 2028–30) |
 
 Key past period changes to check against:
 - Apr 2013 — Moon → Mars Mahadasha (age 13)
