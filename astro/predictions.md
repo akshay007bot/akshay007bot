@@ -11,7 +11,6 @@ mark it HIT / PARTIAL / MISS honestly. That gives a real accuracy number.
 | 4 | Jul 2028 – Apr 2029 | A major restructuring of life direction: career change, a serious commitment, or ending something that no longer fits | Saturn return (exact Jul 2028, Sep 2028, Apr 2029) | Western | |
 | 5 | Mar 2028 – Oct 2030 (peak Jan–Sep 2030) | Marriage, engagement or a serious long-term partnership; or a business partnership | Rahu–Mercury period (Mercury in 7th); Jupiter transits 7th (Vrischika) Jan–Sep 2030 | Vedic | |
 | 6 | 2028 – 2030 | Learning a new skill or qualification feeds directly into income | Mercury = 2nd & 5th lord activated in its antardasha | Vedic | |
-
 | 7 | 21 Nov 2026 – 12 Jan 2027 | Home/family or father-related matter needs attention; energy dips | Rahu–Saturn–Sun (Sun = 4th lord in 8th) | Vedic | |
 | 8 | 12 Jan – 9 Apr 2027 | Emotionally good stretch; confidence, communication, short trips go well | Rahu–Saturn–Moon (exalted Moon in Lagna) | Vedic | |
 | 9 | 9 Apr – 9 Jun 2027 | Relationship milestone (meeting family, living together, or a trip) and/or arguments with partner | Rahu–Saturn–Mars (Mars = 7th & 12th lord) | Vedic | |
