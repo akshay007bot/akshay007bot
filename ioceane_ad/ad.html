@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Comfortaa"; src: url("assets/Comfortaa-Light.ttf"); font-weight: 300; }
+@font-face { font-family: "Comfortaa"; src: url("assets/Comfortaa-Bold.ttf"); font-weight: 700; }
+:root {
+  --navy: #070c1a; --navy2: #0c1530;
+  --blue: #009fff; --mint: #00ffab; --violet: #b44df0;
+  --white: #f2f6ff; --muted: #9fb0cc;
+  --grad: linear-gradient(90deg, var(--blue), var(--mint));
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--navy); }
+body { font-family: "Inter", sans-serif; color: var(--white); }
+#stage { position: absolute; inset: 0; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 110%, #0b2a4a 0%, var(--navy2) 40%, var(--navy) 75%); }
+canvas#waves { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.display { font-family: "Comfortaa"; font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; text-align: center; }
+.line { display: table; margin: 0 auto; will-change: transform, opacity; }
+
+/* S1 */
+#s1 .a { font-size: var(--h1); color: var(--white); }
+#s1 .b { font-size: var(--h1); margin-top: .25em; }
+
+/* S2 */
+#mark { width: var(--mark); height: var(--mark); position: relative; }
+#glow { position: absolute; inset: -30%; border-radius: 50%; background: radial-gradient(circle, rgba(0,159,255,.45), rgba(0,255,171,.12) 45%, transparent 70%); }
+#s2 .kicker { margin-top: calc(var(--u) * 3); font-family: "Comfortaa"; font-weight: 700; font-size: var(--h2); text-align: center; }
+#s2 .pills { display: flex; gap: calc(var(--u) * 1.6); margin-top: calc(var(--u) * 3); flex-wrap: wrap; justify-content: center; }
+.pill { font-family: "Inter"; font-weight: 600; font-size: var(--p); padding: .55em 1.2em; border-radius: 999px;
+  border: 2px solid rgba(0,159,255,.55); background: rgba(0,159,255,.08); color: var(--white); }
+.pill.x { border: none; background: none; color: var(--mint); padding: .55em .1em; }
+
+/* S3 services */
+.svc { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+.svc .bg { position: absolute; inset: -6%; background-size: cover; background-position: center; filter: saturate(1.1); }
+.svc .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,12,26,.25) 0%, rgba(7,12,26,.55) 55%, rgba(7,12,26,.92) 100%); }
+.svc .label { position: absolute; left: var(--pad); bottom: var(--pad); right: var(--pad); }
+.svc .num { font-family: "Inter"; font-weight: 600; font-size: var(--p); color: var(--mint); letter-spacing: .2em; }
+.svc .name { font-family: "Comfortaa"; font-weight: 700; font-size: var(--h1); line-height: 1.05; margin-top: .15em; }
+.svc .bar { height: calc(var(--u) * .9); width: 0; background: var(--grad); border-radius: 99px; margin-top: calc(var(--u) * 2.2); }
+#roof .display { font-size: var(--h2); }
+#roof .big { font-size: var(--h1); margin-top: .2em; }
+
+/* S4 stats */
+#s4 .stats { display: flex; gap: calc(var(--u) * 10); align-items: flex-end; }
+.stat { text-align: center; }
+.stat .n { font-family: "Comfortaa"; font-weight: 700; font-size: var(--hero); line-height: 1; }
+.stat .t { font-family: "Inter"; font-weight: 500; font-size: var(--p); color: var(--muted); margin-top: .6em; letter-spacing: .14em; text-transform: uppercase; }
+#s4 .made { margin-top: calc(var(--u) * 5); font-family: "Inter"; font-size: var(--p); color: var(--muted); }
+
+/* S5 end card */
+#s5 img.logo { width: var(--logo); }
+#s5 .tag { font-family: "Comfortaa"; font-weight: 700; font-size: var(--h2); margin-top: calc(var(--u) * 2); text-align: center; }
+#s5 .cta { margin-top: calc(var(--u) * 4.5); font-family: "Inter"; font-weight: 700; font-size: var(--p);
+  padding: 1em 2em; border-radius: 999px; background: var(--grad); color: #04121f; box-shadow: 0 0 calc(var(--u)*5) rgba(0,255,171,.35); }
+#s5 .contact { margin-top: calc(var(--u) * 3); font-family: "Inter"; font-weight: 500; font-size: var(--p); color: var(--white); letter-spacing: .04em; text-align: center; }
+#s5 .contact span { color: var(--muted); }
+
+#flash { position: absolute; inset: 0; background: var(--grad); opacity: 0; mix-blend-mode: screen; pointer-events: none; }
+#vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(130% 100% at 50% 50%, transparent 60%, rgba(0,0,0,.45) 100%); }
+
+/* landscape sizes (1920x1080) */
+body.land { --u: 10px; --h1: 112px; --h2: 60px; --hero: 190px; --p: 30px; --mark: 260px; --pad: 120px; --logo: 760px; }
+/* portrait sizes (1080x1920) */
+body.port { --u: 10px; --h1: 92px; --h2: 56px; --hero: 170px; --p: 32px; --mark: 300px; --pad: 90px; --logo: 760px; }
+body.land br.pb { display: none; }
+body.port #s4 .stats { flex-direction: column; gap: calc(var(--u) * 7); align-items: center; }
+body.port .svc .label { bottom: 360px; }
+</style>
+</head>
+<body class="land">
+<div id="stage">
+  <canvas id="waves"></canvas>
+
+  <div class="scene" id="s1">
+    <div class="display">
+      <span class="line a" id="s1a">Most brands<br class="pb"> get seen.</span>
+      <span class="line b grad" id="s1b">Few get remembered.</span>
+    </div>
+  </div>
+
+  <div class="scene" id="s2">
+    <div id="mark"><div id="glow"></div><img src="assets/mark.png" style="width:100%;height:100%;position:relative"></div>
+    <div class="kicker" id="s2k">An <span class="grad">AI-driven</span> creative agency</div>
+    <div class="pills" id="s2p">
+      <span class="pill">Creativity</span><span class="pill x">+</span>
+      <span class="pill">AI</span><span class="pill x">+</span>
+      <span class="pill">Strategy</span>
+    </div>
+  </div>
+
+  <div class="scene" id="s3" style="opacity:1">
+    <div class="svc" id="v0"><div class="bg" style="background-image:url(assets/branding-hero-DuqEoCYq.jpg)"></div><div class="shade"></div>
+      <div class="label"><div class="num">01 / 05</div><div class="name">Branding</div><div class="bar"></div></div></div>
+    <div class="svc" id="v1"><div class="bg" style="background-image:url(assets/web-development-hero-D1ZS8dxR.jpg)"></div><div class="shade"></div>
+      <div class="label"><div class="num">02 / 05</div><div class="name">Websites</div><div class="bar"></div></div></div>
+    <div class="svc" id="v2"><div class="bg" style="background-image:url(assets/digital-marketing-hero--rWU_3uV.jpg)"></div><div class="shade"></div>
+      <div class="label"><div class="num">03 / 05</div><div class="name">SEO &amp; AI Search</div><div class="bar"></div></div></div>
+    <div class="svc" id="v3"><div class="bg" style="background-image:url(assets/video-production-hero-kaQPG3gl.jpg)"></div><div class="shade"></div>
+      <div class="label"><div class="num">04 / 05</div><div class="name">Video</div><div class="bar"></div></div></div>
+    <div class="svc" id="v4"><div class="bg" style="background-image:url(assets/ai-automation-hero-BB7LoGws.jpg)"></div><div class="shade"></div>
+      <div class="label"><div class="num">05 / 05</div><div class="name">AI Automation</div><div class="bar"></div></div></div>
+  </div>
+
+  <div class="scene" id="roof">
+    <div class="display">
+      <span class="line" id="r1">Everything your brand needs.</span>
+      <span class="line big grad" id="r2">Under one roof.</span>
+    </div>
+  </div>
+
+  <div class="scene" id="s4">
+    <div class="stats">
+      <div class="stat" id="st1"><div class="n grad"><span id="n1">0</span>+</div><div class="t">Years</div></div>
+      <div class="stat" id="st2"><div class="n grad"><span id="n2">0</span>+</div><div class="t">Projects delivered</div></div>
+    </div>
+    <div class="made" id="made">Made with 💙 in Bengaluru, India</div>
+  </div>
+
+  <div class="scene" id="s5">
+    <img class="logo" id="logo" src="assets/logo-white-BNNXlZg2.png">
+    <div class="tag" id="tag">Let's make your brand <span class="grad">infinite.</span></div>
+    <div class="cta" id="cta">Book a free 30-min strategy call</div>
+    <div class="contact" id="contact">ioceane.com <span>&nbsp;·&nbsp;</span> +91 90199 31101</div>
+  </div>
+
+  <div id="flash"></div>
+  <div id="vig"></div>
+</div>
+
+<script>
+// ---- timeline (seconds). VO starts at O. Speech marks come from silence detection on audio/vo.mp3.
+const O = 0.5;
+const T = {
+  s1a: O + 0.0, s1b: O + 1.9, s1out: O + 4.0,
+  s2in: O + 4.1, s2out: O + 9.45,
+  svc: [O + 9.6, O + 10.45, O + 11.35, O + 13.2, O + 13.95], s3out: O + 14.95,
+  roofIn: O + 14.95, roofB: O + 16.2, roofOut: O + 17.75,
+  s4in: O + 17.8, n1: O + 17.9, n2: O + 19.25, s4out: O + 21.35,
+  s5in: O + 21.35, tag: O + 22.4, cta: O + 24.4, contact: O + 25.6,
+  END: 31.0,
+};
+
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);           // easeOutCubic
+const easeIO = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const back = x => { x = clamp(x); const c = 1.6; return 1 + (c+1)*Math.pow(x-1,3) + c*Math.pow(x-1,2); };
+const prog = (t, start, dur) => clamp((t - start) / dur);
+const $ = id => document.getElementById(id);
+function set(el, o, ty = 0, sc = 1, extra = '') { el.style.opacity = o; el.style.transform = `translateY(${ty}px) scale(${sc}) ${extra}`; }
+function inOut(t, a, b, fi = .45, fo = .35) { return Math.min(ease(prog(t, a, fi)), 1 - ease(prog(t, b - fo, fo))); }
+
+// ---- wave canvas (brand "ocean" lines)
+const cv = $('waves'), ctx = cv.getContext('2d');
+let WY = 0.8;
+function sizeCanvas() { cv.width = innerWidth; cv.height = innerHeight; WY = innerHeight > innerWidth ? 0.8 : 0.8; }
+function drawWaves(t, strength) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  if (strength <= 0) return;
+  const lines = 14;
+  for (let i = 0; i < lines; i++) {
+    const k = i / (lines - 1);
+    const g = ctx.createLinearGradient(0, 0, W, 0);
+    g.addColorStop(0, `rgba(0,159,255,${0.0})`);
+    g.addColorStop(0.3, `rgba(0,159,255,${0.55 * strength})`);
+    g.addColorStop(0.75, `rgba(0,255,171,${0.55 * strength})`);
+    g.addColorStop(1, `rgba(0,255,171,0)`);
+    ctx.strokeStyle = g; ctx.lineWidth = 1.6 + (i % 3 === 0 ? 1.2 : 0);
+    ctx.globalAlpha = 0.25 + 0.75 * (1 - Math.abs(k - .5) * 2);
+    ctx.beginPath();
+    const baseY = H * (WY + 0.14 * (k - .5));
+    for (let x = 0; x <= W; x += 8) {
+      const u = x / W;
+      const y = baseY
+        + Math.sin(u * 6.0 + t * 0.9 + i * 0.35) * H * 0.045
+        + Math.sin(u * 13.0 - t * 1.3 + i * 0.6) * H * 0.012 * (1 + k);
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+  // glowing nodes riding the waves
+  ctx.globalAlpha = 1;
+  for (let j = 0; j < 9; j++) {
+    const u = ((j * 0.137 + t * 0.035) % 1);
+    const i = (j * 5) % lines, k = i / (lines - 1);
+    const x = u * W, baseY = H * (WY + 0.14 * (k - .5));
+    const y = baseY + Math.sin(u * 6.0 + t * 0.9 + i * 0.35) * H * 0.045 + Math.sin(u * 13.0 - t * 1.3 + i * 0.6) * H * 0.012 * (1 + k);
+    const r = 3 + 2 * Math.sin(t * 3 + j);
+    const rg = ctx.createRadialGradient(x, y, 0, x, y, r * 5);
+    rg.addColorStop(0, `rgba(0,255,171,${0.6 * strength})`); rg.addColorStop(1, 'rgba(0,255,171,0)');
+    ctx.fillStyle = rg; ctx.beginPath(); ctx.arc(x, y, r * 5, 0, Math.PI * 2); ctx.fill();
+  }
+}
+
+// ---- main render
+function render(t) {
+  // waves: strong in S1/S2/roof/S4/S5, hidden behind service photos
+  const photo = inOut(t, T.svc[0] - 0.1, T.s3out + 0.1, .25, .3);
+  drawWaves(t, 1 - photo * 0.95);
+
+  // S1
+  const s1 = 1 - ease(prog(t, T.s1out - .35, .35));
+  $('s1').style.opacity = t < T.s1out ? 1 : 0;
+  set($('s1a'), ease(prog(t, T.s1a, .6)) * s1, 40 * (1 - ease(prog(t, T.s1a, .7))) - 30 * (1 - s1));
+  set($('s1b'), ease(prog(t, T.s1b, .6)) * s1, 60 * (1 - ease(prog(t, T.s1b, .8))) - 30 * (1 - s1), 0.94 + 0.06 * ease(prog(t, T.s1b, .8)));
+
+  // S2: logo mark + positioning
+  const s2 = inOut(t, T.s2in, T.s2out, .4, .3);
+  $('s2').style.opacity = s2;
+  const mk = back(prog(t, T.s2in, .9));
+  $('mark').style.transform = `scale(${0.4 + 0.6 * mk}) rotate(${-120 * (1 - ease(prog(t, T.s2in, 1.1))) + Math.sin(t * 1.2) * 3}deg)`;
+  $('glow').style.opacity = 0.5 + 0.3 * Math.sin(t * 2.2);
+  set($('s2k'), ease(prog(t, T.s2in + .5, .6)), 30 * (1 - ease(prog(t, T.s2in + .5, .7))));
+  const pills = $('s2p').children, pt = [T.s2in + 1.25, T.s2in + 1.55, T.s2in + 1.8, T.s2in + 2.1, T.s2in + 2.4];
+  for (let i = 0; i < pills.length; i++) set(pills[i], ease(prog(t, pt[i], .4)), 0, 0.6 + 0.4 * back(prog(t, pt[i], .5)));
+
+  // S3: services montage (hard cuts with brand flash + push-in)
+  for (let i = 0; i < 5; i++) {
+    const a = T.svc[i], b = i < 4 ? T.svc[i + 1] : T.s3out;
+    const el = $('v' + i), on = t >= a && t < b;
+    el.style.opacity = on ? 1 : 0;
+    if (!on) continue;
+    const p = (t - a) / (b - a);
+    el.querySelector('.bg').style.transform = `scale(${1.04 + 0.08 * p}) translateX(${(i % 2 ? 1 : -1) * 24 * p}px)`;
+    const lb = el.querySelector('.label');
+    lb.style.opacity = ease(prog(t, a, .25));
+    lb.style.transform = `translateX(${-60 * (1 - ease(prog(t, a, .35)))}px)`;
+    el.querySelector('.bar').style.width = (ease(prog(t, a + .05, .5)) * 22) + '%';
+  }
+  let fl = 0;
+  for (const a of T.svc) fl = Math.max(fl, 1 - prog(t, a, .22));
+  fl *= (t >= T.svc[0] - .01 && t < T.s3out + .25) ? 1 : 0;
+  fl = Math.max(fl, (t >= T.s5in ? 1 - prog(t, T.s5in, .35) : 0));
+  $('flash').style.opacity = 0.5 * fl;
+
+  // roof
+  const rf = inOut(t, T.roofIn, T.roofOut, .35, .3);
+  $('roof').style.opacity = rf;
+  set($('r1'), ease(prog(t, T.roofIn, .5)), 40 * (1 - ease(prog(t, T.roofIn, .6))));
+  set($('r2'), ease(prog(t, T.roofB, .5)), 0, 0.8 + 0.2 * back(prog(t, T.roofB, .6)));
+
+  // S4 stats
+  $('s4').style.opacity = inOut(t, T.s4in, T.s4out, .3, .3);
+  $('n1').textContent = Math.round(16 * easeIO(prog(t, T.n1, 1.0)));
+  $('n2').textContent = Math.round(150 * easeIO(prog(t, T.n2, 1.3)));
+  set($('st1'), ease(prog(t, T.n1, .5)), 50 * (1 - ease(prog(t, T.n1, .6))));
+  set($('st2'), ease(prog(t, T.n2, .5)), 50 * (1 - ease(prog(t, T.n2, .6))));
+  set($('made'), ease(prog(t, T.n2 + .9, .6)), 20 * (1 - ease(prog(t, T.n2 + .9, .6))));
+
+  // S5 end card
+  $('s5').style.opacity = ease(prog(t, T.s5in, .4));
+  set($('logo'), ease(prog(t, T.s5in, .6)), 0, 0.85 + 0.15 * back(prog(t, T.s5in, .9)));
+  set($('tag'), ease(prog(t, T.tag, .5)), 30 * (1 - ease(prog(t, T.tag, .6))));
+  const pulse = t > T.cta + .6 ? 1 + 0.025 * Math.sin((t - T.cta) * 4) : 1;
+  set($('cta'), ease(prog(t, T.cta, .45)), 0, (0.7 + 0.3 * back(prog(t, T.cta, .55))) * pulse);
+  set($('contact'), ease(prog(t, T.contact, .5)), 20 * (1 - ease(prog(t, T.contact, .5))));
+}
+
+window.setup = (mode) => { document.body.className = mode; sizeCanvas(); };
+window.render = render;
+window.TIMELINE = T;
+sizeCanvas();
+render(0);
+</script>
+</body>
+</html>
