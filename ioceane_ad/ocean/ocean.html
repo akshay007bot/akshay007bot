@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Comfortaa"; src: url("Comfortaa-Light.ttf"); font-weight: 300; }
+@font-face { font-family: "Comfortaa"; src: url("Comfortaa-Bold.ttf"); font-weight: 700; }
+:root { --blue: #009fff; --mint: #00ffab; --grad: linear-gradient(90deg, var(--blue), var(--mint)); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #02040b; color: #fff; font-family: "Inter", sans-serif; }
+canvas#gl { position: absolute; inset: 0; }
+.ov { position: absolute; left: 0; right: 0; text-align: center; opacity: 0; pointer-events: none; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.word { font-family: "Comfortaa"; font-weight: 700; font-size: var(--h1); letter-spacing: -0.01em; top: var(--wordY); text-shadow: 0 0 40px rgba(0,159,255,.35); }
+.word small { display: block; font-family: "Inter"; font-weight: 500; font-size: var(--p); letter-spacing: .32em; text-transform: uppercase; color: #9fd8ff; margin-bottom: .6em; text-shadow: none; }
+#stats { top: 38%; display: flex; justify-content: center; gap: calc(var(--u) * 10); }
+.st .n { font-family: "Comfortaa"; font-weight: 700; font-size: var(--hero); line-height: 1; }
+.st .t { font-weight: 600; font-size: var(--p); letter-spacing: .22em; text-transform: uppercase; margin-top: .6em; color: #cfe9ff; }
+#ocean { top: 44%; font-family: "Comfortaa"; font-weight: 300; font-size: var(--h1); }
+#ocean b { font-weight: 700; }
+#endbox { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+#logo { width: var(--logo); opacity: 0; }
+#tag { font-family: "Comfortaa"; font-weight: 700; font-size: var(--h2); margin-top: calc(var(--u) * 1.5); opacity: 0; }
+#cta { margin-top: calc(var(--u) * 4); font-weight: 700; font-size: var(--p); padding: 1em 2.1em; border-radius: 999px; background: var(--grad); color: #04121f; box-shadow: 0 0 60px rgba(0,255,171,.35); opacity: 0; }
+#contact { margin-top: calc(var(--u) * 3); font-weight: 500; font-size: var(--p); letter-spacing: .05em; opacity: 0; }
+#contact span { color: #7f93b3; }
+#vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.6) 100%); }
+#fade { position: absolute; inset: 0; background: #000; pointer-events: none; }
+body.land { --u: 10px; --h1: 92px; --h2: 52px; --hero: 170px; --p: 26px; --logo: 640px; --wordY: 76%; }
+body.port { --u: 10px; --h1: 84px; --h2: 50px; --hero: 150px; --p: 28px; --logo: 720px; --wordY: 70%; }
+body.port #stats { flex-direction: column; gap: 70px; top: 30%; }
+</style>
+<script type="importmap">{ "imports": { "three": "./node_modules/three/build/three.module.js", "three/addons/": "./node_modules/three/examples/jsm/" } }</script>
+</head>
+<body class="land">
+<canvas id="gl"></canvas>
+<div id="vig"></div>
+<div class="ov word" id="w0"><small>01 · Branding</small>Unforgettable.</div>
+<div class="ov word" id="w1"><small>02 · Websites</small>Built to <span class="grad">perform.</span></div>
+<div class="ov word" id="w2"><small>03 · Video</small>Stories that move.</div>
+<div class="ov word" id="w3"><small>04 · AI</small><span class="grad">Never sleeps.</span></div>
+<div class="ov" id="stats">
+  <div class="st"><div class="n grad"><span id="n1">0</span>+</div><div class="t">Years</div></div>
+  <div class="st"><div class="n grad"><span id="n2">0</span>+</div><div class="t">Projects</div></div>
+</div>
+<div class="ov" id="ocean">One <b class="grad">ocean</b> of ideas.</div>
+<div id="endbox">
+  <img id="logo" src="logo-white-BNNXlZg2.png">
+  <div id="tag">Make your brand <span class="grad">infinite.</span></div>
+  <div id="cta">Book a free 30-min strategy call</div>
+  <div id="contact">ioceane.com <span>&nbsp;·&nbsp;</span> +91 90199 31101</div>
+</div>
+<div id="fade"></div>
+
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+// ---------- timeline (video seconds; VO starts at O) ----------
+const O = 1.0;
+const T = {
+  dropStart: 1.2, impact: 3.45 + O,            // "...a single drop." lands
+  idea: 4.07 + O,                              // "One idea."
+  wave: 7.7 + O,                               // "into a wave."
+  shapes: [8.93 + O, 10.93 + O, 12.6 + O, 14.41 + O], shapesEnd: 16.45 + O,
+  stats: 16.59 + O, n2: 17.9 + O, oceanLine: 20.04 + O, logo: 22.0 + O, tag: 23.12 + O,
+  cta: 24.9 + O, contact: 25.6 + O, END: 30.0,
+};
+window.TIMELINE = T;
+
+// ---------- deterministic RNG ----------
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const sm = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const easeIO = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const lerp = (a, b, t) => a + (b - a) * t;
+const $ = id => document.getElementById(id);
+
+// ---------- renderer ----------
+const canvas = $('gl');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x02040b);
+const camera = new THREE.PerspectiveCamera(40, 16 / 9, 0.1, 400);
+let composer, bloom;
+
+// ---------- particles ----------
+const GX = 220, GZ = 220, SPAN_X = 70, SPAN_Z = 70;           // ocean grid
+const NO = GX * GZ;
+const NDUST = 2500;
+const N = NO + NDUST;
+const pos = new Float32Array(N * 3), col = new Float32Array(N * 3), size = new Float32Array(N), alpha = new Float32Array(N);
+const base = new Float32Array(NO * 2); // ocean x,z
+for (let i = 0; i < GX; i++) for (let j = 0; j < GZ; j++) {
+  const k = i * GZ + j;
+  base[k * 2] = (i / (GX - 1) - .5) * SPAN_X + (rnd() - .5) * .12;
+  base[k * 2 + 1] = -(j / (GZ - 1)) * SPAN_Z + 8 + (rnd() - .5) * .12;   // z from +8 (near) to -62 (far)
+}
+const dust = new Float32Array(NDUST * 3);
+for (let i = 0; i < NDUST; i++) { dust[i*3] = (rnd() - .5) * 40; dust[i*3+1] = rnd() * 14 + .3; dust[i*3+2] = -rnd() * 50 + 8; }
+
+// shape particles: a subset of ocean particles near the centre lift into shapes
+const K = 14000;
+const lifters = [];
+{ // choose ocean particles closest to the centre zone so the lift reads as "rising from the water"
+  const idx = [];
+  for (let k = 0; k < NO; k++) { const x = base[k*2], z = base[k*2+1]; idx.push([x*x + (z + 4) * (z + 4) * .6 + rnd() * 6, k]); }
+  idx.sort((a, b) => a[0] - b[0]);
+  for (let i = 0; i < K; i++) lifters.push(idx[i][1]);
+}
+const delay = new Float32Array(K).map(() => rnd());
+const isLifter = new Int32Array(NO).fill(-1); lifters.forEach((k, i) => isLifter[k] = i);
+
+// ---------- shape generators (centred at origin, ~5 units wide, y up) ----------
+function fillShape(gen) { const a = new Float32Array(K * 3); for (let i = 0; i < K; i++) { const p = gen(i, rnd()); a[i*3] = p[0]; a[i*3+1] = p[1]; a[i*3+2] = p[2]; } return a; }
+const TAU = Math.PI * 2;
+// 1) Branding: logo construction — golden-ratio circles + grid + a bold "brand mark" ring
+const shapeBrand = fillShape((i, r) => {
+  const u = rnd(), v = rnd(); const sel = i % 10;
+  const circles = [[0, 0, 2.2], [-.85, .35, 1.36], [.85, .35, 1.36], [0, -.75, .84], [0, .9, .52]];
+  if (sel < 7) { const c = circles[i % 5]; const a = u * TAU; return [c[0] + Math.cos(a) * c[2], c[1] + Math.sin(a) * c[2], (v - .5) * .05]; }
+  if (sel < 9) { const h = (i % 2) ? 1 : 0; const p = (Math.floor(u * 5) - 2) * 1.1; const q = (v - .5) * 5; return h ? [q, p * .8, 0] : [p, q * .8, 0]; } // grid
+  const a = u * TAU; const rr = 1.1 + v * .25; return [Math.cos(a) * rr * .9 + .25, Math.sin(a) * rr * .9, 0];                     // thick ring
+});
+// 2) Website: browser window with header, hero, cards
+const shapeWeb = fillShape((i) => {
+  const u = rnd(), v = rnd(), W = 5.6, H = 3.5, s = i % 20;
+  if (s < 6) { // frame outline
+    const per = u * 2 * (W + H); let x, y;
+    if (per < W) { x = per - W/2; y = H/2; } else if (per < W + H) { x = W/2; y = H/2 - (per - W); } else if (per < 2*W + H) { x = W/2 - (per - W - H); y = -H/2; } else { x = -W/2; y = -H/2 + (per - 2*W - H); }
+    return [x, y, 0];
+  }
+  if (s < 8) return [-W/2 + u * W, H/2 - .42, 0];                                            // header line
+  if (s < 9) { const d = Math.floor(u * 3); const a = v * TAU; return [-W/2 + .3 + d * .26 + Math.cos(a) * .08, H/2 - .21 + Math.sin(a) * .08, 0]; } // dots
+  if (s < 14) return [-W/2 + .4 + u * 2.4, H/2 - .9 - Math.floor(v * 3) * .3 - (Math.floor(v*3)==0 ? 0 : .05), 0];    // headline lines
+  if (s < 16) return [-W/2 + .4 + u * 1.2, -.35 + v * .32, 0];                                // button
+  if (s < 18) return [.4 + u * 2.4, H/2 - .7 - v * 1.55, 0];                                  // hero image block
+  const c = Math.floor(u * 3); return [-W/2 + .4 + c * 1.67 + v * 1.4, -H/2 + .35 + rnd() * 1.0, 0]; // cards
+});
+// 3) Video: ring + play triangle + film perforations
+const shapeVideo = fillShape((i) => {
+  const u = rnd(), v = rnd(), s = i % 10;
+  if (s < 4) { const a = u * TAU, rr = 1.9 + (v - .5) * .12; return [Math.cos(a) * rr, Math.sin(a) * rr, 0]; }
+  if (s < 8) { // filled triangle (barycentric)
+    let a = u, b = v; if (a + b > 1) { a = 1 - a; b = 1 - b; }
+    const A = [-.55, .95], B = [-.55, -.95], C = [1.05, 0];
+    return [A[0] + a * (B[0] - A[0]) + b * (C[0] - A[0]), A[1] + a * (B[1] - A[1]) + b * (C[1] - A[1]), 0];
+  }
+  const a = u * TAU, rr = 2.45; const seg = Math.floor(u * 36); const aa = seg / 36 * TAU + v * .05; return [Math.cos(aa) * rr, Math.sin(aa) * rr, 0];
+});
+// 4) AI: neural network — 4 layers of nodes with connections, slight depth
+const layers = [5, 8, 8, 4]; const nodes = [];
+layers.forEach((n, L) => { for (let k = 0; k < n; k++) nodes.push([(L - 1.5) * 1.6, (k - (n - 1) / 2) * (3.4 / Math.max(n - 1, 1)) * (n === 4 ? .7 : 1), (rnd() - .5) * .8, L]); });
+const edges = []; for (const a of nodes) for (const b of nodes) if (b[3] === a[3] + 1) edges.push([a, b]);
+const shapeAI = fillShape((i) => {
+  const u = rnd(), v = rnd();
+  if (i % 3 === 0) { const nd = nodes[i % nodes.length]; const a = u * TAU, ph = Math.acos(2 * v - 1), rr = .16 * Math.cbrt(rnd());
+    return [nd[0] + rr * Math.sin(ph) * Math.cos(a), nd[1] + rr * Math.sin(ph) * Math.sin(a), nd[2] + rr * Math.cos(ph)]; }
+  const e = edges[i % edges.length]; return [lerp(e[0][0], e[1][0], u), lerp(e[0][1], e[1][1], u), lerp(e[0][2], e[1][2], u)];
+});
+// 5) Logo: sampled from the real iOceane logo (colour per pixel)
+let shapeLogo = null, logoCol = null;
+async function buildLogo() {
+  const img = new Image(); img.src = 'logo-white-BNNXlZg2.png'; await img.decode();
+  const c = document.createElement('canvas'); c.width = 1017; c.height = 401; const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+  const d = x.getImageData(0, 0, 1017, 401).data; const px = [];
+  for (let y = 137; y < 300; y += 1) for (let xx = 124; xx < 863; xx += 1) { const o = (y * 1017 + xx) * 4; if (d[o + 3] > 140) px.push([xx, y, d[o], d[o+1], d[o+2]]); }
+  shapeLogo = new Float32Array(K * 3); logoCol = new Float32Array(K * 3);
+  for (let i = 0; i < K; i++) { const p = px[Math.floor(rnd() * px.length)];
+    shapeLogo[i*3] = ((p[0] + rnd() - .5) - 493.5) / 739 * 7.2; shapeLogo[i*3+1] = -((p[1] + rnd() - .5) - 218.5) / 739 * 7.2; shapeLogo[i*3+2] = 0;
+    logoCol[i*3] = p[2] / 255; logoCol[i*3+1] = p[3] / 255; logoCol[i*3+2] = p[4] / 255; }
+}
+const SHAPES = [shapeBrand, shapeWeb, shapeVideo, shapeAI];
+const SHAPE_C = new THREE.Vector3(0, 2.3, 0); const SHP = .82, SHY = .35;
+
+// ---------- material ----------
+const geo = new THREE.BufferGeometry();
+geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+geo.setAttribute('size', new THREE.BufferAttribute(size, 1));
+geo.setAttribute('alpha', new THREE.BufferAttribute(alpha, 1));
+const mat = new THREE.ShaderMaterial({
+  uniforms: { uScale: { value: 1 } },
+  vertexShader: `attribute float size; attribute float alpha; varying vec3 vC; varying float vA; uniform float uScale;
+    void main(){ vC = color; vA = alpha; vec4 mv = modelViewMatrix * vec4(position,1.0); gl_PointSize = size * uScale / -mv.z; gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: `varying vec3 vC; varying float vA; void main(){ vec2 d = gl_PointCoord - .5; float r = length(d); if (r > .5) discard; float a = smoothstep(.5, .0, r); gl_FragColor = vec4(vC * a * vA, 1.0); }`,
+  vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+});
+scene.add(new THREE.Points(geo, mat));
+
+// the falling drop (bright core + halo) and its trail
+const dropGeo = new THREE.BufferGeometry(); const DT = 40;
+const dPos = new Float32Array(DT * 3), dCol = new Float32Array(DT * 3), dSize = new Float32Array(DT), dA = new Float32Array(DT);
+dropGeo.setAttribute('position', new THREE.BufferAttribute(dPos, 3)); dropGeo.setAttribute('color', new THREE.BufferAttribute(dCol, 3));
+dropGeo.setAttribute('size', new THREE.BufferAttribute(dSize, 1)); dropGeo.setAttribute('alpha', new THREE.BufferAttribute(dA, 1));
+scene.add(new THREE.Points(dropGeo, mat));
+
+// ---------- ripples ----------
+const ripples = [{ x: 0, z: 0, t0: T.impact, amp: 1.0, speed: 4.2 }];
+for (let i = 0; i < 46; i++) ripples.push({ x: (rnd() - .5) * 50, z: -rnd() * 48 + 4, t0: T.stats - .6 + rnd() * 6.5, amp: .35 + rnd() * .3, speed: 3 + rnd() * 1.5 });
+
+function oceanY(x, z, t, k) {
+  // calm swell that grows into "a wave"
+  const swell = .06 + .5 * sm(T.wave - 1.2, T.wave + .6, t) * (1 - .55 * sm(T.shapes[0] + .5, T.shapes[0] + 2.5, t));
+  let y = Math.sin(x * .35 + t * .9) * Math.cos(z * .28 - t * .7) * swell + Math.sin(x * .9 - z * .6 + t * 1.6) * swell * .25;
+  // big travelling wave crest on "into a wave"
+  const wc = sm(T.wave - .9, T.wave + .2, t) * (1 - sm(T.wave + 1.2, T.wave + 2.4, t));
+  const front = -30 + (t - (T.wave - 1.4)) * 18;
+  y += wc * 2.6 * Math.exp(-Math.pow((z - front) / 3.2, 2)) * (0.8 + .2 * Math.sin(x * .3));
+  let glow = 0;
+  for (const r of ripples) {
+    const dt = t - r.t0; if (dt < 0 || dt > 9) continue;
+    const d = Math.hypot(x - r.x, z - r.z), front = dt * r.speed;
+    const band = Math.exp(-Math.pow((d - front) / (.6 + dt * .15), 2));
+    const fade = Math.exp(-dt * .35) * r.amp;
+    y += Math.sin((d - front) * 3.2) * band * fade * .9;
+    glow += band * fade;
+  }
+  return [y, glow, wc * Math.exp(-Math.pow((z - front) / 3.2, 2))];
+}
+
+// ---------- camera path ----------
+const CAM = [ // t, pos, target
+  [0.0, [0, 1.6, 13], [0, 3.0, 0]],
+  [T.impact, [0, 1.5, 11], [0, .6, 0]],
+  [T.idea + .6, [0, 3.6, 15], [0, 0, -2]],
+  [T.wave + .3, [0, 2.0, 12], [0, 1.4, -6]],
+  [T.shapes[0] - .2, [0, 2.6, 10.5], [0, 2.3, 0]],
+  [T.shapesEnd, [0, 2.6, 10.5], [0, 2.3, 0]],
+  [T.stats + .9, [0, 15, 16], [0, 0, -10]],
+  [T.oceanLine + 1.6, [0, 22, 10], [0, 0, -16]],
+  [T.logo + .4, [0, 2.5, 13], [0, 2.3, 0]],
+  [T.END, [0, 2.5, 12.2], [0, 2.3, 0]],
+];
+function camAt(t) {
+  let i = 0; while (i < CAM.length - 2 && t > CAM[i + 1][0]) i++;
+  const a = CAM[i], b = CAM[i + 1], u = easeIO((t - a[0]) / (b[0] - a[0]));
+  const p = a[1].map((v, k) => lerp(v, b[1][k], u)), g = a[2].map((v, k) => lerp(v, b[2][k], u));
+  // gentle handheld float + orbit during shapes
+  const orb = sm(T.shapes[0], T.shapes[0] + 1, t) * (1 - sm(T.shapesEnd - .5, T.shapesEnd + .5, t));
+  p[0] += Math.sin(t * .5) * 1.6 * orb + Math.sin(t * 1.3) * .05; p[1] += Math.sin(t * 1.1) * .04;
+  // impact shake
+  const sh = Math.exp(-Math.max(0, t - T.impact) * 6) * (t > T.impact ? 1 : 0);
+  p[0] += Math.sin(t * 60) * .05 * sh; p[1] += Math.cos(t * 53) * .05 * sh;
+  return [p, g];
+}
+
+const BLUE = new THREE.Color(0x009fff), MINT = new THREE.Color(0x00ffab), DEEP = new THREE.Color(0x0a2a6a), WHITE = new THREE.Color(0xe8f6ff);
+const tmp = new THREE.Color();
+let PORT = false, W = 1920, H = 1080, LRECT = null;
+
+function render(t) {
+  // global light level: dark at start, rises with the impact
+  const life = .18 + .82 * sm(T.impact - .1, T.impact + 2.2, t);
+  // shape weights (crossfading)
+  const sw = [0, 0, 0, 0];
+  for (let s = 0; s < 4; s++) {
+    const a = T.shapes[s], b = s < 3 ? T.shapes[s + 1] : T.shapesEnd;
+    sw[s] = (s === 0 ? sm(a - .5, a + .45, t) : sm(a - .35, a + .35, t)) * (s < 3 ? 1 - sm(b - .35, b + .35, t) : 1 - sm(b - .2, b + .7, t));
+  }
+  const lw = shapeLogo ? sm(T.logo - .6, T.logo + 1.1, t) : 0;
+  const [p, g] = camAt(t);
+  const visH = 2 * Math.hypot(p[2] - SHAPE_C.z, p[1] - SHAPE_C.y) * Math.tan(camera.fov * Math.PI / 360);
+  const LS = LRECT ? (LRECT.width * 739 / 1017) * visH / H / 7.2 : 1;
+  const LY = LRECT ? (H / 2 - (LRECT.top + LRECT.height * (218.5 / 401))) * visH / H : 0;
+  const shapeRot = t * .35;
+  const cr = Math.cos(Math.sin(shapeRot) * .35), sr = Math.sin(Math.sin(shapeRot) * .35);
+
+  for (let k = 0; k < NO; k++) {
+    const x = base[k*2], z = base[k*2+1];
+    const [y, glow, crest] = oceanY(x, z, t, k);
+    let px = x, py = y, pz = z;
+    // depth fade + forward drift
+    const far = clamp((-z + 8) / 70);
+    let br = (.22 + glow * 1.6 + crest * .9) * (1 - far * .55) * life;
+    tmp.copy(DEEP).lerp(BLUE, clamp(.35 + glow * 1.4 + crest)).lerp(MINT, clamp(glow * .9 + crest * .7 + Math.max(0, y) * .4));
+    let sz = 15 + glow * 16;
+    const li = isLifter[k];
+    if (li >= 0) {
+      let sx = 0, sy = 0, szz = 0, tot = 0;
+      for (let s = 0; s < 4; s++) if (sw[s] > 0) { const S = SHAPES[s]; sx += S[li*3] * SHP * sw[s]; sy += (S[li*3+1] * SHP + SHY) * sw[s]; szz += S[li*3+2] * SHP * sw[s]; tot += sw[s]; }
+      if (lw > 0) { sx += shapeLogo[li*3] * LS * lw; sy += (shapeLogo[li*3+1] * LS + LY) * lw; szz += shapeLogo[li*3+2] * lw; tot += lw; }
+      if (tot > 0) {
+        const d = delay[li] * .45;
+        const w = clamp((Math.min(tot, 1) - d) / (1 - d));
+        const we = easeIO(w);
+        sx /= tot; sy /= tot; szz /= tot;
+        // gentle 3D sway of shapes
+        const rk = 1 - lw; const rx = sx * (cr * rk + lw) + szz * sr * rk, rz = (-sx * sr + szz * cr) * rk;
+        const tx = SHAPE_C.x + rx, ty = SHAPE_C.y + sy, tz = SHAPE_C.z + rz;
+        const swirl = we * (1 - we) * 4;
+        px = lerp(x, tx, we) + Math.sin(li * 1.7 + t * 2) * swirl * .6;
+        py = lerp(y, ty, we) + Math.cos(li * 2.3 + t * 1.7) * swirl * .4 + swirl * .8;
+        pz = lerp(z, tz, we) + Math.sin(li * .9 + t * 1.3) * swirl * .6;
+        br = lerp(br, lw > 0 ? .3 + .25 * (1 - lw) : .62, we); sz = lerp(sz, lw > 0 ? 4.2 : 5.5, we);
+        if (lw > 0) { const lc = new THREE.Color(logoCol[li*3], logoCol[li*3+1], logoCol[li*3+2]); tmp.lerp(lc, we * lw); }
+        else tmp.lerp(tmp.clone().copy(BLUE).lerp(MINT, (sy + 2) / 4), we);
+      }
+    }
+    pos[k*3] = px; pos[k*3+1] = py; pos[k*3+2] = pz;
+    col[k*3] = tmp.r; col[k*3+1] = tmp.g; col[k*3+2] = tmp.b;
+    size[k] = sz; alpha[k] = br;
+  }
+  // logo particle dissolve: fade particles as crisp logo appears
+  const lfade = 1 - sm(T.logo + 1.3, T.logo + 2.3, t) * .92;
+  if (lw > 0) for (const k of lifters) alpha[k] *= lfade;
+  // dust
+  for (let i = 0; i < NDUST; i++) {
+    const k = NO + i; const rise = (t * .15 + i * .013) % 1;
+    pos[k*3] = dust[i*3] + Math.sin(t * .3 + i) * .3; pos[k*3+1] = dust[i*3+1] + rise * 2; pos[k*3+2] = dust[i*3+2];
+    tmp.copy(BLUE).lerp(MINT, (i % 7) / 7); col[k*3] = tmp.r; col[k*3+1] = tmp.g; col[k*3+2] = tmp.b;
+    size[k] = 14; alpha[k] = .25 * Math.sin(rise * Math.PI) * (.4 + .6 * life);
+  }
+  geo.attributes.position.needsUpdate = geo.attributes.color.needsUpdate = geo.attributes.size.needsUpdate = geo.attributes.alpha.needsUpdate = true;
+
+  // drop + trail
+  const df = clamp((t - T.dropStart) / (T.impact - T.dropStart));
+
+  for (let i = 0; i < DT; i++) {
+    const lag = i * .006; const f2 = clamp((t - lag - T.dropStart) / (T.impact - T.dropStart)); const yy = 6.8 * (1 - f2 * f2);
+    dPos[i*3] = 0; dPos[i*3+1] = yy; dPos[i*3+2] = 0;
+    const on = t >= T.dropStart && t < T.impact ? 1 : 0;
+    dCol[i*3] = i ? .5 : 1; dCol[i*3+1] = i ? .85 : 1; dCol[i*3+2] = 1;
+    dSize[i] = i ? 22 * (1 - i / DT) : 60; dA[i] = on * (i ? .5 * (1 - i / DT) : 1) * sm(T.dropStart, T.dropStart + .4, t);
+  }
+  dropGeo.attributes.position.needsUpdate = dropGeo.attributes.size.needsUpdate = dropGeo.attributes.alpha.needsUpdate = dropGeo.attributes.color.needsUpdate = true;
+
+  camera.position.set(...p); camera.lookAt(...g);
+  // impact flash via bloom strength
+  const flash = Math.exp(-Math.max(0, t - T.impact) * 4) * (t > T.impact ? 1 : 0);
+  bloom.strength = .95 + flash * 1.8;
+
+  composer.render();
+  overlays(t);
+}
+
+function show(el, a, b, fi = .4, fo = .35, dy = 24) {
+  const o = Math.min(ease((window.__t - a) / fi), 1 - ease((window.__t - (b - fo)) / fo));
+  el.style.opacity = clamp(o); el.style.transform = `translateY(${dy * (1 - ease((window.__t - a) / (fi + .2)))}px)`;
+}
+function overlays(t) {
+  window.__t = t;
+  for (let s = 0; s < 4; s++) show($('w' + s), T.shapes[s] + .15, s < 3 ? T.shapes[s + 1] - .05 : T.shapesEnd, .35, .25);
+  show($('stats'), T.stats + .2, T.oceanLine - .15, .5, .35);
+  $('n1').textContent = Math.round(16 * easeIO((t - T.stats - .2) / .9));
+  $('n2').textContent = Math.round(150 * easeIO((t - T.n2) / 1.2));
+  show($('ocean'), T.oceanLine, T.logo - .1, .5, .4);
+  const lo = sm(T.logo + 1.0, T.logo + 2.0, t);
+  $('logo').style.opacity = lo; $('logo').style.transform = `scale(${.96 + .04 * lo})`;
+  show($('tag'), T.tag + .3, 99, .5, .1); show($('cta'), T.cta, 99, .45, .1, 0); show($('contact'), T.contact, 99, .5, .1, 14);
+  const pulse = t > T.cta + .6 ? 1 + .025 * Math.sin((t - T.cta) * 4) : 1; $('cta').style.transform = `scale(${pulse})`;
+  $('fade').style.opacity = Math.max(1 - sm(0, .8, t), sm(T.END - .7, T.END, t));
+  // keep the logo particle formation in the same place as the crisp logo
+}
+
+window.setup = async (mode) => {
+  PORT = mode === 'port'; document.body.className = mode;
+  W = innerWidth; H = innerHeight;
+  renderer.setSize(W, H, false);
+  camera.aspect = W / H; camera.fov = PORT ? 62 : 40; camera.updateProjectionMatrix();
+  mat.uniforms.uScale.value = 10 * (H / (2 * Math.tan(camera.fov * Math.PI / 360))) / 1483.6;
+  composer = new EffectComposer(renderer); composer.setSize(W, H);
+  composer.addPass(new RenderPass(scene, camera));
+  bloom = new UnrealBloomPass(new THREE.Vector2(W, H), .95, .5, .22); composer.addPass(bloom);
+  composer.addPass(new OutputPass());
+  await buildLogo();
+  await document.fonts.ready;
+  LRECT = $('logo').getBoundingClientRect();
+  window.READY = true;
+};
+window.render = render;
+</script>
+</body>
+</html>
