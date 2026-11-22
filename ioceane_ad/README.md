@@ -23,3 +23,13 @@ the site's own service hero images, and facts as stated on the site (16+ years, 
 **Rebuild**: `python3 make_music.py 31 audio/music.wav`, `node render.js land` and `node render.js port` (Playwright), then the ffmpeg mix (VO delayed 0.5 s, music side-chain ducked, loudnorm -14 LUFS).
 
 Voice: ElevenLabs "Prashant Nair – Warm Indian Narrator" (`audio/vo.mp3`). Music: original, synthesized in `make_music.py` (royalty-free).
+
+---
+
+# v2: live-action commercial, "Seen. Remembered."
+
+**Deliverables** (`out/`): `ioceane_commercial_16x9.mp4` (cinemascope letterbox) and `ioceane_commercial_9x16.mp4` (Reels/Shorts). Both run 31 s at -14 LUFS.
+
+**Story:** A café founder in Bengaluru stands alone at night with 0 orders. The iOceane team takes on the brief: designing, shooting and building the "Brew & Bloom" website. Her phone fills with orders and reviews, and the café is packed by morning. The team celebrates on a rooftop at dusk, then the iOceane end card plays. The full shot list is in `COMMERCIAL_SCRIPT.md`.
+
+**How it was made:** 9 photoreal film stills of the same cast, generated as one 4K contact sheet (`live/grid.jpg`, cut into `live/shots/`). The website on the monitor was inpainted with real copy. `live/commercial.html` adds camera moves, rain, light leaks, film grain, a 2.39 letterbox, kinetic service supers, notification cards and the end card. `live/make_score.py` supplies the original score and sound design. Render with `PAGE=live/commercial.html BUILD=build/live node render2.js land|port`.

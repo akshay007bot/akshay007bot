@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Comfortaa"; src: url("../assets/Comfortaa-Light.ttf"); font-weight: 300; }
+@font-face { font-family: "Comfortaa"; src: url("../assets/Comfortaa-Bold.ttf"); font-weight: 700; }
+:root { --blue: #009fff; --mint: #00ffab; --navy: #070c1a; --grad: linear-gradient(90deg, var(--blue), var(--mint)); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #000; color: #fff; font-family: "Inter", sans-serif; }
+#stage { position: absolute; inset: 0; overflow: hidden; background: #000; }
+.shot { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+.shot .img { position: absolute; left: 50%; top: 50%; background-size: cover; background-position: center; will-change: transform; }
+canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#grade { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light; }
+#leak { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; opacity: 0; }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+#vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 95% at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%); }
+.bar { position: absolute; left: 0; right: 0; height: var(--lb); background: #000; z-index: 20; }
+#bt { top: 0; } #bb { bottom: 0; }
+
+.super { position: absolute; left: 0; right: 0; text-align: center; font-family: "Comfortaa"; font-weight: 700; z-index: 10;
+  text-shadow: 0 2px 30px rgba(0,0,0,.55); opacity: 0; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 2px 18px rgba(0,0,0,.6)); }
+#sup1 { top: var(--supY); font-size: var(--h1); }
+#svc { position: absolute; left: var(--pad); bottom: calc(var(--lb) + var(--pad) * .55); z-index: 10; font-family: "Comfortaa"; font-weight: 700; font-size: var(--h1); text-shadow: 0 4px 40px rgba(0,0,0,.6); }
+#svc .w { position: absolute; left: 0; bottom: 0; white-space: nowrap; opacity: 0; }
+#svc .rule { position: absolute; left: 0; bottom: -0.45em; height: 6px; border-radius: 9px; background: var(--grad); width: 0; }
+#stats { position: absolute; left: 0; right: 0; bottom: calc(var(--lb) + var(--pad) * .5); display: flex; justify-content: center; gap: calc(var(--u) * 9); z-index: 10; }
+#statsBg { position: absolute; left: 0; right: 0; bottom: 0; height: 55%; z-index: 9; opacity: 0; background: linear-gradient(180deg, transparent, rgba(5,8,18,.85) 70%); }
+.st { text-align: center; opacity: 0; }
+.st .n { font-family: "Comfortaa"; font-weight: 700; font-size: var(--hero); line-height: 1; }
+.st .t { font-weight: 600; font-size: var(--p); letter-spacing: .18em; text-transform: uppercase; margin-top: .5em; text-shadow: 0 2px 20px rgba(0,0,0,.7); }
+
+/* notifications */
+#notes { position: absolute; z-index: 12; width: var(--nw); right: var(--nr); top: var(--nt); }
+.note { position: absolute; left: 0; right: 0; display: flex; gap: 14px; align-items: center; padding: 16px 18px; border-radius: 22px;
+  background: rgba(245,247,250,.86); backdrop-filter: blur(14px); color: #10141c; box-shadow: 0 18px 50px rgba(0,0,0,.35); opacity: 0; }
+.note .ic { width: var(--ni); height: var(--ni); border-radius: 12px; background: linear-gradient(135deg,#6b4a2e,#c58b4a); flex: none; display: grid; place-items: center; font-size: 24px; }
+.note b { display: block; font-size: var(--nb); } .note span { font-size: var(--ns); color: #3a4252; }
+.note i { margin-left: auto; align-self: flex-start; font-style: normal; font-size: 13px; color: #6b7385; }
+
+/* end card */
+#end { position: absolute; inset: 0; z-index: 15; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0;
+  background: radial-gradient(120% 90% at 50% 110%, rgba(11,42,74,.9) 0%, rgba(12,21,48,.92) 40%, rgba(7,12,26,.96) 75%); }
+#end img { width: var(--logo); }
+#end .tag { font-family: "Comfortaa"; font-weight: 700; font-size: var(--h2); margin-top: calc(var(--u) * 2); text-align: center; }
+#end .cta { margin-top: calc(var(--u) * 4); font-weight: 700; font-size: var(--p); padding: 1em 2em; border-radius: 999px; background: var(--grad); color: #04121f; box-shadow: 0 0 50px rgba(0,255,171,.35); }
+#end .contact { margin-top: calc(var(--u) * 3); font-weight: 500; font-size: var(--p); letter-spacing: .04em; }
+#end .contact span { color: #9fb0cc; }
+
+body.land { --u: 10px; --h1: 96px; --h2: 54px; --hero: 170px; --p: 28px; --pad: 110px; --logo: 700px; --lb: 120px; --supY: 70%; --nw: 660px; --nr: 110px; --nt: 160px; --nb: 22px; --ns: 19px; --ni: 58px; }
+body.port { --u: 10px; --h1: 86px; --h2: 52px; --hero: 150px; --p: 30px; --pad: 80px; --logo: 760px; --lb: 0px; --supY: 72%; --nw: 900px; --nr: 90px; --nt: 220px; --nb: 30px; --ns: 25px; --ni: 74px; }
+body.port #stats { gap: 90px; bottom: 260px; }
+body.port #svc { bottom: 420px; }
+</style>
+</head>
+<body class="land">
+<div id="stage">
+  <div id="shots"></div>
+  <canvas id="rain"></canvas>
+  <div id="leak"></div>
+  <div id="vig"></div>
+
+  <div class="super" id="sup1">Few get <span class="grad">remembered.</span></div>
+  <div id="notes"></div>
+  <div id="svc"></div>
+  <div id="statsBg"></div>
+  <div id="stats">
+    <div class="st" id="st1"><div class="n grad"><span id="n1">0</span>+</div><div class="t">Years</div></div>
+    <div class="st" id="st2"><div class="n grad"><span id="n2">0</span>+</div><div class="t">Projects delivered</div></div>
+  </div>
+
+  <div id="end">
+    <img id="logo" src="../assets/logo-white-BNNXlZg2.png">
+    <div class="tag" id="tag">Let's make your brand <span class="grad">infinite.</span></div>
+    <div class="cta" id="cta">Book a free 30-min strategy call</div>
+    <div class="contact" id="contact">ioceane.com <span>&nbsp;·&nbsp;</span> +91 90199 31101</div>
+  </div>
+
+  <canvas id="grain"></canvas>
+  <div id="flash"></div>
+  <div class="bar" id="bt"></div><div class="bar" id="bb"></div>
+</div>
+<script>
+const O = 0.5; // VO offset
+// shot list: file, in, out, scale from->to, pan (fraction of overflow) from->to, focus x for portrait, tint
+const SHOTS = [
+  { f: 's1', a: 0.0,  b: 2.45, s: [1.18, 1.05], p: [[0, .2], [0, 0]], fx: .52, cool: 1 },
+  { f: 's2', a: 2.45, b: 4.75, s: [1.05, 1.16], p: [[0, 0], [0, -.15]], fx: .52, cool: 1 },
+  { f: 's3', a: 4.75, b: 6.25, s: [1.10, 1.04], p: [[-.6, 0], [.6, 0]], fx: .62 },
+  { f: 's4', a: 6.25, b: 7.45, s: [1.04, 1.14], p: [[0, 0], [.1, .1]], fx: .45 },
+  { f: 's5', a: 7.45, b: 8.65, s: [1.14, 1.06], p: [[.5, 0], [-.4, 0]], fx: .5 },
+  { f: 's6', a: 8.65, b: 10.6, s: [1.02, 1.18], p: [[-.2, 0], [.55, -.2]], fx: .58 },
+  { f: 's7', a: 10.6, b: 12.35, s: [1.12, 1.03], p: [[0, 0], [-.3, 0]], fx: .32, warm: 1 },
+  { f: 's8', a: 12.35, b: 15.85, s: [1.04, 1.12], p: [[-.3, 0], [.3, 0]], fx: .62, warm: 1 },
+  { f: 's8', a: 15.85, b: 18.4, s: [1.6, 1.7], p: [[1, -.75], [1, -.8]], fx: .62, warm: 1 },
+  { f: 's9', a: 18.4, b: 22.6, s: [1.06, 1.16], p: [[.2, 0], [-.2, 0]], fx: .5, warm: 1 },
+].map(s => ({ ...s, a: s.a + O, b: s.b + O }));
+const T = { sup1: O + 2.4, svc: [10.19, 11.02, 11.95, 13.81, 14.54].map(x => x + O), svcEnd: O + 15.5,
+  n1: O + 17.95, n2: O + 19.3, statsOut: O + 21.6, end: O + 21.7, tag: O + 22.5, cta: O + 24.4, contact: O + 25.4,
+  notes: [10.75, 11.25, 11.7, 12.05].map(x => x + O), END: 31.0 };
+const SVC = ['Branding', 'Websites', 'SEO & AI Search', 'Video', 'AI Automation'];
+const NOTES = [['☕', 'Brew & Bloom', 'New order · 2× Cold brew, 1× Croissant', 'now'],
+  ['📷', 'Instagram', '@nisha.eats tagged Brew & Bloom in a reel', 'now'],
+  ['⭐', 'Google Business', 'New 5★ review: "Best coffee in Indiranagar!"', 'now'],
+  ['☕', 'Brew & Bloom', '12 new orders in the last hour', 'now']];
+
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const easeIO = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const back = x => { x = clamp(x); const c = 1.5; return 1 + (c+1)*Math.pow(x-1,3) + c*Math.pow(x-1,2); };
+const prog = (t, s, d) => clamp((t - s) / d);
+const $ = id => document.getElementById(id);
+let W = 1920, H = 1080, PORT = false;
+
+// build DOM
+const shotsEl = $('shots');
+SHOTS.forEach((s, i) => {
+  const d = document.createElement('div'); d.className = 'shot'; d.id = 'sh' + i;
+  d.innerHTML = `<div class="img" style="background-image:url(shots/${s.f}.jpg)"></div>`; shotsEl.appendChild(d);
+});
+SVC.forEach(w => { const e = document.createElement('div'); e.className = 'w'; e.innerHTML = w; $('svc').appendChild(e); });
+const rule = document.createElement('div'); rule.className = 'rule'; $('svc').appendChild(rule);
+NOTES.forEach(n => { const e = document.createElement('div'); e.className = 'note';
+  e.innerHTML = `<div class="ic">${n[0]}</div><div><b>${n[1]}</b><span>${n[2]}</span></div><i>${n[3]}</i>`; $('notes').appendChild(e); });
+
+// image box: cover the frame (image aspect ~1.8)
+const IMG_AR = 1792 / 997;
+function layoutShot(el, s, t) {
+  const p = (t - s.a) / (s.b - s.a);
+  const e = easeIO(p * 0.85 + 0.075);
+  let bw, bh;
+  if (W / H > IMG_AR) { bw = W; bh = W / IMG_AR; } else { bh = H; bw = H * IMG_AR; }
+  const sc = s.s[0] + (s.s[1] - s.s[0]) * e;
+  const w = bw * sc, h = bh * sc;
+  const ox = (w - W) / 2, oy = (h - H) / 2;
+  let px = s.p[0][0] + (s.p[1][0] - s.p[0][0]) * e, py = s.p[0][1] + (s.p[1][1] - s.p[0][1]) * e;
+  if (PORT) px = clamp(((s.fx - .5) * w) / Math.max(ox, 1) + px * .25, -1, 1);
+  const img = el.firstChild;
+  img.style.width = w + 'px'; img.style.height = h + 'px';
+  img.style.transform = `translate(${-w / 2 - px * ox}px, ${-h / 2 - py * oy}px)`;
+}
+
+// rain canvas
+const rc = $('rain'), rx = rc.getContext('2d');
+const drops = Array.from({ length: 260 }, (_, i) => ({ x: (i * 7919 % 1000) / 1000, y: (i * 104729 % 1000) / 1000, l: 30 + (i * 31 % 70), v: .9 + (i % 7) * .12, a: .08 + (i % 5) * .035 }));
+function drawRain(t, k) {
+  rx.clearRect(0, 0, W, H); if (k <= 0) return;
+  rx.lineWidth = 1.4;
+  for (const d of drops) {
+    const y = ((d.y + t * d.v) % 1.2 - .1) * H, x = (d.x * 1.1 - .05) * W + y * .08;
+    rx.strokeStyle = `rgba(190,220,255,${d.a * k})`;
+    rx.beginPath(); rx.moveTo(x, y); rx.lineTo(x + d.l * .08, y + d.l); rx.stroke();
+  }
+}
+// grain canvas: pre-baked noise tiles
+const gc = $('grain'), gx = gc.getContext('2d');
+const tiles = [];
+function makeTiles() {
+  tiles.length = 0;
+  for (let k = 0; k < 6; k++) {
+    const c = document.createElement('canvas'); c.width = 256; c.height = 256;
+    const x = c.getContext('2d'), im = x.createImageData(256, 256);
+    let seed = 1234 + k * 999;
+    for (let i = 0; i < im.data.length; i += 4) { seed = (seed * 16807) % 2147483647; const v = seed % 255;
+      im.data[i] = im.data[i+1] = im.data[i+2] = v; im.data[i+3] = 20; }
+    x.putImageData(im, 0, 0); tiles.push(c);
+  }
+}
+function drawGrain(f) {
+  gx.clearRect(0, 0, W, H);
+  const tile = tiles[f % tiles.length];
+  gx.fillStyle = gx.createPattern(tile, 'repeat'); gx.save(); gx.translate((f * 37) % 256, (f * 91) % 256);
+  gx.fillRect(-256, -256, W + 512, H + 512); gx.restore();
+}
+
+function render(t) {
+  const f = Math.round(t * 30);
+  // shots
+  let active = -1;
+  SHOTS.forEach((s, i) => {
+    const el = $('sh' + i), on = t >= s.a && t < s.b + 0.4;
+    if (!on) { el.style.opacity = 0; return; }
+    active = i;
+    layoutShot(el, s, t);
+    // cross-dissolve only between shot 1->2 and into the rooftop; hard cuts elsewhere
+    const soft = (i === 1 || i === 9);
+    let o = 1;
+    if (soft) o = ease(prog(t, s.a, .4)); else o = t >= s.a ? 1 : 0;
+    if (t >= s.b) o = (i === 0 || i === 8) ? 1 : 0;  // hold under next dissolve
+    el.style.opacity = o; el.style.zIndex = i;
+    // grade per shot (cool night vs warm day) + exposure breathing
+    const warm = s.warm ? 1 : 0, cool = s.cool ? 1 : 0;
+    el.firstChild.style.filter = `contrast(1.08) saturate(${cool ? .9 : 1.08}) brightness(${1 + .03 * Math.sin(t * 2.1)}) ${warm ? 'sepia(.08)' : ''}`;
+  });
+  // fade first frames from black
+  $('stage').style.opacity = ease(prog(t, 0, .6));
+
+  // rain on night shots
+  const rainK = t < SHOTS[1].b ? 1 - prog(t, SHOTS[1].b - .3, .3) : 0;
+  drawRain(t, rainK);
+
+  // light leak at key cuts
+  const leaks = [SHOTS[2].a, SHOTS[6].a, SHOTS[9].a, T.end];
+  let lk = 0; for (const a of leaks) lk = Math.max(lk, Math.exp(-Math.pow((t - a) / .22, 2)));
+  const lx = 30 + 40 * Math.sin(t * .7);
+  $('leak').style.background = `radial-gradient(60% 80% at ${lx}% 40%, rgba(255,170,80,.85), rgba(255,90,40,.35) 40%, transparent 70%)`;
+  $('leak').style.opacity = lk * .8;
+
+  // white flash on the notification drop
+  $('flash').style.opacity = .55 * (1 - prog(t, SHOTS[6].a, .18)) * (t >= SHOTS[6].a ? 1 : 0);
+
+  // super on shot 2
+  const s1 = Math.min(ease(prog(t, T.sup1, .6)), 1 - ease(prog(t, SHOTS[1].b - .35, .3)));
+  $('sup1').style.opacity = s1; $('sup1').style.transform = `translateY(${20 * (1 - ease(prog(t, T.sup1, .7)))}px)`;
+
+  // notifications stack on shot 7
+  const nEls = $('notes').children; const gap = PORT ? 160 : 118;
+  for (let i = 0; i < nEls.length; i++) {
+    const a = T.notes[i];
+    const vis = t >= a && t < SHOTS[6].b + .02;
+    const pIn = back(prog(t, a, .35));
+    // newer cards push older ones down
+    let slot = 0; for (let j = i + 1; j < nEls.length; j++) slot += ease(prog(t, T.notes[j], .3));
+    nEls[i].style.opacity = vis ? ease(prog(t, a, .2)) : 0;
+    nEls[i].style.transform = `translateY(${slot * gap - 40 * (1 - pIn)}px) scale(${.9 + .1 * pIn})`;
+    nEls[i].style.zIndex = 10 + i;
+  }
+
+  // service words (kinetic lower third) synced to VO
+  const ws = $('svc').querySelectorAll('.w');
+  ws.forEach((w, i) => {
+    const a = T.svc[i], b = i < 4 ? T.svc[i + 1] : T.svcEnd;
+    const on = t >= a && t < b;
+    w.style.opacity = on ? Math.min(ease(prog(t, a, .18)), 1 - prog(t, b - .08, .08)) : 0;
+    w.style.transform = `translateY(${30 * (1 - ease(prog(t, a, .25)))}px)`;
+    if (i === 2) w.innerHTML = 'SEO &amp; <span class="grad">AI Search</span>';
+    if (i === 4) w.innerHTML = '<span class="grad">AI</span> Automation';
+  });
+  const svcOn = t >= T.svc[0] && t < T.svcEnd;
+  rule.style.width = svcOn ? (ease(prog(t, T.svc[0], .5)) * (PORT ? 300 : 260)) + 'px' : '0px';
+  rule.style.opacity = svcOn ? 1 - prog(t, T.svcEnd - .2, .2) : 0;
+
+  // stats over rooftop
+  const so = 1 - ease(prog(t, T.statsOut - .3, .3));
+  $('n1').textContent = Math.round(16 * easeIO(prog(t, T.n1, .9)));
+  $('n2').textContent = Math.round(150 * easeIO(prog(t, T.n2, 1.2)));
+  $('statsBg').style.opacity = ease(prog(t, T.n1 - .2, .4)) * so;
+  [['st1', T.n1], ['st2', T.n2]].forEach(([id, a]) => {
+    $(id).style.opacity = ease(prog(t, a, .4)) * so;
+    $(id).style.transform = `translateY(${40 * (1 - ease(prog(t, a, .6)))}px)`;
+  });
+
+  // end card over blurred rooftop
+  const e = ease(prog(t, T.end, .6));
+  $('end').style.opacity = e;
+  if (active === 9) $('sh9').firstChild.style.filter += ` blur(${12 * e}px)`;
+  $('logo').style.opacity = ease(prog(t, T.end + .15, .6));
+  $('logo').style.transform = `scale(${.86 + .14 * back(prog(t, T.end + .15, .9))})`;
+  [['tag', T.tag], ['contact', T.contact]].forEach(([id, a]) => { $(id).style.opacity = ease(prog(t, a, .5)); $(id).style.transform = `translateY(${24 * (1 - ease(prog(t, a, .5)))}px)`; });
+  const pulse = t > T.cta + .6 ? 1 + .025 * Math.sin((t - T.cta) * 4) : 1;
+  $('cta').style.opacity = ease(prog(t, T.cta, .45)); $('cta').style.transform = `scale(${(.7 + .3 * back(prog(t, T.cta, .55))) * pulse})`;
+
+  // letterbox opens to full frame on the end card
+  if (!PORT) { const lb = 120 * (1 - e); $('bt').style.height = lb + 'px'; $('bb').style.height = lb + 'px'; }
+  drawGrain(f);
+  // fade out
+  $('stage').style.filter = `brightness(${1 - prog(t, T.END - .6, .6)})`;
+}
+
+window.setup = mode => {
+  document.body.className = mode; PORT = mode === 'port';
+  W = innerWidth; H = innerHeight;
+  for (const c of [rc, gc]) { c.width = W; c.height = H; }
+  if (PORT) { $('bt').style.height = $('bb').style.height = '0px'; }
+  makeTiles();
+};
+window.render = render;
+window.TIMELINE = T;
+window.setup('land'); render(0);
+</script>
+</body>
+</html>
