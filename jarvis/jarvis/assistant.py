@@ -76,7 +76,10 @@ def run_voice(push_to_talk: bool = False) -> None:
                 if STOP_WORDS.match(heard):
                     say("Very well.")
                     break
-                reply = brain.ask(heard, on_tool=lambda n: print(f"  (using {n})"))
+                # Whisper often writes Kannada speech in Latin letters; tell the
+                # brain the spoken language so it answers in Kannada script.
+                prompt = f"[spoken in Kannada] {heard}" if lang == "kn" else heard
+                reply = brain.ask(prompt, on_tool=lambda n: print(f"  (using {n})"))
                 say(reply)
                 if push_to_talk:
                     break
