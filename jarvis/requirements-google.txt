@@ -1,0 +1,13 @@
+# Optional: Gmail + Google Calendar tools (jarvis/tools/google_workspace.py).
+# Install with:  pip install -r requirements-google.txt
+# Then follow docs/GOOGLE_SETUP.md and run:  python -m jarvis.tools.google_workspace --login
+google-api-python-client>=2.100
+google-auth>=2.23
+google-auth-oauthlib>=1.1
+google-auth-httplib2>=0.1.1
+# Natural-language dates ("tomorrow at 3pm"), shared with reminders.py.
+dateparser>=1.2
+# Time-zone database (Windows has none built in).
+tzdata>=2024.1
+# Windows pop-up notifications for reminders and alarms (optional; skipped elsewhere).
+win11toast>=0.35; sys_platform == "win32"
