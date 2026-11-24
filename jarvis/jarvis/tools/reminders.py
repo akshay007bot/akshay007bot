@@ -384,7 +384,7 @@ def list_reminders() -> str:
       "message, by kind ('alarm', 'timer'), or 'all'.",
       {"text_or_id": {"type": "string", "description": "Reminder number, words from it, 'alarm', 'timer', or 'all'."}},
       ["text_or_id"], confirm=True,
-      describe=lambda a: (f"cancel all your reminders" if str(a.get("text_or_id", "")).strip().lower() == "all"
+      describe=lambda a: ("cancel all your reminders" if str(a.get("text_or_id", "")).strip().lower() == "all"
                           else f"cancel the reminder '{a.get('text_or_id', '')}'"))
 def cancel_reminder(text_or_id: str) -> str:
     key = str(text_or_id).strip().lower().lstrip("#")

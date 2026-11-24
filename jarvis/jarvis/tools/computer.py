@@ -747,7 +747,9 @@ def run_command(command: str) -> str:
     if not exe:
         return NEEDS_WINDOWS
     try:
-        r = subprocess.run([exe, "-NoProfile", "-NonInteractive", "-Command", command],
+        # Windows PowerShell writes piped output in the OEM code page; force UTF-8 to match the decode.
+        utf8 = "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $OutputEncoding = [Console]::OutputEncoding; "
+        r = subprocess.run([exe, "-NoProfile", "-NonInteractive", "-Command", utf8 + command],
                            capture_output=True, text=True, timeout=60, creationflags=_NO_WINDOW,
                            encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL)
     except subprocess.TimeoutExpired:

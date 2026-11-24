@@ -185,6 +185,13 @@ def _speak_offline(text: str) -> None:
         log.warning("Offline TTS (pyttsx3) not installed; can't speak: %s", text)
         return
     try:
+        # SAPI is COM: reminder threads (not the main thread) must initialise COM first,
+        # or pyttsx3 fails with "CoInitialize has not been called".
+        import comtypes  # pyttsx3's own dependency on Windows
+        comtypes.CoInitialize()
+    except Exception:  # noqa: BLE001 - not Windows, or already initialised
+        pass
+    try:
         engine = pyttsx3.init()  # a fresh engine per call avoids runAndWait() hangs on reuse
         engine.setProperty("rate", 180)
         engine.say(text)

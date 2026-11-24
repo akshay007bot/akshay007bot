@@ -22,7 +22,7 @@ def run_text() -> None:
 
     brain = Brain(confirm_fn=confirm)
     _startup_report()
-    print(f"JARVIS online. Type to talk, 'reset' to clear context, 'quit' to exit.\n")
+    print("JARVIS online. Type to talk, 'reset' to clear context, 'quit' to exit.\n")
     while True:
         try:
             text = input("You > ").strip()
@@ -47,9 +47,15 @@ def run_voice(push_to_talk: bool = False) -> None:
         print(f"JARVIS: {text}")
         tts.speak(text)
 
+    def hear(timeout: float) -> tuple[str, str]:
+        # Hold the speaker lock while the mic is open, so a reminder firing now
+        # waits until we've finished listening instead of being transcribed.
+        with tts._lock:
+            return stt.listen(timeout=timeout)
+
     def confirm(what: str) -> bool:
         say(f"Shall I {what}?")
-        heard, _ = stt.listen(timeout=6)
+        heard, _ = hear(6)
         print(f"You: {heard}")
         return bool(heard) and YES.search(heard) is not None
 
@@ -69,7 +75,7 @@ def run_voice(push_to_talk: bool = False) -> None:
             # Follow-up mode: after answering, keep listening briefly so you
             # can continue the conversation without the wake word again.
             while True:
-                heard, lang = stt.listen(timeout=7)
+                heard, lang = hear(7)
                 if not heard:
                     break
                 print(f"You ({lang}): {heard}")

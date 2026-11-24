@@ -2,11 +2,22 @@
 
 import argparse
 import logging
+import sys
 
 from . import assistant
 
 
+def _utf8_console() -> None:
+    """Kannada text would raise UnicodeEncodeError on a cp1252/cp437 console or a redirected pipe."""
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError, OSError):
+            pass
+
+
 def main() -> None:
+    _utf8_console()
     ap = argparse.ArgumentParser(prog="jarvis", description="Your personal voice assistant.")
     ap.add_argument("--text", action="store_true", help="type instead of talking")
     ap.add_argument("--ptt", action="store_true", help="push-to-talk (Enter) instead of the wake word")

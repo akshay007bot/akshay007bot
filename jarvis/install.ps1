@@ -14,14 +14,18 @@ foreach ($v in "3.12", "3.11", "3.10") {
 if (-not $py) {
     Write-Host "Python 3.12 not found. Installing it with winget..." -ForegroundColor Yellow
     winget install -e --id Python.Python.3.12 --accept-package-agreements --accept-source-agreements
+    # This window still has the old PATH; reload it so the new 'py' launcher is found.
+    $env:Path = [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [Environment]::GetEnvironmentVariable("Path", "User")
     $py = "py -3.12"
 }
 Write-Host "Using $py"
 
 # 2. Virtual environment + packages
-if (-not (Test-Path .venv)) { Invoke-Expression "$py -m venv .venv" }
+if (-not (Test-Path .venv\Scripts\python.exe)) { Invoke-Expression "$py -m venv .venv" }
+if (-not (Test-Path .venv\Scripts\python.exe)) { throw "Could not create the virtual environment. Close this window, open a new PowerShell and run install.ps1 again." }
 & .\.venv\Scripts\python.exe -m pip install --upgrade pip
 & .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+if ($LASTEXITCODE -ne 0) { throw "Installing packages failed (see the messages above)." }
 
 # 3. Settings file
 if (-not (Test-Path .env)) {

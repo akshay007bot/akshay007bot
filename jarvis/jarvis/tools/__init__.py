@@ -88,14 +88,22 @@ def run(name: str, raw_args: str | dict, confirm_fn: Callable[[str], bool] | Non
         return f"Error: no tool named {name}."
     try:
         args = json.loads(raw_args or "{}") if isinstance(raw_args, str) else dict(raw_args or {})
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, TypeError, ValueError):
         return "Error: the arguments were not valid JSON."
+    if args is None:  # some models send "null" for tools without parameters
+        args = {}
+    if not isinstance(args, dict):
+        return "Error: the arguments must be a JSON object."
     missing = [k for k in t.required if k not in args]
     if missing:
         return f"Error: missing required argument(s): {', '.join(missing)}."
-    if t.confirm and confirm_fn is not None:
-        what = t.describe(args) if t.describe else f"{name.replace('_', ' ')} with {args}"
-        if not confirm_fn(what):
+    from ..config import settings  # local import: config must not depend on tools
+    if t.confirm and confirm_fn is not None and settings.confirm_actions:
+        try:
+            what = t.describe(args) if t.describe else None
+        except Exception:  # noqa: BLE001 - a bad describe() must not skip the question
+            what = None
+        if not confirm_fn(what or f"{name.replace('_', ' ')} with {args}"):
             return "The user declined, so nothing was done."
     try:
         result = t.fn(**args)

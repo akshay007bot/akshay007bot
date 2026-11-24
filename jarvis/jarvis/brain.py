@@ -8,6 +8,7 @@ retried on the next, so Jarvis keeps working.
 from __future__ import annotations
 
 import logging
+import re
 import time
 from datetime import datetime
 from typing import Callable
@@ -46,6 +47,30 @@ ask one short question first. Otherwise just do it.
 Current time: {now} ({tz}). Home city: {city}.
 What you remember about the user:
 {facts}"""
+
+
+_THINK = re.compile(r"<think>.*?</think>\s*", re.S)  # qwen3 & co. on older Ollama builds
+
+
+class _ProvidersDown(RuntimeError):
+    pass
+
+
+def _for_provider(name: str, messages: list[dict]) -> list[dict]:
+    """Adapt history to one provider: Gemini needs a thought signature on every tool call
+    (a dummy one is accepted for calls made by another provider); others get none."""
+    out = []
+    for m in messages:
+        if m.get("tool_calls"):
+            calls = [dict(c) for c in m["tool_calls"]]
+            if name != "gemini":
+                for c in calls:
+                    c.pop("extra_content", None)
+            elif not any("extra_content" in c for c in calls):  # calls made by Groq/Ollama
+                calls[0]["extra_content"] = {"google": {"thought_signature": "skip_thought_signature_validator"}}
+            m = {**m, "tool_calls": calls}
+        out.append(m)
+    return out
 
 
 class Brain:
@@ -88,7 +113,7 @@ class Brain:
         for p in live or self.providers:  # if all are cooling down, try them all anyway
             try:
                 resp = self._clients[p.name].chat.completions.create(
-                    model=p.model, messages=messages, tools=tools.schemas() or None,
+                    model=p.model, messages=_for_provider(p.name, messages), tools=tools.schemas() or None,
                 )
                 self._down_until.pop(p.name, None)
                 return p, resp.choices[0].message
@@ -96,7 +121,7 @@ class Brain:
                 log.warning("Provider %s failed: %s", p.name, e)
                 self._down_until[p.name] = time.monotonic() + COOLDOWN_S
                 errors.append(f"{p.name}: {e.__class__.__name__}")
-        raise RuntimeError("All AI providers failed (" + "; ".join(errors) + ")")
+        raise _ProvidersDown("All AI providers failed (" + "; ".join(errors) + ")")
 
     def ask(self, text: str, on_tool: Callable[[str], None] | None = None) -> str:
         self.history.append({"role": "user", "content": text})
@@ -105,16 +130,22 @@ class Brain:
             for _ in range(MAX_TOOL_ROUNDS):
                 provider, msg = self._complete([self._system(), *self.history])
                 calls = msg.tool_calls or []
-                entry: dict = {"role": "assistant", "content": msg.content or ""}
+                # With tool_calls, content must be null (Gemini rejects an empty text part).
+                entry: dict = {"role": "assistant", "content": (msg.content or None) if calls else (msg.content or "")}
                 if calls:
-                    entry["tool_calls"] = [
-                        {"id": c.id, "type": "function",
-                         "function": {"name": c.function.name, "arguments": c.function.arguments or "{}"}}
-                        for c in calls
-                    ]
+                    entry["tool_calls"] = []
+                    for c in calls:
+                        tc = {"id": c.id, "type": "function",
+                              "function": {"name": c.function.name, "arguments": c.function.arguments or "{}"}}
+                        # Gemini 3 returns a thought signature here that MUST be sent back,
+                        # or the next request fails with HTTP 400.
+                        extra = (getattr(c, "model_extra", None) or {}).get("extra_content")
+                        if extra:
+                            tc["extra_content"] = extra
+                        entry["tool_calls"].append(tc)
                 self.history.append(entry)
                 if not calls:
-                    return (msg.content or "").strip() or "Done."
+                    return _THINK.sub("", msg.content or "").strip() or "Done."
                 for c in calls:
                     if on_tool:
                         on_tool(c.function.name)
@@ -124,9 +155,13 @@ class Brain:
                     self.history.append({"role": "tool", "tool_call_id": c.id,
                                          "name": c.function.name, "content": result[:8000]})
             return "I got stuck going back and forth with my tools. Could you rephrase that?"
-        except RuntimeError as e:
-            # Drop the failed turn so history stays valid for the next request.
+        except Exception as e:  # noqa: BLE001
+            # Drop the failed turn so history stays valid for the next request
+            # (an assistant tool_calls entry without its tool replies breaks every later call).
             last_user = max(i for i, m in enumerate(self.history) if m["role"] == "user")
             self.history = self.history[:last_user]
-            log.error("%s", e)
-            return "I can't reach my brain right now. Check the internet connection or start Ollama."
+            if isinstance(e, _ProvidersDown):
+                log.error("%s", e)
+                return "I can't reach my brain right now. Check the internet connection or start Ollama."
+            log.exception("Turn failed: %s", e)
+            return f"Something went wrong: {e}"

@@ -77,7 +77,7 @@ def login(force: bool = False):
     return creds
 
 
-def _creds(interactive: bool = True):
+def _creds(interactive: bool = False):  # tools never pop a browser mid-conversation
     Request, Credentials, InstalledAppFlow, build = _libs()
     creds = None
     if TOKEN_FILE.exists():
@@ -100,7 +100,7 @@ def _creds(interactive: bool = True):
     if not settings.google_credentials.exists():
         raise NotConnected(f"Google isn't connected yet — see {SETUP_DOC}.")
     if not interactive:
-        raise NotConnected("Google needs you to sign in again. Run: python -m jarvis.tools.google_workspace --login")
+        raise NotConnected("Google needs you to sign in. Double-click google-login.bat in the Jarvis folder, then ask again.")
     try:
         return login()
     except NotConnected:
