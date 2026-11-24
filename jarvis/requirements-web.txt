@@ -1,0 +1,6 @@
+# Knowledge & smart-home tools (all free, no API keys).
+requests>=2.31
+ddgs>=9.0            # DuckDuckGo web + news search (successor of duckduckgo_search)
+trafilatura>=1.12    # clean article text from web pages
+beautifulsoup4>=4.12 # fallback page-text extraction
+feedparser>=6.0      # Google News RSS fallback for headlines
