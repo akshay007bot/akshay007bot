@@ -1,0 +1,414 @@
+<title>One Wolf November Report</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single report column on "survey paper", sections numbered as the report's real order; data tiles and tables in a 12-col grid that stacks on phones. */
+:root{
+  --paper:#f6f6f2; --sheet:#ffffff; --ink:#1d241f; --ink-2:#4f5a52; --ink-3:#7c867f;
+  --rule:#dfe2dc; --field:#eef1ec;
+  --gold:#a8822e; --gold-soft:#efe5cc; --forest:#2f4a3a; --forest-soft:#dde7df;
+  --good:#2e7d4f; --good-bg:#e2f1e7; --warn:#a86a12; --warn-bg:#f8ecd6; --bad:#b3372b; --bad-bg:#f8e1de;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121614; --sheet:#1a1f1c; --ink:#e9ece6; --ink-2:#b5beb6; --ink-3:#8a948c;
+  --rule:#2c342f; --field:#222925;
+  --gold:#d6ae55; --gold-soft:#3a321f; --forest:#8fbf9f; --forest-soft:#22322a;
+  --good:#6cc690; --good-bg:#1d3326; --warn:#e0a54a; --warn-bg:#3a2c16; --bad:#ec7d70; --bad-bg:#3b201d;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121614; --sheet:#1a1f1c; --ink:#e9ece6; --ink-2:#b5beb6; --ink-3:#8a948c;
+  --rule:#2c342f; --field:#222925;
+  --gold:#d6ae55; --gold-soft:#3a321f; --forest:#8fbf9f; --forest-soft:#22322a;
+  --good:#6cc690; --good-bg:#1d3326; --warn:#e0a54a; --warn-bg:#3a2c16; --bad:#ec7d70; --bad-bg:#3b201d;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-stretch:112%;line-height:1.12;text-wrap:balance;margin:0}
+h2{font-size:1.65rem;font-weight:750;letter-spacing:-.01em}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+.num,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.muted{color:var(--ink-2)} .small{font-size:.82rem}
+
+/* Cover */
+.cover{margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 40px);padding-bottom:36px;border-bottom:2px solid var(--ink);display:grid;gap:28px}
+.brandrow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-stretch:125%;letter-spacing:.08em;text-transform:uppercase;font-size:.95rem}
+.mark svg{width:30px;height:30px}
+.cover h1{font-size:clamp(2.1rem,5.6vw,3.6rem);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em;max-width:16ch}
+.cover h1 span{color:var(--gold)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.meta div{background:var(--sheet);padding:12px 14px;display:grid;gap:2px}
+.meta b{font-weight:600}
+.meta .eyebrow{color:var(--ink-3)}
+
+section{padding-block:44px 8px;display:grid;gap:22px}
+.sechead{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:12px}
+.sechead .idx{font-family:var(--mono);color:var(--gold);font-size:.9rem}
+.sechead p{grid-column:2;color:var(--ink-2);max-width:70ch}
+
+/* KPI tiles */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpis.k3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.kpis,.kpis.k3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:16px;display:grid;gap:4px;align-content:start}
+.kpi .v{font-family:var(--display);font-stretch:110%;font-weight:750;font-size:1.9rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:.85rem;color:var(--ink-2)}
+.kpi.lead{background:var(--forest);border-color:var(--forest);color:var(--sheet)}
+.kpi.lead .l,.kpi.lead .src{color:var(--sheet);opacity:.85}
+.src{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);letter-spacing:.04em}
+.delta{font-family:var(--mono);font-size:.78rem;font-weight:500;display:inline-flex;gap:4px;align-items:center;padding:1px 7px;border-radius:99px;width:fit-content}
+.up{color:var(--good);background:var(--good-bg)} .down{color:var(--bad);background:var(--bad-bg)} .flat{color:var(--ink-2);background:var(--field)}
+
+.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:20px;display:grid;gap:14px;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+
+/* Takeaways */
+.takeaways{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.takeaways li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px;white-space:nowrap;margin-top:3px}
+.t-good{background:var(--good-bg);color:var(--good)} .t-warn{background:var(--warn-bg);color:var(--warn)} .t-bad{background:var(--bad-bg);color:var(--bad)} .t-info{background:var(--forest-soft);color:var(--forest)}
+
+/* Chart */
+.chart{width:100%;overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:560px;height:auto}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.8rem;color:var(--ink-2)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+/* Bars */
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:72px 1fr 54px;gap:10px;align-items:center;font-size:.88rem}
+.track{height:12px;background:var(--field);border-radius:2px;overflow:hidden;display:flex}
+.fill{height:100%;background:var(--forest)} .fill.g{background:var(--gold)}
+.bar .num{text-align:right}
+.split{display:flex;height:28px;border-radius:3px;overflow:hidden;font-family:var(--mono);font-size:.75rem}
+.split div{display:flex;align-items:center;padding-inline:8px;white-space:nowrap}
+
+/* Tables */
+.tbl{width:100%;border-collapse:collapse;font-size:.88rem}
+.tbl th{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500;text-align:left;padding:8px 10px;border-bottom:1px solid var(--ink)}
+.tbl td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.tbl td.r,.tbl th.r{text-align:right}
+.tbl tr:last-child td{border-bottom:0}
+.scroll{overflow-x:auto}
+.minibar{display:inline-block;height:6px;background:var(--gold);border-radius:1px;vertical-align:middle;margin-left:8px}
+
+/* SEO */
+.score{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.ring{width:120px;height:120px}
+.counts{display:flex;gap:10px;flex-wrap:wrap}
+.counts span{font-family:var(--mono);font-size:.8rem;padding:4px 10px;border-radius:3px}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+@media (max-width:760px){.checks{grid-template-columns:1fr}.score{grid-template-columns:1fr}}
+.check{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.88rem;min-width:0}
+.check b{font-weight:600;display:block}
+.check .d{color:var(--ink-2);font-size:.82rem;overflow-wrap:anywhere}
+.dot{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:700;margin-top:2px;font-family:var(--mono)}
+.dot.p{background:var(--good-bg);color:var(--good)} .dot.w{background:var(--warn-bg);color:var(--warn)} .dot.f{background:var(--bad-bg);color:var(--bad)}
+.serp{border:1px solid var(--rule);border-radius:6px;padding:14px 16px;background:var(--sheet);display:grid;gap:2px;font-family:Arial,sans-serif;min-width:0}
+.serp .u{font-size:.78rem;color:var(--ink-2)} .serp .t{color:#1a55c4;font-size:1.1rem;line-height:1.3} .serp .ds{font-size:.85rem;color:var(--ink-2)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .serp .t{color:#8ab4f8}}
+:root[data-theme="dark"] .serp .t{color:#8ab4f8}
+.prio{font-family:var(--mono);font-size:.7rem;font-weight:500;padding:2px 7px;border-radius:3px;white-space:nowrap}
+
+/* Plan */
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.plan .panel h3{display:flex;gap:10px;align-items:baseline}
+.plan ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.9rem}
+footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--ink);display:grid;gap:8px;font-size:.8rem;color:var(--ink-2)}
+@media (prefers-reduced-motion:no-preference){.fill{transition:width .6s ease}}
+@media print{body{font-size:12.5px}section{break-inside:auto}.panel,.kpi,.check,tr{break-inside:avoid}.chart svg{min-width:0}}
+</style>
+
+<div class="wrap">
+
+<header class="cover">
+  <div class="brandrow">
+    <div class="mark">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="4" fill="var(--ink)"/><path d="M7 23 11 9l5 8 5-8 4 14" fill="none" stroke="var(--gold)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      One Wolf
+    </div>
+    <span class="eyebrow">Monthly Marketing &amp; SEO Report</span>
+  </div>
+  <h1>Northern County <span>November 2026</span></h1>
+  <p class="muted" style="max-width:68ch">Social media performance across Facebook and Instagram, and a technical SEO audit of the Northern County project page, for 38 private farm houses on 6.5 acres near Nandi Hills, Devanahalli.</p>
+  <div class="meta">
+    <div><span class="eyebrow">Reporting period</span><b>28 Oct – 24 Nov 2026</b></div>
+    <div><span class="eyebrow">Prepared for</span><b>One Wolf Ventures Pvt. Ltd.</b></div>
+    <div><span class="eyebrow">Channels</span><b>Facebook · Instagram · Website</b></div>
+    <div><span class="eyebrow">Page audited</span><b class="mono small">onewolf.in/projects/northern-county/</b></div>
+  </div>
+</header>
+
+<!-- 1 -->
+<section id="summary">
+  <div class="sechead"><span class="idx">01</span><h2>Executive summary</h2>
+    <p>The month's content reached mostly new people, and the pricing message did most of the work. The two gaps that matter most are short video watch time and missing conversion tracking on the website.</p></div>
+  <div class="kpis k3">
+    <div class="kpi lead"><span class="l">Total content views</span><span class="v">29,084</span><span class="src">FB 15,848 + IG 13,236</span></div>
+    <div class="kpi"><span class="l">Instagram accounts reached</span><span class="v">5,699</span><span class="src">96.3% non-followers</span></div>
+    <div class="kpi"><span class="l">Instagram interactions</span><span class="v">115</span><span class="src">from 72 accounts engaged</span></div>
+    <div class="kpi"><span class="l">Profile visits</span><span class="v">111</span><span class="src">Instagram profile activity</span></div>
+    <div class="kpi"><span class="l">Instagram followers</span><span class="v">40</span><span class="src">total at period end</span></div>
+    <div class="kpi"><span class="l">SEO health score</span><span class="v">83<small class="muted" style="font-size:1rem">/100</small></span><span class="src">15 pass · 5 warn · 1 fail</span></div>
+  </div>
+  <div class="panel">
+    <h3>Key takeaways</h3>
+    <ul class="takeaways">
+      <li><span class="tag t-good">Win</span><span>The <b>₹2,999 per sq ft</b> pricing creative (27 Oct) was the top post with <b class="num">513</b> views, <b>3.6×</b> the next best. A clear price is the strongest hook for this audience.</span></li>
+      <li><span class="tag t-good">Win</span><span>Facebook watch time rose <b>219%</b> and 3-second video views rose <b>120%</b>, so video is starting to get attention.</span></li>
+      <li><span class="tag t-warn">Watch</span><span>Facebook views fell <b>97%</b> against the previous period. Daily views dropped to near zero on 30 Oct – 4 Nov and 16–17 Nov even on days we posted, so reach appears to follow paid promotion rather than posting.</span></li>
+      <li><span class="tag t-warn">Watch</span><span>No Facebook viewer watched a full minute of video (<b>0</b> one-minute views). The first 3 seconds and overall length need work.</span></li>
+      <li><span class="tag t-bad">Fix now</span><span>The project page has <b>no Meta Pixel</b>, so leads and site visits from Facebook and Instagram can't be tracked or retargeted.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="facebook">
+  <div class="sechead"><span class="idx">02</span><h2>Facebook performance</h2>
+    <p>Page views and video performance from Meta Business Suite, compared with the previous period of equal length.</p></div>
+  <div class="kpis">
+    <div class="kpi"><span class="l">Views</span><span class="v">15,848</span><span class="delta down">▼ 97%</span></div>
+    <div class="kpi"><span class="l">3-second views</span><span class="v">97</span><span class="delta up">▲ 120%</span></div>
+    <div class="kpi"><span class="l">1-minute views</span><span class="v">0</span><span class="delta flat">– 0%</span></div>
+    <div class="kpi"><span class="l">Watch time</span><span class="v">39m 22s</span><span class="delta up">▲ 219%</span></div>
+  </div>
+  <div class="panel">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline">
+      <h3>Daily views and publishing days</h3>
+      <div class="legend"><span><i style="background:var(--forest)"></i>Daily views</span><span><i style="background:var(--gold);border-radius:50%"></i>Day with a post</span></div>
+    </div>
+    <div class="chart" id="fbchart" role="img" aria-label="Daily Facebook views from 28 October to 24 November 2026, with publishing days marked"></div>
+    <p class="small muted">Daily values are read from the Meta Business Suite chart and are approximate; they add up to the reported 15,848 within 1%. Peak day was 23 Nov at about 1,650 views.</p>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>What the data says</h3>
+      <ul class="takeaways small">
+        <li><span class="tag t-info">Pattern</span><span>Three active windows: 28–29 Oct, 5–15 Nov and 18–24 Nov. These look like boost or ad flights. Please confirm against Ads Manager spend.</span></li>
+        <li><span class="tag t-info">Pattern</span><span>The busiest posting stretch (30 Oct – 3 Nov) earned almost no views, so organic Facebook reach for the page is close to zero.</span></li>
+        <li><span class="tag t-info">Video</span><span>Watch time of 2,362 seconds across 97 three-second viewers is about 24 seconds each. Viewers who stay do watch, but very few stop scrolling.</span></li>
+      </ul></div>
+    <div class="panel"><h3>Why views fell 97%</h3>
+      <p class="small">A 97% fall means the previous period had roughly 500K views. That level only comes from a large paid campaign, so the drop most likely reflects lower ad spend this month rather than weaker content. Engagement quality improved over the same period: 3-second views and watch time both more than doubled.</p>
+      <p class="small muted">Recommendation: report paid and organic views separately from next month so the trend is readable.</p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="instagram">
+  <div class="sechead"><span class="idx">03</span><h2>Instagram performance</h2>
+    <p>Account insights for the period: who saw the content, which formats worked, and what led people to the profile.</p></div>
+  <div class="kpis">
+    <div class="kpi"><span class="l">Views</span><span class="v">13,236</span><span class="src">IG 13,192 · FB cross-post 44</span></div>
+    <div class="kpi"><span class="l">Accounts reached</span><span class="v">5,699</span><span class="src">2.3 views per account</span></div>
+    <div class="kpi"><span class="l">Engagement rate</span><span class="v">1.26%</span><span class="src">72 engaged ÷ 5,699 reached</span></div>
+    <div class="kpi"><span class="l">Profile visit rate</span><span class="v">1.95%</span><span class="src">111 visits ÷ 5,699 reached</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Audience: followers vs non-followers</h3>
+      <div class="small muted">Views</div>
+      <div class="split"><div style="width:3.7%;background:var(--gold);min-width:4px" title="Followers 3.7%"></div><div style="flex:1;background:var(--forest);color:var(--sheet)">Non-followers 96.3%</div></div>
+      <div class="small muted">Interactions</div>
+      <div class="split"><div style="width:36.5%;background:var(--gold);color:var(--ink)">Followers 36.5%</div><div style="flex:1;background:var(--forest);color:var(--sheet)">Non-followers 63.5%</div></div>
+      <p class="small">Followers are only 3.7% of views but 36.5% of interactions. The 40 existing followers are about <b>15× more likely to engage</b> than new viewers, so turning reach into follows is the main growth lever.</p>
+    </div>
+    <div class="panel">
+      <h3>Share by content type</h3>
+      <div class="bars" id="typebars"></div>
+      <div class="legend"><span><i style="background:var(--forest)"></i>Share of views</span><span><i style="background:var(--gold)"></i>Share of interactions</span></div>
+      <p class="small">Static posts and carousels carry the account. Reels earn 17.7% of views but just 13.9% of interactions, and Stories get seen (13.8%) but rarely engaged (2.8%).</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel"><h3>Top content by views</h3>
+      <div class="scroll"><table class="tbl"><thead><tr><th>Date</th><th>Creative</th><th class="r">Views</th></tr></thead><tbody id="topviews"></tbody></table></div></div>
+    <div class="panel"><h3>Top content by interactions</h3>
+      <div class="scroll"><table class="tbl"><thead><tr><th>Date</th><th>Creative</th><th class="r">Inter.</th></tr></thead><tbody id="topint"></tbody></table></div></div>
+  </div>
+
+  <div class="panel">
+    <h3>Content insights</h3>
+    <ul class="takeaways small">
+      <li><span class="tag t-good">Price</span><span>Price-led creatives win on reach: “₹2,999 per sq ft, inclusive of land + farm house” got 513 views. The early-bird and free-villa offer (21 Nov) was the second-most engaging post.</span></li>
+      <li><span class="tag t-good">Education</span><span>Explainers like “Why land beats another apartment” and “Thinking about it? Let's answer what's on your mind” appear in both top-5 lists. Buyers want reasons as well as visuals.</span></li>
+      <li><span class="tag t-good">Lifestyle</span><span>“Step into a life where every day feels like a retreat” (5 Nov) got the most interactions (5). Aspirational lifestyle copy gets saves and shares.</span></li>
+      <li><span class="tag t-warn">Gap</span><span>Interactions per creative are low (3–5 on the best posts). Every post needs one clear ask, such as “Comment SITE VISIT” or “Save this for later”.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="seo">
+  <div class="sechead"><span class="idx">04</span><h2>SEO audit: Northern County page</h2>
+    <p>Live crawl of <span class="mono">onewolf.in/projects/northern-county/</span> on 25 Nov 2026 covering on-page tags, structured data, crawlability and lab page speed. Domain authority figures are from the SEOquake toolbar.</p></div>
+
+  <div class="grid2">
+    <div class="panel score">
+      <svg class="ring" viewBox="0 0 120 120" aria-label="SEO score 83 out of 100">
+        <circle cx="60" cy="60" r="50" fill="none" stroke="var(--field)" stroke-width="12"/>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="var(--forest)" stroke-width="12" stroke-linecap="round" stroke-dasharray="260.8 314.2" transform="rotate(-90 60 60)"/>
+        <text x="60" y="58" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="800" font-size="30" fill="var(--ink)">83</text>
+        <text x="60" y="78" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--ink-3)">/ 100</text>
+      </svg>
+      <div style="display:grid;gap:10px;min-width:0">
+        <h3>Strong technical base</h3>
+        <p class="small muted">The page is fast, indexable and has unusually rich structured data. The gaps are about tracking, keyword focus in the H1, image weight, and trust signals such as RERA details.</p>
+        <div class="counts"><span class="up">15 pass</span><span style="background:var(--warn-bg);color:var(--warn)">5 warnings</span><span class="down">1 fail</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Google search preview</h3>
+      <div class="serp">
+        <span class="u">onewolf.in › projects › northern-county</span>
+        <span class="t">Northern County | Farm Houses near Nandi Hills, Devanahalli</span>
+        <span class="ds">38 fully fenced private farm houses on 6.5 acres near Nandi Hills &amp; Devanahalli. Land + 1–2 BHK farm house from ₹2,999/sq ft. Book a site visit.</span>
+      </div>
+      <p class="small muted">Title 59 characters and description 144 characters are both within Google's display limits. Location keywords, price and call to action are all present.</p>
+    </div>
+  </div>
+
+  <div class="kpis k3">
+    <div class="kpi"><span class="l">Largest Contentful Paint</span><span class="v">0.79s</span><span class="src">mobile lab · target &lt; 2.5s</span></div>
+    <div class="kpi"><span class="l">Layout shift (CLS)</span><span class="v">0.00</span><span class="src">mobile lab · target &lt; 0.1</span></div>
+    <div class="kpi"><span class="l">Server response</span><span class="v">0.52s</span><span class="src">TTFB mobile · 0.23s desktop</span></div>
+    <div class="kpi"><span class="l">Page weight</span><span class="v">1.2 MB</span><span class="src">17 requests</span></div>
+    <div class="kpi"><span class="l">Referring domains</span><span class="v">281</span><span class="src">SEOquake LD · domain level</span></div>
+    <div class="kpi"><span class="l">Organic rank / traffic</span><span class="v">n/a</span><span class="src">SEOquake · not yet measurable</span></div>
+  </div>
+
+  <div class="panel">
+    <h3>Audit checklist</h3>
+    <div class="checks" id="checks"></div>
+  </div>
+
+  <div class="panel">
+    <h3>Prioritised fixes</h3>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Priority</th><th>Issue</th><th>Recommended fix</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td><span class="prio down">High</span></td><td>Meta Pixel not installed. It isn't in the HTML and isn't loaded through GTM at runtime.</td><td>Add the Meta Pixel and Conversions API through GTM (GTM-KN6BQ7KQ). Fire <span class="mono">Lead</span> on form submit and WhatsApp/call clicks.</td><td>Ad optimisation, retargeting, cost-per-lead reporting</td></tr>
+        <tr><td><span class="prio down">High</span></td><td>No GA4 hit observed in our headless test, even though G-B81JRBNZPM is on the page.</td><td>Check GA4 Realtime and the GTM tag triggers or consent settings. Mark form submits, <span class="mono">tel:</span> and <span class="mono">wa.me</span> clicks as key events.</td><td>Trustworthy lead attribution</td></tr>
+        <tr><td><span class="prio" style="background:var(--warn-bg);color:var(--warn)">Medium</span></td><td>H1 is only “Northern County”.</td><td>Use “Northern County: Private Farm Houses near Nandi Hills, Devanahalli”, or add a keyword subline inside the H1.</td><td>Relevance for “farm house near Nandi Hills”</td></tr>
+        <tr><td><span class="prio" style="background:var(--warn-bg);color:var(--warn)">Medium</span></td><td>Heavy images: master plan PNG 664 KB, map PNG 330 KB, Eden 144 aerial 791 KB at 2400 px.</td><td>Convert PNGs to WebP or AVIF and serve <span class="mono">srcset</span> sizes (800/1200/1600 px). Expected saving about 1 MB.</td><td>Faster mobile loads on 4G</td></tr>
+        <tr><td><span class="prio" style="background:var(--warn-bg);color:var(--warn)">Medium</span></td><td>No RERA number or approval status for Northern County. Only Eden 144's RERA is shown.</td><td>Add RERA or approval details, khata and conversion status, and distances to the airport, Nandi Hills and STRR.</td><td>Trust (E-E-A-T) and conversion</td></tr>
+        <tr><td><span class="prio flat">Low</span></td><td>og:image is a 2400 px WebP. WhatsApp link previews can fail on WebP and large files.</td><td>Use a 1200×630 JPG under 300 KB as the share image.</td><td>Better WhatsApp and LinkedIn previews</td></tr>
+        <tr><td><span class="prio flat">Low</span></td><td>HSTS max-age is 1 day. The footer logo has no alt attribute.</td><td>Set <span class="mono">max-age=31536000</span>. Add <span class="mono">alt=""</span> to the decorative logo.</td><td>Hygiene</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="plan">
+  <div class="sechead"><span class="idx">05</span><h2>Plan for December</h2>
+    <p>Focus on turning reach into followers, leads and tracked site visits.</p></div>
+  <div class="plan">
+    <div class="panel"><h3>Content</h3><ul>
+      <li>2 price-led creatives a week: price per sq ft, total ticket size and EMI examples.</li>
+      <li>Weekly Reel under 20 seconds that opens on the land in the first 2 seconds, with on-screen price.</li>
+      <li>FAQ carousels from real enquiries: water, power, legal papers, resale.</li>
+      <li>Story polls and question stickers for the warm follower base.</li></ul></div>
+    <div class="panel"><h3>Paid &amp; tracking</h3><ul>
+      <li>Install the Meta Pixel and CAPI before the next ad flight.</li>
+      <li>Run an always-on lead campaign so reach doesn't drop to zero between boosts.</li>
+      <li>Retarget video viewers and profile visitors with the early-bird offer.</li>
+      <li>Report paid and organic views separately.</li></ul></div>
+    <div class="panel"><h3>Website &amp; SEO</h3><ul>
+      <li>Ship the H1, image and RERA fixes from section 04.</li>
+      <li>Add a Google Business Profile post and site-visit photos every week.</li>
+      <li>Publish 2 blog guides targeting “farm house near Nandi Hills” and “farm house for sale Devanahalli”.</li>
+      <li>Submit the sitemap in Search Console and track impressions.</li></ul></div>
+  </div>
+  <div class="panel">
+    <h3>Targets for next month</h3>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Metric</th><th class="r">November</th><th class="r">December target</th><th class="r">Change</th></tr></thead>
+      <tbody id="targets"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<footer>
+  <b style="color:var(--ink)">Sources and method</b>
+  <p>Facebook: Meta Business Suite page insights, 28 Oct – 24 Nov 2026, compared with the previous period. Instagram: Account Insights for the same 28-day window. Daily Facebook values are read from the chart and are approximate. SEO: live crawl and headless Chromium lab test of the Northern County page on 25 Nov 2026, plus robots.txt and sitemap.xml. Referring domains and rank are from the SEOquake toolbar. Lab speed figures are a single run and can vary with network conditions.</p>
+  <p class="mono">One Wolf · Northern County · Monthly Report · November 2026</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg";
+  // Facebook daily views (approx. read from Business Suite chart), 28 Oct – 24 Nov
+  var views=[935,585,10,20,10,5,5,0,840,890,830,735,500,725,690,515,505,645,470,0,0,1215,900,1005,1010,875,1650,375];
+  var posts=[0,2,3,4,5,6,8,9,10,12,14,20,24];
+  var start=new Date(2026,9,28);
+  function lbl(i){var d=new Date(start);d.setDate(d.getDate()+i);return d.getDate()+" "+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][d.getMonth()];}
+  var W=900,H=300,L=52,R=16,T=16,B=52,max=1800;
+  var x=function(i){return L+i*(W-L-R)/(views.length-1)}, y=function(v){return T+(H-T-B)*(1-v/max)};
+  var s='<svg viewBox="0 0 '+W+' '+H+'" xmlns="'+NS+'">';
+  [0,500,1000,1500].forEach(function(v){s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--rule)" stroke-width="1"/><text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--ink-3)">'+v.toLocaleString("en-IN")+'</text>';});
+  var pts=views.map(function(v,i){return x(i)+","+y(v)}).join(" ");
+  s+='<polygon points="'+L+','+y(0)+' '+pts+' '+x(views.length-1)+','+y(0)+'" fill="var(--forest)" fill-opacity=".14"/>';
+  s+='<polyline points="'+pts+'" fill="none" stroke="var(--forest)" stroke-width="2.2" stroke-linejoin="round"/>';
+  var pk=26; s+='<circle cx="'+x(pk)+'" cy="'+y(views[pk])+'" r="4.5" fill="var(--forest)"/><text x="'+(x(pk)-8)+'" y="'+(y(views[pk])-2)+'" text-anchor="end" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--ink)">≈1,650</text>';
+  posts.forEach(function(i){s+='<circle cx="'+x(i)+'" cy="'+(H-B+12)+'" r="4" fill="var(--gold)"/>';});
+  [0,5,10,15,20,25].forEach(function(i){s+='<text x="'+x(i)+'" y="'+(H-10)+'" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--ink-3)">'+lbl(i)+'</text>';});
+  [[2,7],[19,21]].forEach(function(r){s+='<rect x="'+x(r[0])+'" y="'+T+'" width="'+(x(r[1])-x(r[0]))+'" height="'+(H-T-B)+'" fill="var(--warn)" fill-opacity=".07"/>';});
+  s+='<text x="'+((x(2)+x(7))/2)+'" y="'+(T+14)+'" text-anchor="middle" font-size="10.5" font-family="IBM Plex Mono,monospace" fill="var(--warn)">near-zero reach</text>';
+  s+='</svg>';
+  document.getElementById("fbchart").innerHTML=s;
+
+  // content type bars
+  var types=[["Posts",68.4,83.3],["Reels",17.7,13.9],["Stories",13.8,2.8]];
+  document.getElementById("typebars").innerHTML=types.map(function(t){
+    return '<div class="bar"><span>'+t[0]+'</span><div class="track"><div class="fill" style="width:'+t[1]+'%"></div></div><span class="num">'+t[1]+'%</span></div>'+
+           '<div class="bar"><span></span><div class="track"><div class="fill g" style="width:'+t[2]+'%"></div></div><span class="num">'+t[2]+'%</span></div>';}).join("");
+
+  function rows(id,data,max){document.getElementById(id).innerHTML=data.map(function(r){return '<tr><td class="mono" style="white-space:nowrap">'+r[0]+'</td><td>'+r[1]+'<br><span class="small muted">'+r[2]+'</span></td><td class="r num" style="white-space:nowrap">'+r[3]+'<span class="minibar" style="width:'+Math.max(4,Math.round(40*r[3]/max))+'px"></span></td></tr>'}).join("");}
+  rows("topviews",[["27 Oct","₹2,999 per sq ft, land + farm house","Post · pricing",513],["01 Nov","Why land beats another apartment","Carousel · education",141],["31 Oct","Come and see what home ownership truly looks like","Reel · walkthrough",140],["17 Nov","Thinking about it? Let's answer what's on your mind","Carousel · FAQ",121],["06 Nov","A Day in the Life at Northern County","Carousel · lifestyle",115]],513);
+  rows("topint",[["05 Nov","Step into a life where every day feels like a retreat","Post · lifestyle",5],["21 Nov","Early Bird Pricing + Free Villa Offer, ending soon","Post · offer",3],["17 Nov","Thinking about it? Let's answer what's on your mind","Carousel · FAQ",3],["01 Nov","Why land beats another apartment","Carousel · education",3],["31 Oct","Come and see what home ownership truly looks like","Reel · walkthrough",3]],5);
+
+  // SEO checks: p pass, w warn, f fail
+  var checks=[
+    ["p","HTTPS with HSTS","Valid TLS. HSTS header present (max-age 1 day)."],
+    ["p","Title tag","59 characters. Includes Nandi Hills, Devanahalli and Farm Houses."],
+    ["p","Meta description","144 characters, with price and site-visit call to action."],
+    ["p","Canonical URL","Self-referencing canonical is set correctly."],
+    ["p","Indexable","Meta robots is index, follow, max-image-preview:large."],
+    ["p","XML sitemap","Page is listed in sitemap.xml (lastmod 14 Nov) and robots.txt points to it."],
+    ["p","Single H1","One H1 and 9 logically ordered H2s."],
+    ["p","Structured data","RealEstateListing, Offer, FAQPage (5 Qs), BreadcrumbList and RealEstateAgent."],
+    ["p","Social tags","Open Graph and Twitter large-image card present."],
+    ["p","Mobile layout","No horizontal overflow at phone width. Viewport meta set."],
+    ["p","Core Web Vitals (lab)","LCP 0.79s and CLS 0 on mobile."],
+    ["p","Image alt text","9 of 10 images have descriptive, keyword-rich alt text."],
+    ["p","Internal linking","40 internal links, including 3 related location guides."],
+    ["p","Contact paths","Enquiry form, WhatsApp, call and email are all on the page."],
+    ["p","Content depth","About 1,030 words with FAQ, master plan and location sections."],
+    ["w","H1 keyword","The H1 is only the brand name, with no service or location keyword."],
+    ["w","Image weight","Two PNGs (994 KB together) should be WebP. No responsive srcset."],
+    ["w","Trust signals","No RERA or approval number shown for Northern County."],
+    ["w","Share image","og:image is a 2400 px WebP, which is risky for WhatsApp previews."],
+    ["w","Organic visibility","Rank and traffic not yet measurable (n/a in SEOquake)."],
+    ["f","Meta Pixel","Not present, so Facebook and Instagram leads can't be tracked."]
+  ];
+  var sym={p:"✓",w:"!",f:"✕"};
+  document.getElementById("checks").innerHTML=checks.map(function(c){return '<div class="check"><span class="dot '+c[0]+'">'+sym[c[0]]+'</span><div><b>'+c[1]+'</b><span class="d">'+c[2]+'</span></div></div>'}).join("");
+
+  var tg=[["Instagram views","13,236","18,000","+36%"],["Accounts reached","5,699","8,000","+40%"],["Accounts engaged","72","150","+108%"],["Profile visits","111","200","+80%"],["Instagram followers","40","100","+60 net"],["Facebook 3-second views","97","250","+158%"],["Facebook 1-minute views","0","15","new"],["Tracked website leads","not tracked","baseline set","Pixel + GA4"]];
+  document.getElementById("targets").innerHTML=tg.map(function(r){return '<tr><td>'+r[0]+'</td><td class="r num">'+r[1]+'</td><td class="r num"><b>'+r[2]+'</b></td><td class="r num" style="color:var(--good)">'+r[3]+'</td></tr>'}).join("");
+})();
+</script>
