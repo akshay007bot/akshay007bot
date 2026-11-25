@@ -1,0 +1,12 @@
+# Voice stack for Jarvis (wake word, speech-to-text, text-to-speech).
+# Install:  pip install -r requirements-voice.txt
+numpy>=1.24
+sounddevice>=0.4.6          # microphone input (bundles PortAudio on Windows)
+openwakeword>=0.6.0         # "hey jarvis" wake word; uses onnxruntime on Windows
+onnxruntime>=1.16
+faster-whisper>=1.1.0       # speech-to-text (CPU int8, or CUDA float16 if available)
+av>=11,<17                 # faster-whisper 1.2.1 decode_audio breaks on PyAV 17+ (metadata_errors kwarg)
+webrtcvad-wheels>=2.0.11    # end-of-speech detection (prebuilt wheels incl. Windows)
+edge-tts>=7.0.0             # free Microsoft neural voices (needs internet, no key)
+pygame>=2.5.0               # audio playback (MP3 + chime)
+pyttsx3>=2.90               # offline English fallback voice (Windows SAPI)
