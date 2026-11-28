@@ -57,7 +57,11 @@ def table(doc, header, rows, widths=None):
     return t
 
 def build(key):
+    global RETAINER, SHOOT_BUDGET
     c = CLIENTS[key]
+    import content as _ct
+    RETAINER = c.get("retainer", _ct.RETAINER)
+    SHOOT_BUDGET = c.get("shoot_budget", _ct.SHOOT_BUDGET)
     doc = Document()
     sec = doc.sections[0]
     sec.page_height, sec.page_width = Mm(297), Mm(210)

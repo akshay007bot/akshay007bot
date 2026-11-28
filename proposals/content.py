@@ -22,6 +22,8 @@ SHOOT_DESC = "One studio content shoot and one podcast shoot a month: studio, cr
 CLIENTS = {
     "ravi": {
         "slug": "Ravi-Venkatesh",
+        "retainer": 65000,
+        "shoot_budget": 70000,
         "first": "Ravi",
         "full": "Ravi Venkatesh",
         "role": "Founder, ClobData (UK) · Pragnajanya International School (India)",

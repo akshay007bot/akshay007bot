@@ -156,7 +156,11 @@ RINGS = """<svg class="rings" viewBox="0 0 200 200" fill="none"><g stroke="#2E5B
 <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#009FFF"/><stop offset="1" stop-color="#00FFAB"/></linearGradient></defs></svg>"""
 
 def build(key):
+    global RETAINER, SHOOT_BUDGET
     c = CLIENTS[key]
+    import content as _ct
+    RETAINER = c.get("retainer", _ct.RETAINER)
+    SHOOT_BUDGET = c.get("shoot_budget", _ct.SHOOT_BUDGET)
     pages = []
 
     # ---------- 1 cover
