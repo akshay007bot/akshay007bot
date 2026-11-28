@@ -97,7 +97,8 @@ def build(key):
     table(doc, ["Item", "Billing", "Amount"], [
         ["Brand Foundation", "One-time (waived on a 6-month term)", inr(FOUNDATION)],
         ["Personal brand retainer", "Monthly", inr(RETAINER)],
-        ["Growth package (recommended)", "Monthly · retainer + shoot + podcast", inr(PACKAGES[1]["price"])]])
+        ["Video shoot budget", "Monthly · 1 content shoot + 1 podcast", inr(SHOOT_BUDGET)],
+        ["Total monthly investment", "Monthly", inr(RETAINER + SHOOT_BUDGET)]])
     P(doc, "All fees exclusive of 18% GST.", italic=True, size=8.5, color=MUTED)
 
     H(doc, "03", f"Understanding you, {c['first']}")
@@ -137,49 +138,45 @@ def build(key):
     table(doc, ["01 · Plan", "02 · Shoot", "03 · Post & grow"], [["We pick the month’s topics together and write the hooks.", "One studio shoot and one podcast shoot. We bring crew, set and prompts.", "Editing, 24–28 posts, replies and outreach."]])
     P(doc, "Your time: roughly 6–8 hours a month.", size=9, color=MUTED)
 
-    H(doc, "09", "Video shoots & podcast production")
+    H(doc, "09", "Investment")
     extra = f" {c['uk_note']}" if c.get("uk_note") else ""
-    P(doc, f"We handle every shoot end to end: brief, script prompts, studio booking, crew, cameras, lighting, sound, teleprompter, direction on the day, editing and posting. You arrive and speak. On-location shoots can happen at {c['location_note']}.{extra}")
-    table(doc, ["Production", "What’s included", "Market rate*", "iOceane"], [[n, d, m, f"{inr(p)} {u}"] for n, d, m, p, u in RATE_CARD], [36, 80, 32, 26])
-    H3(doc, "Optional add-ons")
-    table(doc, ["Add-on", "Price", "Unit"], [[n, inr(p), u] for n, p, u in ADD_ONS], [110, 32, 32])
-    P(doc, "*Indicative Bengaluru/India market rates from public studio and production-house listings, November 2026. Studio rentals: ₹999–₹9,000/hr. Multi-camera video podcasts: ₹10,000–₹30,000+ per episode. Production-house shoots: ₹40,000 to ₹1.2–3.5 lakh. All iOceane prices are estimates, include crew, equipment, studio and editing, and are confirmed per shoot brief.", italic=True, size=8, color=MUTED)
-
-    H(doc, "10", "Investment")
-    H3(doc, f"Brand Foundation · {inr(FOUNDATION)} one-time (waived on a 6-month agreement)")
+    table(doc, ["Item", "Billing", "Amount"], [
+        ["Brand Foundation (waived on a 6-month term)", "One-time", inr(FOUNDATION)],
+        ["Personal brand retainer", "Monthly", inr(RETAINER)],
+        ["Video shoot budget: " + SHOOT_DESC, "Monthly", inr(SHOOT_BUDGET)],
+        ["Total monthly investment", "Monthly", inr(RETAINER + SHOOT_BUDGET)]], [110, 32, 32])
+    P(doc, f"All fees exclusive of 18% GST. Shoots happen in a Bengaluru studio or at {c['location_note']}.{extra}", italic=True, size=8.5, color=MUTED)
+    H3(doc, f"Brand Foundation · {inr(FOUNDATION)} one-time")
     bullets(doc, FOUNDATION_ITEMS)
-    H3(doc, f"Personal brand management retainer · {inr(RETAINER)} / month")
-    bullets(doc, ["Personal brand strategy & monthly planning", "24–28 posts a month across platforms", "Posting, community and account management", "Podcast, creator & event outreach", "One podcast shoot coordinated each month", "Weekly snapshots & monthly report"])
-    H3(doc, "Monthly packages · retainer + production")
-    table(doc, ["Package", "Price / month", "Includes", "Best for"], [[f"{p['name']} ({p['tag']})", inr(p["price"]) + (f"\n(separately {inr(p['list'])})" if p["list"] else ""), "\n".join("• " + x for x in p["items"]), p["fit"]] for p in PACKAGES], [30, 30, 70, 44])
+    H3(doc, f"Retainer & video shoots · {inr(RETAINER)} + {inr(SHOOT_BUDGET)} / month")
+    bullets(doc, ["Monthly planning sit-down & scripts", "1 studio content shoot / month", "1 podcast shoot / month", "Editing of all videos & clips", "24–28 posts across platforms", "Podcast, creator & event outreach", "Weekly snapshots & monthly report"])
     H3(doc, "Payment milestones")
     table(doc, ["Milestone", "When", "Amount"], [
         ["Brand Foundation", "On signing (waived on a 6-month term)", inr(FOUNDATION)],
-        ["Month 1 package", "On signing, before the first shoot is booked", "As chosen"],
-        ["Months 2 onward", "In advance, by the 5th of each month", "As chosen"],
-        ["One-off shoots & add-ons", "50% at booking · 50% on delivery", "As quoted"]])
+        ["Month 1 retainer + shoot budget", "On signing, before the first shoot", inr(RETAINER + SHOOT_BUDGET)],
+        ["Months 2 onward", "In advance, by the 5th of each month", inr(RETAINER + SHOOT_BUDGET)]])
 
-    H(doc, "11", "Timeline & milestones · first 6 months")
+    H(doc, "10", "Timeline & milestones · first 6 months")
     table(doc, ["When", "Phase", "Milestones"], [[w, t, "\n".join("• " + x for x in xs)] for w, t, xs in ROADMAP], [28, 36, 110])
-    H(doc, "12", "Expected outcomes & KPIs")
+    H(doc, "11", "Expected outcomes & KPIs")
     table(doc, ["Area", "What we track", "Target", "Type"], KPIS, [26, 58, 64, 26])
     P(doc, "Commitments are what iOceane delivers. Tracked metrics are baselined in week 2, and numeric targets are set with you after the first month of real data. Goals depend partly on third parties.", italic=True, size=8.5, color=MUTED)
     P(doc, "What success looks like at month 6: a recognisable, consistent presence on Instagram and LinkedIn, six podcast conversations on record, your first talks delivered, a tested talk ready for a TEDx application, and inbound invitations that come to you by name.", bold=True, size=9.5)
 
-    H(doc, "13", "Why iOceane")
+    H(doc, "12", "Why iOceane")
     table(doc, ["Proof", ""], WHY, [34, 140])
     bullets(doc, ["One team: strategy, scripting, shooting, editing, posting and outreach in one place.", "Founder-first: a fixed monthly rhythm built around your calendar.", "Transparent: fixed monthly deliverables, market-benchmarked shoot rates, weekly reporting."])
 
-    H(doc, "14", "Terms & conditions")
+    H(doc, "13", "Terms & conditions")
     for i, x in enumerate(TERMS, 1):
         p = doc.add_paragraph(style="List Number"); run(p, x, size=9)
 
-    H(doc, "15", f"Next steps · Let’s build your name, {c['first']}.")
-    table(doc, ["01", "02", "03"], [["Choose your package: Essential, Growth or Signature.", "One sit-down to understand you (2–3 hours).", "Your first shoot, within 3 weeks of signing."]])
+    H(doc, "14", f"Next steps · Let’s build your name, {c['first']}.")
+    table(doc, ["01", "02", "03"], [["Confirm the plan and your term.", "One sit-down to understand you (2–3 hours).", "Your first shoot, within 3 weeks of signing."]])
 
-    H(doc, "16", "Acceptance")
+    H(doc, "15", "Acceptance")
     P(doc, "By signing below, both parties agree to the scope, pricing and terms in this proposal.")
-    table(doc, ["Selection", "Tick"], [[f"{p['name']} · {inr(p['price'])} / month", "☐"] for p in PACKAGES] + [["Term: 3 months ☐   6 months ☐ (Brand Foundation waived)", ""]], [150, 24])
+    table(doc, ["Selection", "Tick"], [[f"Personal brand retainer + video shoot budget · {inr(RETAINER + SHOOT_BUDGET)} / month", ""]] + [["Term: 3 months ☐   6 months ☐ (Brand Foundation waived)", ""]], [150, 24])
     table(doc, [f"For {c['full']}", "For iOceane"], [["\n\nName & signature", "\n\nName & signature"], ["\nDate", "\nDate"]])
     P(doc, f"{AGENCY['phone']} · {AGENCY['email']} · {AGENCY['address']}", size=8.5, color=MUTED)
 

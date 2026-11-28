@@ -15,83 +15,8 @@ AGENCY = {
 # ---------------------------------------------------------------- pricing
 RETAINER = 50000
 FOUNDATION = 25000
-
-# Video production rate card: (name, what's included, market benchmark, iOceane price, unit)
-RATE_CARD = [
-    ("Studio content shoot · Half day",
-     "4 hours in studio · 2 × 4K cameras · lighting · lapel + shotgun mics · teleprompter · crew of 3 · 1 set change. Yields 10–12 short videos.",
-     "Studio ₹1,500–9,000/hr + crew ₹15,000–40,000/day", 25000, "per shoot"),
-    ("Studio content shoot · Full day",
-     "8 hours · 3 cameras incl. cinema camera · 2 sets / looks · on-set director · behind-the-scenes stills. Yields 20+ short videos + 1 long-form piece.",
-     "₹40,000–1,20,000+ per shoot day", 45000, "per shoot"),
-    ("On-location shoot · Full day",
-     "Your office, campus or site in Bengaluru · cinema camera + gimbal · 2-person lighting & sound crew · b-roll of people and places.",
-     "₹40,000–1,20,000+ per shoot day", 55000, "per shoot"),
-    ("Video podcast · produced by iOceane",
-     "Up to 90 min recording · 3 × 4K cameras · studio & set · audio mastering · full-episode edit · thumbnail · 6–8 short clips.",
-     "₹10,000–30,000+ per episode", 30000, "per episode"),
-    ("Event / stage coverage",
-     "Half day · 2 cameras + direct audio feed from the stage · vertical clips cut from your talk.",
-     "₹15,000–40,000 per day", 20000, "per event"),
-]
-ADD_ONS = [
-    ("Professional grooming / make-up artist", 5000, "per shoot"),
-    ("Drone footage (where legally permitted)", 8000, "per shoot"),
-    ("Crew on a guest podcast (BTS + vertical clips)", 10000, "per session"),
-    ("Additional long-form edit (up to 30 min)", 6000, "per video"),
-    ("Professional portrait photo session (15 edited images)", 15000, "one-time"),
-]
-
-PACKAGES = [
-    {
-        "name": "Essential",
-        "tag": "Start steady",
-        "price": 75000,
-        "list": None,
-        "items": [
-            "Personal brand management retainer",
-            "1 half-day studio shoot / month",
-            "Guest-podcast & event pitching",
-            "24–28 posts / month",
-        ],
-        "fit": "Best if your calendar is tight and you want a consistent, credible presence.",
-    },
-    {
-        "name": "Growth",
-        "tag": "Recommended",
-        "price": 110000,
-        "list": 125000,
-        "items": [
-            "Personal brand management retainer",
-            "1 full-day studio shoot / month",
-            "1 video podcast / month, produced by iOceane",
-            "Guest-podcast & event pitching",
-            "24–28 posts / month + 1 long-form episode",
-        ],
-        "fit": "One shoot day and one podcast give you a full month of content.",
-    },
-    {
-        "name": "Signature",
-        "tag": "Fastest reach",
-        "price": 135000,
-        "list": 150000,
-        "items": [
-            "Everything in Growth",
-            "1 event / stage coverage per month",
-            "Grooming artist on every shoot",
-            "Priority TEDx & keynote pitching",
-            "Quarterly on-location shoot in place of one studio day",
-        ],
-        "fit": "For when the stage and speaking track is a priority this year.",
-    },
-]
-
-MARKET_SOURCES = [
-    ("Content Studio – multi-camera video podcast cost guide (₹10k–30k+/episode)", "https://contentstudio.co.in/blog/podcast-cost-gurugram"),
-    ("Dr. Bomb podcast studio – ₹1,499–2,499/hr", "https://www.barchart.com/story/news/1411410/dr-bomb-introduces-a-modern-podcast-studio-in-india-with-fully-equipped-setups-starting-at-rs1-499-per-hour"),
-    ("Bengaluru corporate video pricing – ₹40k single-camera to ₹1.2L–3.5L typical", "https://beverlyboy.com/bengaluru-videographer-services/"),
-    ("IndiaMART videography listings – ₹10k–40k per day", "https://m.indiamart.com/impcat/videography-services.html"),
-]
+SHOOT_BUDGET = 40000
+SHOOT_DESC = "One studio content shoot and one podcast shoot a month: studio, crew, cameras, lighting, sound and editing."
 
 # ---------------------------------------------------------------- clients
 CLIENTS = {
@@ -281,8 +206,8 @@ WHY = [
 TERMS = [
     "All fees are in INR and exclusive of 18% GST.",
     "Brand Foundation is billed on signing. It is waived on a 6-month agreement.",
-    "Monthly retainer and production packages are billed in advance by the 5th of each month.",
-    "One-off shoots and add-ons: 50% at booking, 50% on delivery.",
+    "The monthly retainer and video shoot budget are billed in advance by the 5th of each month.",
+    "Extra shoots beyond the monthly budget are quoted separately and billed 50% at booking, 50% on delivery.",
     "Minimum term of 3 months; 6 months recommended. Either party may end the agreement after that with 30 days’ written notice.",
     "Shoots rescheduled with less than 48 hours’ notice are charged at 50% of the shoot fee.",
     "Two rounds of revisions are included per content piece.",
@@ -290,5 +215,5 @@ TERMS = [
     "Paid promotion budgets, event registration fees and third-party podcast fees, if any, are not included.",
     "You own your accounts and all final content. iOceane keeps raw footage for 6 months and shows work only with your approval.",
     "We commit to effort, quality and deliverables. Follower counts, virality and selection by podcasts, events or TEDx depend on third parties and cannot be guaranteed.",
-    "Video production prices are estimates based on November 2026 Bengaluru market rates and are confirmed per shoot brief.",
+    "The video shoot budget is an estimate for shoots in Bengaluru and is confirmed with you before each shoot.",
 ]

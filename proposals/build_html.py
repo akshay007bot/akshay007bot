@@ -171,11 +171,12 @@ def build(key):
 <div><div class="k">CONTACT</div><b>{AGENCY['email']}</b><br><span>{AGENCY['phone']}</span></div></div></div></section>""")
 
     # ---------- 2 intro + exec summary
-    tiles = f"""<div class="grid g3" style="margin-top:4mm">
+    tiles = f"""<div class="grid g4" style="margin-top:4mm">
 <div class="tile"><div class="k">One-time</div><div class="v">{inr(FOUNDATION)}</div><div class="s">Brand Foundation · waived on a 6-month term</div></div>
 <div class="tile"><div class="k">Monthly retainer</div><div class="v">{inr(RETAINER)}</div><div class="s">Strategy, content, posting & outreach</div></div>
-<div class="tile hl"><div class="k">Recommended · Growth</div><div class="v">{inr(PACKAGES[1]['price'])}</div><div class="s">per month, retainer + shoot + podcast</div></div></div>
-<p class="note">All fees exclusive of 18% GST. Video production is priced against current Bengaluru market rates (see section 09).</p>"""
+<div class="tile"><div class="k">Video shoots</div><div class="v">{inr(SHOOT_BUDGET)}</div><div class="s">Monthly budget · 1 content shoot + 1 podcast</div></div>
+<div class="tile hl"><div class="k">Total monthly</div><div class="v">{inr(RETAINER+SHOOT_BUDGET)}</div><div class="s">Retainer + video shoots</div></div></div>
+<p class="note">All fees exclusive of 18% GST.</p>"""
     body = sec("01", "Introduction", f"""<p class="lead"><b>Dear {e(c['first'])},</b></p>
 <p class="lead">Thank you for the conversation and for considering iOceane to build your personal brand. {e(c['hook'])}</p>
 <p>This proposal sets out what we will do, how we will work with you, what you will receive every month and what it costs, including the video shoots and podcast production we will handle for you.</p>
@@ -241,43 +242,31 @@ def build(key):
     body += sec("", "One month with us", month + '<p class="note" style="font-style:normal"><b>Your time:</b> roughly 6–8 hours a month: a 1-hour planning call, one shoot, one podcast and quick approvals on WhatsApp.</p>')
     pages.append(page(body, c))
 
-    # ---------- 8 video production
-    rc = "".join(f"<tr><td style='width:44mm'><b>{e(n)}</b></td><td style='font-size:8.4pt' class='muted'>{e(d)}</td><td style='font-size:8pt;width:34mm'>{e(m)}</td><td class='num' style='width:24mm'>{inr(p)}<br><span style='font-size:7pt;color:var(--muted);font-weight:500'>{u}</span></td></tr>" for n, d, m, p, u in RATE_CARD)
-    ad = "".join(f"<tr><td>{e(n)}</td><td class='num'>{inr(p)}</td><td class='r muted' style='width:17mm;font-size:7.4pt'>{u}</td></tr>" for n, p, u in ADD_ONS)
-    loc = f"On-location shoots can happen at {c['location_note']}."
-    extra = f" {c['uk_note']}" if c.get("uk_note") else ""
-    pay = f"""<table style="font-size:8.4pt"><tr><th>Milestone</th><th>When</th></tr>
-<tr><td><b>Brand Foundation</b> · {inr(FOUNDATION)}</td><td>On signing (waived on 6 months)</td></tr>
-<tr><td><b>Month 1 package</b></td><td>On signing, before first shoot</td></tr>
-<tr><td><b>Month 2 onward</b></td><td>In advance, by the 5th</td></tr>
-<tr><td><b>One-off shoots & add-ons</b></td><td>50% booking · 50% delivery</td></tr></table>"""
-    body = sec("09", "Video shoots & podcast production", f"""<p>We handle every shoot end to end: brief, script prompts, studio booking, crew, cameras, lighting, sound, teleprompter, direction on the day, editing and posting. You arrive and speak. {e(loc)}{e(extra)}</p>
-<table style="margin-top:4mm"><tr><th>Production</th><th>What’s included</th><th>Market rate*</th><th class="r">iOceane</th></tr>{rc}</table>
-<div class="grid g2" style="gap:6mm;margin-top:5mm;font-size:8.4pt"><div><h3 style="font-size:11pt;margin-bottom:2mm">Optional add-ons</h3><table style="font-size:8.4pt">{ad}</table></div>
-<div><h3 style="font-size:11pt;margin-bottom:2mm">Payment milestones</h3>{pay}</div></div>
-<p class="note">*Indicative Bengaluru/India market rates from public studio and production-house listings, November 2026. Studio rentals: ₹999–₹9,000/hr. Multi-camera video podcasts: ₹10,000–₹30,000+ per episode. Production-house shoots: ₹40,000 to ₹1.2–3.5 lakh. iOceane prices include crew, equipment, studio and editing with no hidden per-equipment charges. All are estimates and are confirmed per shoot brief.</p>""")
-    pages.append(page(body, c))
-
     # ---------- 9 investment
-    pk = ""
-    for i, p in enumerate(PACKAGES):
-        rec = " rec" if p["tag"] == "Recommended" else ""
-        pillc = ["", "", "p"][i] if not rec else ""
-        was = f'<div class="was">Separately <s>{inr(p["list"])}</s> · you save {inr(p["list"]-p["price"])}</div>' if p["list"] else '<div class="was">Retainer + half-day shoot</div>'
-        li = "".join(f"<li>{e(x)}</li>" for x in p["items"])
-        pk += f'<div class="pkg{rec}"><span class="pill {pillc}">{e(p["tag"])}</span><div class="nm">{e(p["name"])}</div><div class="pr">{inr(p["price"])} <small>/ month</small></div>{was}<ul class="dots">{li}</ul><div class="fit">{e(p["fit"])}</div></div>'
     fi = "".join(f"<li>{e(x)}</li>" for x in FOUNDATION_ITEMS)
-    body = sec("10", "Investment", f"""<div class="grid" style="grid-template-columns:1.05fr 1fr;gap:5mm">
-<div class="card"><div class="k">One-time · {inr(FOUNDATION)}</div><h3>Brand Foundation</h3><ul class="dots">{fi}</ul><p style="margin-top:2mm"><span class="pill m">Waived on a 6-month agreement</span></p></div>
-<div class="card m"><div class="k">Monthly retainer · {inr(RETAINER)}</div><h3>Personal brand management</h3><ul class="dots"><li>Personal brand strategy & monthly planning</li><li>24–28 posts a month across platforms</li><li>Posting, community and account management</li><li>Podcast, creator & event outreach</li><li>One podcast shoot coordinated each month</li><li>Weekly snapshots & monthly report</li></ul><p class="note" style="font-style:normal">Production (studio, crew, podcast) is added below so you choose the level.</p></div></div>
-<h3 style="font-size:11pt;margin:6mm 0 3mm">Monthly packages · retainer + production</h3><div class="grid g3">{pk}</div>""")
+    loc = f"Shoots happen in a Bengaluru studio or at {c['location_note']}."
+    extra = f" {c['uk_note']}" if c.get("uk_note") else ""
+    summ = f"""<table><tr><th>Item</th><th>Billing</th><th class="r">Amount</th></tr>
+<tr><td><b>Brand Foundation</b><br><span class="muted">Strategy, profile set-up, templates · waived on a 6-month term</span></td><td style="white-space:nowrap">One-time</td><td class="num">{inr(FOUNDATION)}</td></tr>
+<tr><td><b>Personal brand retainer</b><br><span class="muted">Strategy, 24–28 posts, account management, podcast & event outreach</span></td><td>Monthly</td><td class="num">{inr(RETAINER)}</td></tr>
+<tr><td><b>Video shoot budget</b><br><span class="muted">{e(SHOOT_DESC)}</span></td><td>Monthly</td><td class="num">{inr(SHOOT_BUDGET)}</td></tr>
+<tr><td style="background:var(--ink);color:#fff"><b>Total monthly investment</b></td><td style="background:var(--ink);color:#AEB7C7">Monthly</td><td class="num" style="background:var(--ink);color:var(--mint);font-size:12pt">{inr(RETAINER+SHOOT_BUDGET)}</td></tr></table>
+<p class="note">All fees exclusive of 18% GST. {e(loc)}{e(extra)}</p>"""
+    pay = f"""<table><tr><th>Milestone</th><th>When</th><th class="r">Amount</th></tr>
+<tr><td>Brand Foundation</td><td>On signing (waived on a 6-month term)</td><td class="num">{inr(FOUNDATION)}</td></tr>
+<tr><td>Month 1 retainer + shoot budget</td><td>On signing, before the first shoot</td><td class="num">{inr(RETAINER+SHOOT_BUDGET)}</td></tr>
+<tr><td>Months 2 onward</td><td>In advance, by the 5th of each month</td><td class="num">{inr(RETAINER+SHOOT_BUDGET)}</td></tr></table>"""
+    body = sec("09", "Investment", summ + f"""<div class="grid g2" style="gap:5mm;margin-top:5mm">
+<div class="card"><div class="k">One-time · {inr(FOUNDATION)}</div><h3>Brand Foundation</h3><ul class="dots">{fi}</ul></div>
+<div class="card m"><div class="k">Monthly · {inr(RETAINER)} + {inr(SHOOT_BUDGET)}</div><h3>Retainer & video shoots</h3><ul class="dots"><li>Monthly planning sit-down & scripts</li><li>1 studio content shoot / month</li><li>1 podcast shoot / month</li><li>Editing of all videos & clips</li><li>24–28 posts across platforms</li><li>Podcast, creator & event outreach</li><li>Weekly snapshots & monthly report</li></ul></div></div>""")
+    body += sec("", "Payment milestones", pay)
     pages.append(page(body, c))
 
     # ---------- 10 timeline + KPIs
     rd = "".join(f'<div class="st"><div class="dot"></div><div class="when">{e(w)}</div><h3>{e(t)}</h3><ul class="dots">{"".join(f"<li>{e(x)}</li>" for x in xs)}</ul></div>' for w, t, xs in ROADMAP)
     kp = "".join(f"<tr><td style='width:24mm;font-weight:600'>{e(a)}</td><td>{e(b)}</td><td>{e(d)}</td><td class='r'><span class='pill {dict(Commitment='',Tracked='m',Goal='p')[t]}'>{t}</span></td></tr>" for a, b, d, t in KPIS)
-    body = sec("11", "Timeline & milestones · first 6 months", f'<div class="road"><div class="line"></div>{rd}</div>')
-    body += sec("12", "Expected outcomes & KPIs", f"""<table><tr><th>Area</th><th>What we track</th><th>Target</th><th class="r">Type</th></tr>{kp}</table>
+    body = sec("10", "Timeline & milestones · first 6 months", f'<div class="road"><div class="line"></div>{rd}</div>')
+    body += sec("11", "Expected outcomes & KPIs", f"""<table><tr><th>Area</th><th>What we track</th><th>Target</th><th class="r">Type</th></tr>{kp}</table>
 <p class="note"><b>Commitments</b> are what iOceane delivers. <b>Tracked</b> metrics are baselined in week 2, and we set numeric targets with you after the first month of real data rather than promising numbers up front. <b>Goals</b> depend partly on third parties such as hosts, organisers and TEDx curators.</p>
 <div class="callout"><b>What success looks like at month 6:</b> a recognisable, consistent presence on Instagram and LinkedIn, six podcast conversations on record, your first talks delivered, a tested talk ready for a TEDx application, and inbound invitations that come to you by name.</div>""")
     pages.append(page(body, c))
@@ -285,25 +274,23 @@ def build(key):
     # ---------- 11 why + terms
     st = "".join(f'<div class="stat"><div class="v">{e(a)}</div><p>{e(b)}</p></div>' for a, b in WHY)
     tm = "".join(f"<li>{e(x)}</li>" for x in TERMS)
-    body = sec("13", "Why iOceane", f"""<div class="grid g4">{st}</div>
+    body = sec("12", "Why iOceane", f"""<div class="grid g4">{st}</div>
 <div class="grid g3" style="margin-top:4mm"><div class="card"><div class="k">One team</div><h3>Strategy to screen</h3><p>Strategy, scripting, shooting, editing, posting and outreach in one place.</p></div>
 <div class="card m"><div class="k">Founder-first</div><h3>Built around your time</h3><p>A fixed monthly rhythm that respects a founder’s calendar.</p></div>
 <div class="card p"><div class="k">Transparent</div><h3>Clear deliverables</h3><p>Fixed monthly counts, market-benchmarked shoot rates, weekly reporting.</p></div></div>""")
-    body += sec("14", "Terms & conditions", f'<ol class="terms">{tm}</ol>')
+    body += sec("13", "Terms & conditions", f'<ol class="terms">{tm}</ol>')
     pages.append(page(body, c))
 
     # ---------- 12 next steps + acceptance
-    body = f"""<div class="sec" style="margin-top:4mm"><div class="cta"><div class="eyebrow" style="color:var(--mint)">15 · Next steps</div>
+    body = f"""<div class="sec" style="margin-top:4mm"><div class="cta"><div class="eyebrow" style="color:var(--mint)">14 · Next steps</div>
 <h2 style="margin-top:3mm">Let’s build your name,<br><span>{e(c['first'])}.</span></h2>
-<div class="steps"><div><div class="n">01</div><p><b style="color:#fff">Choose your package</b><br>Essential, Growth or Signature. Sign below or reply by email.</p></div>
+<div class="steps"><div><div class="n">01</div><p><b style="color:#fff">Confirm the plan</b><br>Pick your term. Sign below or reply by email.</p></div>
 <div><div class="n">02</div><p><b style="color:#fff">One sit-down to understand you</b><br>2–3 hours. Your values, vision and nature, put into words.</p></div>
 <div><div class="n">03</div><p><b style="color:#fff">Your first shoot</b><br>Within 3 weeks of signing. First posts live the week after.</p></div></div></div></div>
-<div class="sec"><div class="sh"><span class="n">16</span><h2>Acceptance</h2></div>
+<div class="sec"><div class="sh"><span class="n">15</span><h2>Acceptance</h2></div>
 <p>By signing below, both parties agree to the scope, pricing and terms in this proposal.</p>
-<table style="margin-top:4mm"><tr><th>Selection</th><th class="r">Tick one</th></tr>
-<tr><td>Essential · {inr(PACKAGES[0]['price'])} / month</td><td class="r">☐</td></tr>
-<tr><td>Growth · {inr(PACKAGES[1]['price'])} / month <span class="pill">Recommended</span></td><td class="r">☐</td></tr>
-<tr><td>Signature · {inr(PACKAGES[2]['price'])} / month</td><td class="r">☐</td></tr>
+<table style="margin-top:4mm"><tr><th>Agreement</th><th class="r">Monthly</th></tr>
+<tr><td>Personal brand retainer + video shoot budget</td><td class="num">{inr(RETAINER+SHOOT_BUDGET)}</td></tr>
 <tr><td>Term: ☐ 3 months &nbsp;&nbsp; ☐ 6 months (Brand Foundation waived)</td><td></td></tr></table>
 <div class="sig"><div><div class="k">For {e(c['full'])}</div><div class="ln"></div><small>Name & signature</small><div class="ln"></div><small>Date</small></div>
 <div><div class="k">For iOceane</div><div class="ln"></div><small>Name & signature</small><div class="ln"></div><small>Date</small></div></div>
